@@ -24,7 +24,7 @@ class FrontHeaderComponent extends Component
     public function render(): View|Closure|string
     {
         $settings = Settings::firstOrFail();
-        $categories = Categories::all();
+        $categories = Categories::where('status', 1)->get();
         return view('front.components.front-header-component', compact('settings', 'categories'));
     }
 }
