@@ -49,7 +49,7 @@
                                     </div>
                                     <!-- Option to sign up -->
                                     <div class="inputBx">
-                                        <p>Hesabın var? <a href="login.php">Daxil ol</a></p>
+                                        <p>Hesabın var? <a href="{{route('front.login')}}">Daxil ol</a></p>
                                     </div>
                                 </div>
                             </div>

@@ -37,7 +37,7 @@
                                     </div>
                                     <!-- Option to sign up -->
                                     <div class="inputBx">
-                                        <p>Hələ də hesabın yoxdu? <a href="register.php">Qeydiyyat ol</a></p>
+                                        <p>Hələ də hesabın yoxdu? <a href="{{route('front.register')}}">Qeydiyyat ol</a></p>
                                     </div>
                                 </div>
                             </div>
