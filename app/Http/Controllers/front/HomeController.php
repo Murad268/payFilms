@@ -10,4 +10,8 @@ class HomeController extends Controller
     public function login() {
         return view('front.login');
     }
+
+    public function register() {
+        return view('front.register');
+    }
 }
