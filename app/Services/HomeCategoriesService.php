@@ -16,7 +16,13 @@ class HomeCategoriesService
     {
         try {
             $categories = new HomeCategories();
-            $this->dataServices->save($categories, $request->all(), 'create');
+            $data = $request->all();
+            if (isset($data['status'])) {
+                $data['status'] = (bool) $data['status'];
+            } else {
+                $data['status'] = 0;
+            }
+            $this->dataServices->save($categories, $data, 'create');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -25,7 +31,13 @@ class HomeCategoriesService
     {
         try {
             $category = HomeCategories::findOrFail($id);
-            $this->dataServices->save($category, $request->all(), 'update');
+            $data = $request->all();
+            if (isset($data['status'])) {
+                $data['status'] = (bool) $data['status'];
+            } else {
+                $data['status'] = 0;
+            }
+            $this->dataServices->save($category, $data, 'update');
         } catch (Exception $e) {
             echo $e->getMessage();
         }

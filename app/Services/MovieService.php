@@ -17,6 +17,11 @@ class MovieService
         $result = $this->imageService->downloadImage($request, 'assets/front/images/', 'poster', 'notfound.png');
         $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'banner', 'notfound.png');
         $data = $request->all();
+        if (isset($data['status'])) {
+            $data['status'] = (bool) $data['status'];
+        } else {
+            $data['status'] = 0;
+        }
         $data['poster'] = $result;
         $data['banner'] = $result1;
         $portfolio = new Movies();
@@ -31,6 +36,11 @@ class MovieService
             $result = $this->imageService->updateImage($request, 'assets/front/images/', 'poster', $portfolio->poster);
             $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'banner', $portfolio->banner);
             $data = $request->all();
+            if (isset($data['status'])) {
+                $data['status'] = (bool) $data['status'];
+            } else {
+                $data['status'] = 0;
+            }
             $data['poster'] = $result;
             $data['banner'] = $result1;
             $this->dataServices->save($portfolio, $data, 'update');

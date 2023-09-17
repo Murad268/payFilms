@@ -8,13 +8,10 @@ class DataServices
     public function save($model, $data, $proccess = 'create', $relation = '', $sync = false)
     {
 
+
         if ($proccess == 'create') {
 
-            if (isset($data['status'])) {
-                $data['status'] = (bool) $data['status'];
-            } else {
-                $data['status'] = 0;
-            }
+
 
             $create = $model->create($data);
 
@@ -24,12 +21,9 @@ class DataServices
                 }
             }
         } else {
-            // Make sure $data is an array before calling update
-            if (isset($data['status'])) {
-                $data['status'] = (bool) $data['status'];
-            } else {
-                $data['status'] = 0;
-            }
+
+         
+
             $update = $model->update($data);
 
             if ($sync) {
