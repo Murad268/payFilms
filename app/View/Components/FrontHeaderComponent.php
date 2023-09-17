@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Categories;
 use App\Models\Settings;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -23,6 +24,7 @@ class FrontHeaderComponent extends Component
     public function render(): View|Closure|string
     {
         $settings = Settings::firstOrFail();
-        return view('front.components.front-header-component', compact('settings'));
+        $categories = Categories::all();
+        return view('front.components.front-header-component', compact('settings', 'categories'));
     }
 }
