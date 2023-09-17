@@ -7,7 +7,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/icons/'.$settings->icon)}}">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
