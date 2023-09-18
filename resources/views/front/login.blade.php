@@ -31,6 +31,11 @@
                                             <span class="sr-only">Loading...</span>
                                         </div>
                                     </div>
+                                    @if(session()->has('message'))
+                                    <div class="alert alert-danger">
+                                        {{ session('message') }}
+                                    </div>
+                                    @endif
                                     @if(session()->has('success'))
                                     <div class="alert alert-success">
                                         {{ session('success') }}

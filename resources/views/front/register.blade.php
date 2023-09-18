@@ -19,7 +19,7 @@
                                 <div action="#" method="post">
                                     <div class="inputBx">
                                         <span>Ad Soyad</span>
-                                        <input type="text" name="name" id="register-name">
+                                        <input type="text" value="{{old('name')}}" name="name" id="register-name">
                                         @error("name")
                                         <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
                                             {{ $message }}
@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="inputBx">
                                         <span>Mobil</span>
-                                        <input type="text" name="phone" id="register-phone">
+                                        <input type="text" value="{{old('phone')}}" name="phone" id="register-phone">
                                         @error("phone")
                                         <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
                                             {{ $message }}
@@ -38,7 +38,7 @@
                                     <!-- Username input -->
                                     <div class="inputBx">
                                         <span>E-poçt ünvanı</span>
-                                        <input type="email" name="email" id="register-email">
+                                        <input type="email" value="{{old('email')}}" name="email" id="register-email">
                                         @error("email")
                                         <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
                                             {{ $message }}
@@ -65,7 +65,11 @@
                                         @enderror
                                     </div>
                                     <!-- Submit button -->
-
+                                    @if(session()->has('message'))
+                                    <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                        {{session('message')}}
+                                    </div>
+                                    @endif
                                     <div class="inputBx">
                                         <input type="submit" id="register-submit" value="Qeydiyyat ol">
                                     </div>

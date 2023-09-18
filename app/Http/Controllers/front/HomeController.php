@@ -36,6 +36,13 @@ class HomeController extends Controller
 
     public function register_сheck(ReqisterRequest $request, create_mainUsers $mainUser)
     {
+
+        $findUserCount = create_mainUsers::where('email', $request->email)->count();
+        if ($findUserCount > 0) {
+            return redirect()->route('front.register')->with('message', 'daxil etdiyiniz elektron poçtla artıq istifadəçi mövcuddur');
+        }
+
+
         $subject = 'PeroPlay Register';
         $code = $this->activationCode();
         $mainUser->create([
@@ -60,9 +67,6 @@ class HomeController extends Controller
             $message->to("agamedov94@mail.ru")->subject($subject);
         });
         return redirect()->route('front.login')->with('success', 'daxil etdiyiniz elektron poçta təstiqlənmə linki göndərildi');
-
-
-
     }
 
     public function activation(Request $request)
