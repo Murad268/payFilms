@@ -64,5 +64,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/login', [HomeController::class, 'login'])->name('login');
     Route::get('/register', [HomeController::class, 'register'])->name('register');
+    Route::get('/register_сheck', [HomeController::class, 'register_сheck'])->name('register_сheck');
+    Route::get('/activation', [HomeController::class, 'activation'])->name('activation');
 
 });

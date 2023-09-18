@@ -13,37 +13,59 @@
                             <img src="{{asset('assets/front/img/loginphoto.jpg')}}" alt="Login background image">
                         </div>
                         <div class="contentBx">
-                            <div class="formBx">
+                            <form action="{{route('front.register_сheck')}}" class="formBx">
+                                @method('post')
                                 <h2>Xoş gəldin!</h2>
                                 <div action="#" method="post">
                                     <div class="inputBx">
                                         <span>Ad Soyad</span>
                                         <input type="text" name="name" id="register-name">
+                                        @error("name")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="inputBx">
                                         <span>Mobil</span>
                                         <input type="text" name="phone" id="register-phone">
+                                        @error("phone")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Username input -->
                                     <div class="inputBx">
                                         <span>E-poçt ünvanı</span>
-                                        <input type="email" name="e-mail" id="register-email">
+                                        <input type="email" name="email" id="register-email">
+                                        @error("email")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Password input -->
                                     <div class="inputBx">
                                         <span>Şifrə</span>
                                         <input type="password" name="password" id="register-password">
+                                        @error("password")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <div class="inputBx">
                                         <span>Şifrə (təkrar)</span>
                                         <input type="password" name="passwordRepeat" id="register-passwordRepeat">
+                                        @error("passwordRepeat")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Submit button -->
-                                    <div class="spinner-container">
-                                        <div class="spinner-border" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                    </div>
+
                                     <div class="inputBx">
                                         <input type="submit" id="register-submit" value="Qeydiyyat ol">
                                     </div>
@@ -52,7 +74,7 @@
                                         <p>Hesabın var? <a href="{{route('front.login')}}">Daxil ol</a></p>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </section>
                 </div>
