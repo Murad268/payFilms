@@ -59,7 +59,7 @@ class HomeController extends Controller
         ], function ($message) use ($subject) {
             $message->to("agamedov94@mail.ru")->subject($subject);
         });
-        return redirect()->route('admin.login')->with('message', 'daxil etdiyiniz elektron poçta təstiqlənmə linki göndərildi');
+        return redirect()->route('front.login')->with('success', 'daxil etdiyiniz elektron poçta təstiqlənmə linki göndərildi');
 
 
 
@@ -71,7 +71,7 @@ class HomeController extends Controller
 
         try {
             $user->update(['activationStatus' => 1]);
-            return redirect()->route('admin.login')->with('message', 'siz uğurla qeydiyyatdan keçdiniz');
+            return redirect()->route('front.login')->with('success', 'siz uğurla qeydiyyatdan keçdiniz');
         } catch (Exception $e) {
             dd($e->getMessage());
         }

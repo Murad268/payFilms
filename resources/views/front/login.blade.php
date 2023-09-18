@@ -31,7 +31,11 @@
                                             <span class="sr-only">Loading...</span>
                                         </div>
                                     </div>
-
+                                    @if(session()->has('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                    @endif
                                     <div class="inputBx">
                                         <input type="submit" value="Daxil ol" id="login-submit">
                                     </div>
