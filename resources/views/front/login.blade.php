@@ -8,18 +8,28 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 grid-item grid-sizer cat-one cat-two my-5">
                     <section class="login-section">
                         <div class="contentBx">
-                            <div class="formBx">
+                            <form action="{{route('front.login_check')}}" class="formBx">
                                 <h2>Xoş gəldin!</h2>
                                 <div>
                                     <!-- Username input -->
                                     <div class="inputBx">
                                         <span>E-poçt ünvanınız</span>
                                         <input type="email" name="email" id="login-email">
+                                        @error("email")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Password input -->
                                     <div class="inputBx">
                                         <span>Şifrəniz</span>
                                         <input type="password" name="password" id="login-password">
+                                        @error("password")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
                                     <!-- Remember Me input -->
                                     <!-- <div class="remember">
@@ -32,13 +42,13 @@
                                         </div>
                                     </div>
                                     @if(session()->has('message'))
-                                    <div class="alert alert-danger">
-                                        {{ session('message') }}
+                                    <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                        {{session('message')}}
                                     </div>
                                     @endif
                                     @if(session()->has('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
+                                    <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                        {{session('success')}}
                                     </div>
                                     @endif
                                     <div class="inputBx">
@@ -49,7 +59,7 @@
                                         <p>Hələ də hesabın yoxdu? <a href="{{route('front.register')}}">Qeydiyyat ol</a></p>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="imgBx">
                             <img src="{{asset('assets/front/img/loginphoto.jpg')}}" alt="Login background image">
