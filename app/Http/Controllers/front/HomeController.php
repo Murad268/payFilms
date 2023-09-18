@@ -8,6 +8,7 @@ use App\Http\Requests\register\ReqisterRequest;
 use App\Models\create_mainUsers;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -118,6 +119,8 @@ class HomeController extends Controller
                 });
                 return redirect()->route('front.login')->with('success', 'hesabınız aktivləşdirilməyib. Daxil etdiyiniz elektron poçta təstiqlənmə linki yenidən göndərildi');
             } else {
+                Cookie::queue(Cookie::make('email', $user->email, 30 * 24 * 60));
+
                 return redirect()->route('front.index');
             }
         };

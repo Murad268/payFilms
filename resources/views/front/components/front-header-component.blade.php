@@ -51,16 +51,12 @@
                                                 </select>
                                             </form>
                                         </li> -->
-                                    <?php
 
-                                    if (isset($_SESSION['sessionLogin'])) {
-                                        echo '<li class="header-btn"><a href="account.php" class="btn">Hesabım</a></li>';
-                                    } else {
-                                        echo '<li class="header-btn"><a href="login.php" class="btn">Daxil ol</a></li>';
-                                    }
-
-                                    ?>
-
+                                    @if(isset($_COOKIE['email']))
+                                    <li class="header-btn"><a href="{{route('front.login')}}" class="btn">Hesabım</a></li>
+                                    @else
+                                    <li class="header-btn"><a href="{{route('front.login')}}" class="btn">Daxil ol</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>

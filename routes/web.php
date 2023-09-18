@@ -68,6 +68,4 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/register_сheck', [HomeController::class, 'register_сheck'])->name('register_сheck');
     Route::get('/activation', [HomeController::class, 'activation'])->name('activation');
     Route::get('/login_check', [HomeController::class, 'login_check'])->name('login_check');
-
-
 });
