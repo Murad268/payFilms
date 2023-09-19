@@ -1,7 +1,6 @@
 @extends('front.front')
 @section('content')
 <main>
-    <!-- movie-area -->
     <section class="movie-area movie-bg pb-1" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <div class="row tr-movie-active">

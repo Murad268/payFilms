@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $homeCats = HomeCategories::all();
-        
+
         return view('front.home', compact('homeCats'));
     }
     public function login()
@@ -122,6 +122,7 @@ class HomeController extends Controller
                 });
                 return redirect()->route('front.login')->with('success', 'hesabınız aktivləşdirilməyib. Daxil etdiyiniz elektron poçta təstiqlənmə linki yenidən göndərildi');
             } else {
+               
                 Cookie::queue(Cookie::make('email', $user->email, 30 * 24 * 60));
 
                 return redirect()->route('front.index');

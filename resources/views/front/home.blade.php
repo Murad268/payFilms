@@ -5,7 +5,6 @@
 
 <!-- main-area -->
 <main>
-
     <!-- banner-area -->
 
     <?php

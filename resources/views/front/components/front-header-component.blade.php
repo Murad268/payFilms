@@ -51,9 +51,8 @@
                                                 </select>
                                             </form>
                                         </li> -->
-
                                     @if(isset($_COOKIE['email']))
-                                    <li class="header-btn"><a href="{{route('front.login')}}" class="btn">Hesabım</a></li>
+                                    <li class="header-btn"><a href="{{route('front.account')}}" class="btn">Hesabım</a></li>
                                     @else
                                     <li class="header-btn"><a href="{{route('front.login')}}" class="btn">Daxil ol</a></li>
                                     @endif

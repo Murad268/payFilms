@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
 use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
+use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,4 +69,6 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/register_сheck', [HomeController::class, 'register_сheck'])->name('register_сheck');
     Route::get('/activation', [HomeController::class, 'activation'])->name('activation');
     Route::get('/login_check', [HomeController::class, 'login_check'])->name('login_check');
+    Route::get('/account', [AccountController::class, 'index'])->name('account')->middleware('userlogin');
+    Route::post('/account/update/{id}', [AccountController::class, 'update'])->name('account.update')->middleware('userlogin');
 });
