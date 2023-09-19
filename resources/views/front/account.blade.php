@@ -158,32 +158,36 @@
                 </div>
                 <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                     <h3 class="mb-4">Güvənlik & Şifrə</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="oldpass">Köhnə şifrə</label>
-                                <input type="password" id="oldpass" name="oldpass" class="form-control">
+                    <form method="post" id="password_form" action="{{route('front.account.check', $user->id)}}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="oldpass">Köhnə şifrə</label>
+                                    <input type="password" id="oldpass" name="oldpass" class="form-control">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="newpass">Yeni şifrə</label>
-                                <input type="password" id="newpass" name="newpass" class="form-control">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="newpass">Yeni şifrə</label>
+                                    <input type="password" id="newpass" name="newpass" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="newpassagain">Yeni şifrə (təkrar)</label>
+                                    <input type="password" id="newpassagain" name="newpassagain" class="form-control">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="newpassagain">Yeni şifrə (təkrar)</label>
-                                <input type="password" id="newpassagain" name="newpassagain" class="form-control">
-                            </div>
+                        <div>
+                            <button class="btn" id="update-password">Təsdiq et</button>
                         </div>
-                    </div>
-                    <div>
-                        <button class="btn" id="update-password">Təsdiq et</button>
-                    </div>
+                    </form>
                 </div>
+
                 <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                     <h3 class="mb-4">Security Settings</h3>
                     <div class="row">

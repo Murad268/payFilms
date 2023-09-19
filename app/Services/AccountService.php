@@ -32,5 +32,18 @@ class AccountService
         }
     }
 
+    public function hashParola($parola)
+    {
+        return hash('sha256', $parola);
+    }
+    public function passwordUpdate($request, $id) {
+        $user = create_mainUsers::findOrFail($id);
 
+        if($user->password != $this->hashParola($request->oldpass)) {
+            return 0;
+        } else {
+            $user->update(["password" => $this->hashParola($request->newpass)]);
+            return 1;
+        }
+    }
 }

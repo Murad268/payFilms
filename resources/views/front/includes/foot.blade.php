@@ -23,7 +23,7 @@
 
 <script>
     $(document).ready(function() {
-        // Form gönderildiğinde
+
         $('#account-update-form').on('submit', function(event) {
             event.preventDefault();
             var formData = new FormData(this);
@@ -68,7 +68,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Xəta',
-                            text: 'Hata: ' + response.message
+                            text: 'Xəta' + response.message
                         });
                     }
                 },
@@ -76,6 +76,83 @@
                     alert('Bir hata oluştu, lütfen tekrar deneyin.');
                 }
             });
+
+
         });
+
+
+
+
+        $('#password_form').on('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            var newpass = $('#newpass').val();
+            var newpassagain = $('#newpassagain').val();
+            var oldpass = $('#oldpass').val();
+            var regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/;
+            if (newpassagain !== newpass) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xəta!',
+                    text: 'Şifrələr üst-üstə düşmürlər',
+                });
+            } else if (!newpass || !newpassagain || !oldpass) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xəta!',
+                    text: 'Xahiş olunur bütün sahələri doldurasınız!',
+                });
+            } else if (newpass.length < 8) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xəta!',
+                    text: 'Şifrə 8 simvoldan qısadır',
+                });
+            } else if (!regex.test(newpass)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xəta!',
+                    text: 'Şifrədə mütlə bir böyük registrli hərf və bir işarə olmalıdır',
+                });
+            } else {
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+
+                        if (response.success) {
+                            if (response.code == 0) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Xəta!',
+                                    text: response.message,
+                                });
+                            } else if (response.code == 1) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Uğurlu!',
+                                    text: response.message,
+                                });
+                            }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Xəta!',
+                                text: 'Gözlənilməz xəta',
+                            });
+                        }
+                    },
+                    error: function() {
+                        alert('Bir hata oluştu, lütfen tekrar deneyin.');
+                    }
+                });
+            }
+        });
+
     });
 </script>

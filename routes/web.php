@@ -71,4 +71,6 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/login_check', [HomeController::class, 'login_check'])->name('login_check');
     Route::get('/account', [AccountController::class, 'index'])->name('account')->middleware('userlogin');
     Route::post('/account/update/{id}', [AccountController::class, 'update'])->name('account.update')->middleware('userlogin');
+    Route::post('/account/check/{id}', [AccountController::class, 'check'])->name('account.check')->middleware('userlogin');
+
 });

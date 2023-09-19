@@ -35,51 +35,6 @@
 		ipaddress = data.ip
 	})
 
-	$('#update-password').click(() => {
-		if (
-			$('#oldpass').val() == '' ||
-			$('#newpass').val() == '' ||
-			$('#newpassagain').val() == ''
-		) {
-			notie.alert({
-				type: 3,
-				text: 'Bütün xanaları doldurun!',
-				position: 'bottom',
-			})
-		} else {
-			$.ajax({
-				type: 'POST',
-				url: 'functions/update-password.php',
-				data: `oldpass=${$('#oldpass').val()}&newpass=${$(
-					'#newpass'
-				).val()}&newpassagain=${$('#newpassagain').val()}`,
-				success: function (result) {
-					if (result == 'success') {
-						$('#oldpass').val('')
-						$('#newpass').val('')
-						$('#newpassagain').val('')
-						notie.alert({
-							type: 1,
-							text: 'Şifrəniz uğurla dəyişdirildi!',
-							position: 'bottom',
-						})
-					} else if (result == 'passwords do not match') {
-						notie.alert({
-							type: 3,
-							text: 'Köhnə şifrəniz səhvdir!',
-							position: 'bottom',
-						})
-					} else if (result == 'new passwords do not match') {
-						notie.alert({
-							type: 3,
-							text: 'Yeni şifrələr bir biri ilə eyni deyil!',
-							position: 'bottom',
-						})
-					}
-				},
-			})
-		}
-	})
 
 	$('.contact-btn').click(() => {
 		if (
