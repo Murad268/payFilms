@@ -10,14 +10,14 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">
-                                <a href="{{route('admin.home-categories.create')}}" class="btn btn-primary">yeni kategoriya əlavə et</a>
-                            </h3>
                             @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}
                             </div>
                             @endif
+                            <h3 class="card-title">
+                                <a href="{{route('admin.home-categories.create')}}" class="btn btn-primary">yeni kategoriya əlavə et</a>
+                            </h3>
                         </div>
                         <div class="card-body">
                             @if($categories->count() > 0)

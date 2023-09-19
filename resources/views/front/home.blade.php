@@ -50,16 +50,15 @@
     ?>
 
     <!-- banner-area-end -->
-
-    <!-- up-coming-movie-area -->
+    @foreach($homeCats as $cats)
     <section class="ucm-area ucm-bg">
         <div class="ucm-bg-shape" data-background="img/bg/ucm_bg_shape.png"></div>
         <div class="container">
             <div class="row align-items-end mb-55">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
-                        <span class="sub-title">Ən son yüklənənlər</span>
-                        <h2 class="title">Filmlər</h2>
+                        <!-- <span class="sub-title">Ən son yüklənənlər</span> -->
+                        <h2 class="title">{{ucfirst($cats->getTranslation('cat_name', app()->getLocale()))}}</h2>
                     </div>
                 </div>
                 <!-- <div class="col-lg-6">
@@ -120,51 +119,9 @@
             </div>
         </div>
     </section>
-    <!-- up-coming-movie-area-end -->
-
+    @endforeach
     <!-- up-coming-movie-area -->
-    <section class="p-0 ucm-area ucm-bg">
-        <div class="ucm-bg-shape" data-background="img/bg/ucm_bg_shape.png"></div>
-        <div class="container">
-            <div class="row align-items-end mb-55">
-                <div class="col-lg-6">
-                    <div class="section-title text-center text-lg-left">
-                        <h2 class="title">Seriallar</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
-                    <div class="ucm-active owl-carousel">
-                        <?php
 
-                        //                     try {
-                        //                         $sql = $conn->query("SELECT * FROM series ORDER BY series_id DESC");
-                        //                         while ($result = $sql->fetch(PDO::FETCH_ASSOC)) {
-                        //                             if (empty($result['series'])) {
-                        //                                 echo '<div class="movie-item mb-50">
-                        //     <div class="movie-poster">
-                        //         <a href="series-details.php?name=' . $result['name'] . '"><img class="home-movie-photo" src="img/poster/' . $result['photo'] . '" alt="' . $result['name'] . '"></a>
-                        //     </div>
-                        //     <div class="movie-content">
-                        //         <div class="top">
-                        //             <h5 class="title"><a href="series-details.php?name=' . $result['name'] . '">' . $result['name'] . '</a></h5>
-                        //         </div>
-                        //     </div>
-                        // </div>';
-                        //                             }
-                        //                         }
-                        //                     } catch (PDOException $e) {
-                        //                         die($e->getMessage());
-                        //                     }
-
-                        ?>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- up-coming-movie-area-end -->
 
     <!-- services-area -->

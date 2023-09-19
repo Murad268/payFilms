@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
 use App\Models\create_mainUsers;
+use App\Models\HomeCategories;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -28,7 +29,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('front.home');
+        $homeCats = HomeCategories::all();
+        
+        return view('front.home', compact('homeCats'));
     }
     public function login()
     {

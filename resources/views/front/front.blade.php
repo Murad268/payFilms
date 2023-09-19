@@ -1,5 +1,5 @@
 @include('front.includes.head')
-
+@section('title', "peroPlay")
 <body>
     <x-front-header-component />
 
