@@ -1,5 +1,4 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/front/icons/'.$settings->icon)}}">
-
 <header>
     <div id="sticky-header" class="menu-area transparent-header">
         <div class="container custom-container">

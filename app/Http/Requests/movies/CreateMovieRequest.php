@@ -26,8 +26,8 @@ class CreateMovieRequest extends FormRequest
         foreach ($supportedLanguages as $lang) {
             $rules["name.$lang"] = 'required|string|max:255';
             $rules["slug.$lang"] = 'required|string|max:255|regex:/^[a-zA-Z0-9\-_]+$/';
-            $rules["poster"] = 'required|image|mimes:jpeg,jpg,png|max:2048';
-            $rules["banner"] = 'required|image|mimes:jpeg,jpg,png|max:2048';
+            $rules["poster"] = 'required|image|mimes:jpeg,jpg,png';
+            $rules["banner"] = 'required|image|mimes:jpeg,jpg,png';
             $rules["length"] = 'required|numeric';
             $rules["link"] = 'required';
             $rules["ytrailer"] = 'required';

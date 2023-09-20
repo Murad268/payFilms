@@ -10,7 +10,7 @@ class UpdateMovieRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-  
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,8 +26,8 @@ class UpdateMovieRequest extends FormRequest
         foreach ($supportedLanguages as $lang) {
             $rules["name.$lang"] = 'required|string|max:255';
             $rules["slug.$lang"] = 'required|string|max:255|regex:/^[a-zA-Z0-9\-_]+$/';
-            $rules["poster"] = 'image|mimes:jpeg,jpg,png|max:2048';
-            $rules["banner"] = 'image|mimes:jpeg,jpg,png|max:2048';
+            $rules["poster"] = 'image|mimes:jpeg,jpg,png';
+            $rules["banner"] = 'image|mimes:jpeg,jpg,png';
             $rules["length"] = 'required|numeric';
             $rules["link"] = 'required';
             $rules["ytrailer"] = 'required';

@@ -79,8 +79,32 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
                     <div class="ucm-active owl-carousel">
-                        <?php
+                        @foreach($cats->movies as $movie)
 
+
+                        <div class="movie-item mb-50">
+
+                            <div class="movie-poster">
+                                <a href=""><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                                    <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                                </div>
+                                <div class="bottom">
+                                    <ul>
+                                        <li><span class="quality">{{$movie->quality}}</span></li>
+                                        <li>
+                                            <span class="duration"><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
+                                            <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        <?php
                         // try {
                         //     $sql = $conn->query("SELECT * FROM movies ORDER BY id desc");
                         //     while ($result = $sql->fetch(PDO::FETCH_ASSOC)) {
