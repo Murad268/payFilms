@@ -57,4 +57,14 @@ class AccountController extends Controller
     {
         return hash('sha256', $parola);
     }
+
+
+
+    public function logout()
+    {
+        if (Cookie::has('email')) {
+            Cookie::queue(Cookie::make('email', "", -1));
+            return redirect()->route('front.index');
+        }
+    }
 }

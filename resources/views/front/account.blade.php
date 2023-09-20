@@ -107,7 +107,7 @@
                                     <i class="fa fa-tv text-center mr-1"></i>
                                     Application
                                 </a> -->
-                    <a class="nav-link" href="logout.php">
+                    <a class="nav-link" id="logout-link" href="{{route('front.account.logout')}}">
                         <i class="fas fa-sign-out-alt"></i>
                         Çıxış et
                     </a>

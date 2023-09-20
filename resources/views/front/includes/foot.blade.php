@@ -23,6 +23,28 @@
 
 <script>
     $(document).ready(function() {
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Xəta!',
+                text: 'Çıxış etmək istədiyinizdın əminsiniz?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet',
+                cancelButtonText: 'Hayır'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = this.href;
+                }
+            });
+        });
+
+
+
+
+
+
+
 
         $('#account-update-form').on('submit', function(event) {
             event.preventDefault();
