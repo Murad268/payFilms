@@ -15,7 +15,7 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li><a href="index.php">Əsas Səhİfə</a></li>
+                                    <li><a href="{{route('front.index')}}">Əsas Səhİfə</a></li>
                                     <li><a href="movies.php?page=1">Son Yüklənən Fİlmlər</a></li>
                                     <li class="menu-item-has-children"><a href="#">Kateqorİyalar</a>
                                         <ul class="submenu">
@@ -64,7 +64,6 @@
                     <!-- Mobile Menu  -->
                     <div class="mobile-menu">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
-
                         <nav class="menu-box">
                             <div class="nav-logo"><a href="index.php"><img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="" title=""></a>
                             </div>
@@ -73,15 +72,11 @@
                             </div>
                             <div class="social-links">
                                 <ul class="clearfix">
-                                    <?php
-
-                                    if (isset($_SESSION['sessionLogin'])) {
-                                        echo '<li class="header-btn"><a href="account.php" class="btn">Hesabım</a></li>';
-                                    } else {
-                                        echo '<li class="header-btn"><a href="login.php" class="btn">Daxil ol</a></li>';
-                                    }
-
-                                    ?>
+                                    @if(isset($_COOKIE['email']))
+                                    <li class="header-btn"><a href="{{route('front.account')}}" class="btn">Hesabım</a></li>
+                                    @else
+                                    <li class="header-btn"><a href="{{route('front.login')}}" class="btn">Daxil ol</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>
@@ -109,7 +104,6 @@
                     <script type="text/javascript">
                         $(document).ready(function() {
                             loadData();
-
                             function loadData(query) {
                                 $.ajax({
                                     url: "search.php",
