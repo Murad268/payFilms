@@ -21,7 +21,6 @@
                                             @foreach($categories as $category)
                                             <li><a href="{{route('front.movies', $category->slug)}}">{{ $category->getTranslation('name', app()->getLocale()) }}</a></li>
                                             @endforeach
-
                                         </ul>
                                     </li>
                                     <li><a href="{{route('front.series')}}">Seriallar</a></li>
@@ -33,7 +32,7 @@
                                                 <li><a href="blog-details">Blog Details</a></li>
                                             </ul>
                                         </li> -->
-                                    <li><a href="contact.php">Əlaqə</a></li>
+                                    <li><a href="{{route('front.contact')}}">Əlaqə</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">

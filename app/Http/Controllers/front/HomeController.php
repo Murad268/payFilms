@@ -32,11 +32,6 @@ class HomeController extends Controller
         $homeCats = HomeCategories::with(['movies', 'series'])
             ->where('status', 1)
             ->get();
-
-
-
-
-           
         return view('front.home', compact('homeCats'));
     }
     public function login()

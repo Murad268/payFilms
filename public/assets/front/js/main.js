@@ -36,49 +36,7 @@
 	})
 
 
-	$('.contact-btn').click(() => {
-		if (
-			$('.contact-name').val() == '' ||
-			$('.contact-email').val() == '' ||
-			$('.contact-subject').val() == '' ||
-			$('.contact-message').val() == ''
-		) {
-			notie.alert({
-				type: 3,
-				text: 'Bütün xanaları doldurun!',
-				position: 'bottom',
-			})
-		} else {
-			$.ajax({
-				type: 'POST',
-				url: 'functions/send-message.php',
-				data: `name=${$('.contact-name').val()}&email=${$(
-					'.contact-email'
-				).val()}&subject=${$('.contact-subject').val()}&message=${$(
-					'.contact-message'
-				).val()}&ip=${ipaddress}`,
-				success: function (result) {
-					if (result) {
-						$('.contact-name').val('')
-						$('.contact-email').val('')
-						$('.contact-subject').val('')
-						$('.contact-message').val('')
-						notie.alert({
-							type: 1,
-							text: 'Mesajınız uğurla göndərildi!',
-							position: 'bottom',
-						})
-					} else {
-						notie.alert({
-							type: 3,
-							text: 'Mesajınız göndərilmədi!',
-							position: 'bottom',
-						})
-					}
-				},
-			})
-		}
-	})
+
 
 	$('#register-submit').click(() => {
 		registerFunc()

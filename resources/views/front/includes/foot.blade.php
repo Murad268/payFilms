@@ -23,7 +23,7 @@
 
 <script>
     $(document).ready(function() {
-        document.getElementById('logout-link').addEventListener('click', function(e) {
+        $('#logout-link').click(function(e) {
             e.preventDefault();
             Swal.fire({
                 title: 'Xəta!',
@@ -34,16 +34,10 @@
                 cancelButtonText: 'Hayır'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = this.href;
+                    window.location.href = $(this).attr('href');
                 }
             });
         });
-
-
-
-
-
-
 
 
         $('#account-update-form').on('submit', function(event) {
@@ -103,12 +97,9 @@
         });
 
 
-
-
         $('#password_form').on('submit', function(event) {
             event.preventDefault();
             var formData = new FormData(this);
-
             var newpass = $('#newpass').val();
             var newpassagain = $('#newpassagain').val();
             var oldpass = $('#oldpass').val();
@@ -146,7 +137,6 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-
                         if (response.success) {
                             if (response.code == 0) {
                                 Swal.fire({
@@ -175,6 +165,57 @@
                 });
             }
         });
+
+
+        $('.contact-form').on('submit', function(event) {
+            event.preventDefault();
+
+            // Show the overlay with the spinner
+            $('#overlay').show();
+
+            var formData = new FormData(this);
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var message = $('#message').val();
+            var subject = $('#subject').val();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Hide the overlay when the form submission is successful
+                    $('#overlay').hide();
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Uğurlu',
+                        text: 'Məktunuz uğurla göndərildi'
+                    });
+                },
+                error: function() {
+                    // Hide the overlay when there is an error
+                    $('#overlay').hide();
+
+                    alert('Bir hata oluştu, lütfen tekrar deneyin.');
+                }
+            });
+
+            if (!name || !email || !message || !subject) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xəta!',
+                    text: 'Xahiş olunur bütün sahələri doldurasınız!',
+                });
+
+                // Hide the overlay if the form is not valid
+                $('#overlay').hide();
+            }
+        });
+
 
     });
 </script>
