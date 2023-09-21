@@ -29,7 +29,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $homeCats = HomeCategories::with('movies')->get();
+        $homeCats = HomeCategories::with(['movies', 'series'])
+            ->where('status', 1)
+            ->get();
+
+
+
+
+           
         return view('front.home', compact('homeCats'));
     }
     public function login()

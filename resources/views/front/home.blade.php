@@ -77,11 +77,11 @@
                 </div> -->
             </div>
             <div class="tab-content" id="myTabContent">
+
                 <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
                     <div class="ucm-active owl-carousel">
+
                         @foreach($cats->movies as $movie)
-
-
                         <div class="movie-item mb-50">
 
                             <div class="movie-poster">
@@ -100,6 +100,19 @@
                                             <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
                                         </li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+                        @foreach($cats->series as $serie)
+                        <div class="movie-item mb-50">
+                            <div class="movie-poster">
+                                <a href=""><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a href="">{{$serie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                 </div>
                             </div>
                         </div>

@@ -15,6 +15,9 @@ use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\LastController;
+use App\Http\Controllers\front\MoviesController as FrontMoviesController;
+use App\Http\Controllers\front\SeriesController as FrontSeriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,4 +76,7 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::post('/account/update/{id}', [AccountController::class, 'update'])->name('account.update')->middleware('userlogin');
     Route::post('/account/check/{id}', [AccountController::class, 'check'])->name('account.check')->middleware('userlogin');
     Route::get('/account/logout', [AccountController::class, 'logout'])->name('account.logout')->middleware('userlogin');
+    Route::get('/movies/{slug}', [FrontMoviesController::class, 'movies'])->name('movies')->middleware('userlogin');
+    Route::get('/series', [FrontSeriesController::class, 'series'])->name('series')->middleware('userlogin');
+    Route::get('/last_uploads', [LastController::class, 'last_uploads'])->name('last_uploads')->middleware('userlogin');
 });

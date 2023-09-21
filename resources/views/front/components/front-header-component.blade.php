@@ -7,24 +7,24 @@
                     <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
-                            <div class="logo">
-                                <a href="index.php">
+                            <div class="{{route('front.index')}}">
+                                <a href="{{route('front.index')}}">
                                     <img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="Logo">
                                 </a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li><a href="{{route('front.index')}}">Əsas Səhİfə</a></li>
-                                    <li><a href="movies.php?page=1">Son Yüklənən Fİlmlər</a></li>
+                                    <li><a href="{{route('front.last_uploads')}}">Son Yüklənən Fİlmlər</a></li>
                                     <li class="menu-item-has-children"><a href="#">Kateqorİyalar</a>
                                         <ul class="submenu">
                                             @foreach($categories as $category)
-                                            <li><a href="">{{ $category->getTranslation('name', app()->getLocale()) }}</a></li>
+                                            <li><a href="{{route('front.movies', $category->slug)}}">{{ $category->getTranslation('name', app()->getLocale()) }}</a></li>
                                             @endforeach
 
                                         </ul>
                                     </li>
-                                    <li><a href="series.php?page=1">Seriallar</a></li>
+                                    <li><a href="{{route('front.series')}}">Seriallar</a></li>
                                     <!-- <li><a href="tv-show">Kateqoriyalar</a></li> -->
                                     <!-- <li><a href="pricing">Pricing</a></li> -->
                                     <!-- <li class="menu-item-has-children"><a href="#">blog</a>
@@ -64,7 +64,7 @@
                     <div class="mobile-menu">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
                         <nav class="menu-box">
-                            <div class="nav-logo"><a href="index.php"><img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="" title=""></a>
+                            <div class="nav-logo"><a href="{{route('front.index')}}"><img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="" title=""></a>
                             </div>
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

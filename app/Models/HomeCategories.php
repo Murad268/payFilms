@@ -17,16 +17,16 @@ class HomeCategories extends Model
 
     public function movies()
     {
-        return $this->hasMany(Movies::class, 'movie_home_category_id');
+        return $this->hasMany(Movies::class, 'movie_home_category_id')->where('status', 1);
     }
 
 
 
 
 
-    public function seires()
+    public function series()
     {
-        return $this->hasMany(Series::class, 'movie_home_category_id');
+        return $this->hasMany(Series::class, 'movie_home_category_id')->where('status', 1);;
     }
 
 
