@@ -7,6 +7,7 @@ use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
 use App\Models\create_mainUsers;
 use App\Models\HomeCategories;
+use App\Models\Settings;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+
+
+    public function front() {
+        $settings = Settings::first();
+        return view('front.homeindex', compact('settings'));
+    }
     public function hashParola($parola)
     {
         return hash('sha256', $parola);

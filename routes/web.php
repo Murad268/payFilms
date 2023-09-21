@@ -19,6 +19,7 @@ use App\Http\Controllers\front\LastController;
 use App\Http\Controllers\front\MessagesController;
 use App\Http\Controllers\front\MoviesController as FrontMoviesController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,8 +67,16 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 });
 
 
+
+
+
+if (Cookie::has('email')) {
+    Route::get('/', [HomeController::class, 'index'])->name('front.index')->middleware('userlogin');;
+} else {
+    Route::get('/', [HomeController::class, 'front'])->name('front.index');
+}
+
 Route::group(['prefix' => '', 'as' => 'front.'], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/login', [HomeController::class, 'login'])->name('login');
     Route::get('/register', [HomeController::class, 'register'])->name('register');
     Route::get('/register_сheck', [HomeController::class, 'register_сheck'])->name('register_сheck');
