@@ -23,6 +23,29 @@
 
 <script>
     $(document).ready(function() {
+
+
+
+        let getData = async (url) => {
+            let res = await fetch(url);
+            return await res.json()
+        }
+
+
+        document.querySelectorAll('.serie_template__top select')?.forEach(select => {
+            select.addEventListener('change', () => {
+                let season = document.querySelector('.season_movie');
+
+                getData(`http://127.0.0.1:8000/get_serie/${season.value}`).then(res => {
+                    console.log(res);
+                    document.querySelector('.iframe_serie').src = res.episode.link;
+                })
+            })
+        });
+
+
+
+
         $('#logout-link').click(function(e) {
             e.preventDefault();
             Swal.fire({

@@ -96,7 +96,7 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('userlogin');
     Route::get('/movie/{id}', [MovieDeatilController::class, 'index'])->name('movie')->middleware('userlogin');
     Route::get('/serie/{id}', [SerieDetailsController::class, 'index'])->name('serie')->middleware('userlogin');
-
+    Route::get('/get_serie/{id}', [SerieDetailsController::class, 'get_serie'])->name('get_serie')->middleware('userlogin');
 });
 
 

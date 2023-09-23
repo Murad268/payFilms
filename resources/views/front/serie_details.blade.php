@@ -134,39 +134,30 @@
                         <div class="episode-watch-wrap">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <span class="season">Sezon {{$seasonFirst->episodes->first()->episode_order}}</span>
-                                            <span class="video-count">Ümumi {{$seasonFirst->episodes->count()}} bölüm</span>
-                                        </button>
-                                    </div>
+                                   
 
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <ul>
                                                 <div class="serie_template">
-                                                    <div class="serie_template__top">
+                                                    <form class="serie_template__top">
                                                         <div>
-                                                            <label for="">Sezon</label>
-                                                            <select name="" id="">
+                                                            <label for="">Sezonlar və bölümlər</label>
+                                                            <select class="season_movie" name="season" id="">
                                                                 @foreach($serie_seasons as $season)
-                                                                <option value="{{$season->id}}">{{$season->getTranslation('season_name', app()->getLocale())}}</option>
+                                                                <optgroup label="{{$season->getTranslation('season_name', app()->getLocale())}}">
+                                                                    @foreach($season->episodes as $episode)
+                                                                    <option value="{{$episode->id}}">{{$episode->episode_order}}</option>
+                                                                    @endforeach
+                                                                </optgroup>
                                                                 @endforeach
                                                             </select>
                                                         </div>
-                                                        <div>
-                                                            <label for="">Bölüm</label>
 
-                                                            <select name="" id="">
-                                                                @foreach($seasonFirst->episodes as $episode)
-                                                                <option value="{{$episode->id}}">{{$episode->episode_order}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    </form>
 
                                                     <div class="serie_template__content">
-                                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/G2dER644TVE?si=6xpRcnv4TTKlXV8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                        <iframe class="iframe_serie" width="560" height="315" src="{{$first_episode->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                     </div>
                                                 </div>
                                             </ul>
