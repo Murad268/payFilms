@@ -1,0 +1,108 @@
+<!-- main-area -->
+@extends('front.front')
+
+@section('content')
+
+<style>
+    .movie__trailer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100vh;
+        z-index: 100;
+    }
+</style>
+
+<main>
+
+    <!-- movie-details-area -->
+    <section class="movie-details-area" data-background="{{asset('assets/front/img/bg/movie_details_bg.jpg')}}">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                '<div class="col-xl-3 col-lg-4">
+                    <div class="movie-details-img">
+                        <img src="{{asset('assets/front/images/'.$movie->poster)}}" alt="">
+                        <a href="' . $result['video'] . '" class="popup-video"><img src="img/images/play_icon.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8">
+                    <div class="movie-details-content">
+                        <!-- <h5>New Episodes</h5> -->
+                        <h2>{{ $movie->getTranslation('name', app()->getLocale()) }}</h2>
+                        <div class="banner-meta">
+                            <ul>
+                                <li class="quality">
+                                    <span>{{$movie->quality}}</span>
+                                </li>
+                                <li class="category">
+                                    <span>{{$movie->movie_categories->name}}</span>
+                                </li>
+                                <li class="release-time">
+                                    <span><i class="far fa-calendar-alt"></i> {{$movie->release}}</span>
+                                    <span><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <p>{!! $movie->desc !!}</p>
+                        <div class="movie-details-prime">
+                            <ul>
+                                <li class="streaming">
+                                    <h6>Treyleri izlə</h6>
+                                    <span>Yüksək keyfiyyət</span>
+                                </li>
+                                <li class="watch"><a href="https://www.youtube.com/watch?v={{$movie->link}}" class="btn popup-video"><i class="fas fa-play"></i> Trailer</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>'
+            </div>
+        </div>
+    </section>
+    <!-- movie-details-area-end -->
+
+    <section class="episode-area episode-bg" data-background="img/bg/episode_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="movie-episode-wrap">
+                        <div class="episode-top-wrap">
+                            <div class="section-title">
+                                <span class="sub-title">Digər bölümlər</span>
+                                <h2 class="title">Bütün bölümləri izlə</h2>
+                            </div>
+                            <!-- <div class="total-views-count">
+                                        <p>2.7 million <i class="far fa-eye"></i></p>
+                                    </div> -->
+                        </div>
+                        <div class="episode-watch-wrap">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <!-- <span class="season">Season 1</span>
+                                                    <span class="video-count">5 Full Episodes</span> -->
+                                        </button>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <ul>
+                                                <li><a href="movie-details?film=' . $result2['id'] . '"><i class="fas fa-play"></i>' . $result2['name'] . '</a> <span class="duration"><i class="far fa-clock"></i> ' . $result2['duration'] . ' dəq</span></li>';
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>'
+
+
+
+
+</main>
+@endsection

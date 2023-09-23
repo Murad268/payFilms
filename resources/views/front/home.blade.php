@@ -80,12 +80,10 @@
 
                 <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
                     <div class="ucm-active owl-carousel">
-
                         @foreach($cats->movies as $movie)
                         <div class="movie-item mb-50">
-
                             <div class="movie-poster">
-                                <a href=""><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
+                                <a href="{{route('front.movie', $movie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">

@@ -17,6 +17,7 @@ use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\LastController;
 use App\Http\Controllers\front\MessagesController;
+use App\Http\Controllers\front\MovieDeatilController;
 use App\Http\Controllers\front\MoviesController as FrontMoviesController;
 use App\Http\Controllers\front\SearchController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
@@ -92,7 +93,7 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/last_uploads', [LastController::class, 'last_uploads'])->name('last_uploads')->middleware('userlogin');
     Route::get('/contact', [MessagesController::class, 'index'])->name('contact')->middleware('userlogin');
     Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('userlogin');
-
+    Route::get('/movie/{id}', [MovieDeatilController::class, 'index'])->name('movie')->middleware('userlogin');
 });
 
 
