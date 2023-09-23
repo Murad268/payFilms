@@ -18,6 +18,7 @@ use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\LastController;
 use App\Http\Controllers\front\MessagesController;
 use App\Http\Controllers\front\MoviesController as FrontMoviesController;
+use App\Http\Controllers\front\SearchController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +91,8 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/series', [FrontSeriesController::class, 'series'])->name('series')->middleware('userlogin');
     Route::get('/last_uploads', [LastController::class, 'last_uploads'])->name('last_uploads')->middleware('userlogin');
     Route::get('/contact', [MessagesController::class, 'index'])->name('contact')->middleware('userlogin');
+    Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('userlogin');
+
 });
 
 

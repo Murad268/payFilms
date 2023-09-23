@@ -86,8 +86,8 @@
                     <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <form>
-                                    <input type="text" placeholder="Axtar..." name="search" id="search" class="form-control" autocomplete="off">
+                                <form action="{{route('front.search')}}">
+                                    <input type="text" placeholder="Axtar..." name="q" id="search" class="form-control" autocomplete="off">
                                     <div class="result"></div>
                                 </form>
                             </div>
