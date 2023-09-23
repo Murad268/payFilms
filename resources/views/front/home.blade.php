@@ -106,7 +106,7 @@
                         @foreach($cats->series as $serie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href=""><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
+                                <a href="{{route('front.serie', $serie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">

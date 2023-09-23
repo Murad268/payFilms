@@ -20,6 +20,7 @@ use App\Http\Controllers\front\MessagesController;
 use App\Http\Controllers\front\MovieDeatilController;
 use App\Http\Controllers\front\MoviesController as FrontMoviesController;
 use App\Http\Controllers\front\SearchController;
+use App\Http\Controllers\front\SerieDetailsController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
@@ -94,7 +95,10 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/contact', [MessagesController::class, 'index'])->name('contact')->middleware('userlogin');
     Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('userlogin');
     Route::get('/movie/{id}', [MovieDeatilController::class, 'index'])->name('movie')->middleware('userlogin');
+    Route::get('/serie/{id}', [SerieDetailsController::class, 'index'])->name('serie')->middleware('userlogin');
+
 });
 
 
 Route::post('/sendmessages', [MessagesController::class, 'sendmessages'])->name('front.sendmessages');
+

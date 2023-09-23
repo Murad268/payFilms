@@ -99,15 +99,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="movie-episode-wrap">
-                        <div class="episode-top-wrap">
-                            <div class="section-title">
-                                <span class="sub-title">Digər bölümlər</span>
-                                <h2 class="title">Bütün bölümləri izlə</h2>
-                            </div>
-                            <!-- <div class="total-views-count">
-                                        <p>2.7 million <i class="far fa-eye"></i></p>
-                                    </div> -->
-                        </div>
                         <div class="episode-watch-wrap">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
