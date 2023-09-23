@@ -11,6 +11,9 @@ class SerieDetailsController extends Controller
     public function index($id)
     {
         $movie = Series::findOrFail($id);
-        return view('front.serie_details', compact('movie'));
+        $seasonFirst = $movie->serie_seasons()->first();
+        $serie_seasons = $movie->serie_seasons()->get();
+        
+        return view('front.serie_details', compact('movie', 'seasonFirst', 'serie_seasons'));
     }
 }
