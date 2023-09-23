@@ -12,6 +12,8 @@ class Movies extends Model
     use HasTranslations;
     public $translatable = ['name', 'slug', "actors", "directors", "scriptwriters", "desc", "countries"];
     protected $guarded = [];
+    protected $charset = 'utf8mb4';
+    protected $collation = 'utf8mb4_general_ci';
 
     public function movie_categories()
     {
