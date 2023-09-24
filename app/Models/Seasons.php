@@ -13,4 +13,9 @@ class Seasons extends Model
     public $table = "seasons";
     public $translatable = ['season_name', 'slug'];
     protected $guarded = [];
+
+
+    public function episodes() {
+        return $this->hasMany(SeriesEpisodes::class, 'season_id');
+    }
 }

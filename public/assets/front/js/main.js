@@ -403,20 +403,26 @@
         },
     });
 
-    document.querySelector(".watch").addEventListener("click", () => {
+
+
+
+
+    document.querySelector(".watch")?.addEventListener("click", () => {
         document.querySelector(".video__overlay").classList.add("active");
     });
-    document.querySelector(".play_film").addEventListener("click", () => {
+    document.querySelector(".play_film")?.addEventListener("click", () => {
         document.querySelector(".movie__overlay").classList.add("active");
     });
 
 
-    document.querySelector(".video__overlay .close").addEventListener("click", () => {
+    document.querySelector(".video__overlay .close")?.addEventListener("click", () => {
         document.querySelector(".video__overlay").classList.remove("active");
     });
-    document.querySelector(".movie__overlay .close").addEventListener("click", () => {
+    document.querySelector(".movie__overlay .close")?.addEventListener("click", () => {
         document.querySelector(".movie__overlay").classList.remove("active");
     });
+
+
     /*=============================================
 		=    		Isotope	Active  	      =
 	=============================================*/

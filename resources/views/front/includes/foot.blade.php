@@ -1,5 +1,6 @@
 <!-- JS here -->
 <script src="{{asset('assets/front/js/vendor/jquery-3.6.0.min.js')}}"></script>
+
 <script src="{{asset('assets/front/js/popper.min.js')}}"></script>
 <script src="{{asset('assets/front/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/front/js/isotope.pkgd.min.js')}}"></script>
@@ -17,12 +18,63 @@
 <!-- Notify plugin -->
 <script src="https://unpkg.com/notie"></script>
 <!-- Other plugins -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
     $(document).ready(function() {
+        $('.slider__main').slick({
+            arrows: false,
+            dots: true
+        });
+
+        document.querySelector('.navbar__user__search').addEventListener('click', function() {
+            document.querySelector('.search__panel').classList.toggle('active');
+            if (document.querySelector('.navbar__user__search').querySelector('.fa').classList.contains('fa-search')) {
+                document.querySelector('.navbar__user__search').querySelector('.fa').classList.remove('fa-search');
+                document.querySelector('.navbar__user__search').querySelector('.fa').classList.add('fa-times');
+            } else {
+                document.querySelector('.navbar__user__search').querySelector('.fa').classList.add('fa-search');
+                document.querySelector('.navbar__user__search').querySelector('.fa').classList.remove('fa-times');
+            }
+        })
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('categories__btn')) {
+                document.querySelector('.categroies').classList.toggle('active')
+
+            }
+        })
+        document.querySelector('.categories__btn').addEventListener('click', function() {
+            alert()
+        })
+
+        document.querySelector('.navbar__hamburger').addEventListener('click', function(e) {
+            document.querySelector('.navbar__hamburger').classList.toggle('active')
+            document.querySelector('.navbar__mini').classList.toggle('active')
+        })
+
+
+        let getData = async (url) => {
+            let res = await fetch(url);
+            return await res.json()
+        }
+
+
+        document.querySelectorAll('.serie_template__top select')?.forEach(select => {
+            select.addEventListener('change', () => {
+                let season = document.querySelector('.season_movie');
+
+                getData(`http://127.0.0.1:8000/get_serie/${season.value}`).then(res => {
+                    console.log(res);
+                    document.querySelector('.iframe_serie').src = res.episode.link;
+                })
+            })
+        });
+
+
+
+
         $('#logout-link').click(function(e) {
             e.preventDefault();
             Swal.fire({
