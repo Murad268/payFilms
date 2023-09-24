@@ -41,7 +41,7 @@ class AdminProccessController extends Controller
             return redirect()->back()->with('message', 'Belə bir login ilə admin artıq mövcuddur');
         }
         $this->adminsService->create($request);
-        return redirect()->route('admin.admins.index')->with("message", "the admin was added to the database");
+        return redirect()->route('admin.admins.index')->with("message", "admin verilənlər bazasına əlavə edildi");
     }
 
 
@@ -67,7 +67,7 @@ class AdminProccessController extends Controller
             }
         }
         $this->adminsService->update($request, $id);
-        return redirect()->route('admin.admins.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.admins.index')->with("message", "məlumat bazası yeniləndi");
     }
 
     public function destroy($id)

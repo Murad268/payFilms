@@ -33,7 +33,7 @@ class SeasonsController extends Controller
                 'season_name' => $request->season_name,
                 "slug" => $request->slug
             ]);
-            return redirect()->route('admin.seasons.index', $id)->with("message", "the information was added to the database");;
+            return redirect()->route('admin.seasons.index', $id)->with("message", "məlumatlar bazaya əlavə edildi");
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -54,7 +54,7 @@ class SeasonsController extends Controller
                 'season_name' => $request->season_name,
                 "slug" => $request->slug
             ]);
-            return redirect()->route('admin.seasons.index', $season->serie_id)->with("message", "the information has been updated");;
+            return redirect()->route('admin.seasons.index', $season->serie_id)->with("message", "məlumatlar yeniləndilər");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -64,7 +64,7 @@ class SeasonsController extends Controller
         try {
             $season = Seasons::findOrFail($id);
             $season->delete();
-            return redirect()->back()->with("message", "the information was deleted from the database");
+            return redirect()->back()->with("message", "məlumat bazadan silindi");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

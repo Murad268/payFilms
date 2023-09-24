@@ -39,7 +39,7 @@ class SeriesEpisodesController extends Controller
                 'length' => $request->length,
                 'release' => $request->release
             ]);
-            return redirect()->route('admin.seasons.episodes.index', ['id' => $id, 'serie_id' => $serie_id])->with("message", "the information was added to the database");;
+            return redirect()->route('admin.seasons.episodes.index', ['id' => $id, 'serie_id' => $serie_id])->with("message", "məlumatlar bazaya əlavə edildi");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -67,7 +67,7 @@ class SeriesEpisodesController extends Controller
                 'length' => $request->length,
                 'release' => $request->release,
             ]);
-            return redirect()->route('admin.seasons.episodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "the information has been updated");;
+            return redirect()->route('admin.seasons.episodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "tməlumatlar yeniləndilər");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }

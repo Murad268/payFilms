@@ -29,6 +29,6 @@ class SettingsController extends Controller
     public function update(SettingUpdateRequest $request, $id)
     {
         $this->settingsService->update($request, $id);
-        return redirect()->route('admin.settings.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.settings.index')->with("message", "məlumatlar yeniləndi");
     }
 }

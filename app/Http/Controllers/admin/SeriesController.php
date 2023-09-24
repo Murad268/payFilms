@@ -34,7 +34,7 @@ class SeriesController extends Controller
     public function store(SeriesRequest $request)
     {
         $this->seriesService->create($request);
-        return redirect()->route('admin.series.index')->with("message", "the information was added to the database");
+        return redirect()->route('admin.series.index')->with("message", "məlumat bazaya əlavə edildi");
     }
 
 
@@ -49,12 +49,12 @@ class SeriesController extends Controller
     public function update(SeriesRequestUpdate $request, $id)
     {
         $this->seriesService->update($request, $id);
-        return redirect()->route('admin.series.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.series.index')->with("message", "məlumatlar yeniləndilər");
     }
 
     public function destroy($id)
     {
         $this->seriesService->delete($id);
-        return redirect()->route('admin.series.index')->with("message", "the information was deleted from the database");
+        return redirect()->route('admin.series.index')->with("message", "məlumat bazadan silindi");
     }
 }

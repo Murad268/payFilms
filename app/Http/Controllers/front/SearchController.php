@@ -16,10 +16,6 @@ class SearchController extends Controller
         $searchQuery = $request->input('q');
         $moviesResults = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
         $seriesResults = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
-
-
-
-
         return view('front.search', ['seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q]);
     }
 }

@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function activationCode()
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $code = substr(str_shuffle($characters), 0, 10); // Generate a 10-character activation code
+        $code = substr(str_shuffle($characters), 0, 10); 
         return $code;
     }
 

@@ -27,7 +27,7 @@ class HomeCategoriesController extends Controller
     public function store(createHomeCategoriesRequest $request)
     {
         $this->homeCategoriesService->create($request);
-        return redirect()->route('admin.home-categories.index')->with("message", "the information was added to the database");
+        return redirect()->route('admin.home-categories.index')->with("message", "məlumat bazaya əlavə edildi");
     }
 
 
@@ -41,12 +41,12 @@ class HomeCategoriesController extends Controller
     public function update(createHomeCategoriesRequest $request, $id)
     {
         $this->homeCategoriesService->update($request, $id);
-        return redirect()->route('admin.home-categories.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.home-categories.index')->with("message", "məlumatlar yeniləndilər");
     }
 
     public function destroy($id)
     {
         $this->homeCategoriesService->delete($id);
-        return redirect()->route('admin.home-categories.index')->with('message', 'the information was deleted from the database');
+        return redirect()->route('admin.home-categories.index')->with('message', 'məlumat bazadan silindi');
     }
 }

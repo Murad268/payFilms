@@ -37,7 +37,7 @@ class MoviesController extends Controller
     public function store(CreateMovieRequest $request)
     {
         $this->movieService->create($request);
-        return redirect()->route('admin.movies.index')->with("message", "the information was added to the database");
+        return redirect()->route('admin.movies.index')->with("message", "məlumat bazaya əlavə edildi");
     }
 
 
@@ -52,11 +52,11 @@ class MoviesController extends Controller
     public function update(UpdateMovieRequest $request, $id)
     {
         $this->movieService->update($request, $id);
-        return redirect()->route('admin.movies.index')->with("message", "the information has been updated");
+        return redirect()->route('admin.movies.index')->with("message", "məlumatlar yeniləndilər");
     }
     public function destroy($id)
     {
         $this->movieService->delete($id);
-        return redirect()->route('admin.movies.index')->with("message", "the information was deleted from the database");
+        return redirect()->route('admin.movies.index')->with("message", "məlumat bazadan silindi");
     }
 }

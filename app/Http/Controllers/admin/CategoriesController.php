@@ -27,7 +27,7 @@ class CategoriesController extends Controller
     public function store(storeCategoriesRequest $request)
     {
         $this->categoriesService->create($request);
-        return redirect()->route('admin.categories.index')->with("message", "the information was added to the database");
+        return redirect()->route('admin.categories.index')->with("message", "məlumatlar bazaya əlavə edildi");
     }
 
 
@@ -40,13 +40,13 @@ class CategoriesController extends Controller
     public function update(storeCategoriesRequest $request, $id)
     {
         $this->categoriesService->update($request, $id);
-        return redirect()->route('admin.categories.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.categories.index')->with("message", "məlumatlar yeniləndilər");
     }
 
 
     public function destroy($id)
     {
         $this->categoriesService->delete($id);
-        return redirect()->route('admin.categories.index')->with('message', 'the information was deleted from the database');
+        return redirect()->route('admin.categories.index')->with('message', 'məlumat bazadan silindi');
     }
 }
