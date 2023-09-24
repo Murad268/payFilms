@@ -1,4 +1,4 @@
-    @if(Route::is('front.index'))
+    @if(Route::is('front.index') and isset($_COOKIE['email']))
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
 
@@ -334,6 +334,10 @@
             padding-left: 35px;
         }
 
+        .search__panel input::placeholder {
+            font-size: 30px;
+        }
+
         .search__panel input:focus {
             outline: none;
         }
@@ -578,8 +582,8 @@
         </ul>
     </div>
     <div class="search__panel">
-        <form action="">
-            <input type="search" placeholder="Açar sözü daxil edin" name="" id="">
+        <form action="{{route('front.search')}}">
+            <input type="search" placeholder="Açar sözü daxil edin" name="q" id="">
         </form>
         <div class="search__panel__popular">
             <h6>Ən çox izlənənlər</h6>
@@ -596,7 +600,7 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <a href="">
+                <a href="{{route('front.index')}}">
                     <img src="{{asset('assets/front/icons/'.$settings->logo)}}" alt="">
                 </a>
             </div>
@@ -611,6 +615,8 @@
             </div>
             <div class="navbar__user">
                 <div class="navbar__user__search"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                @if(isset($_COOKIE['email']))
                 <div class="navbar__user__logo">
                     <a href="{{route('front.account')}}">
                         <img src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg" alt="">
@@ -623,10 +629,16 @@
                             <li>
                                 <a href="{{route('front.account')}}">Hesab Məlumatları</a>
                             </li>
-                            <li> <a href="">Çıxış et</a></li>
+                            <li> <a href="{{route('front.account.logout')}}">Çıxış et</a></li>
                         </ul>
                     </div>
                 </div>
+                @else
+                <div class="navbar__enter">
+                    <div class="header-btn"><a href="{{route('front.account')}}" class="btn">Daxil ol</a></div>
+                </div>
+                @endif
+
                 <div class="navbar__hamburger">
                     <span></span>
                     <span></span>

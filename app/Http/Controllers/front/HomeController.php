@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function activationCode()
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $code = substr(str_shuffle($characters), 0, 10); 
+        $code = substr(str_shuffle($characters), 0, 10);
         return $code;
     }
 
@@ -130,9 +130,7 @@ class HomeController extends Controller
                 });
                 return redirect()->route('front.login')->with('success', 'hesabınız aktivləşdirilməyib. Daxil etdiyiniz elektron poçta təstiqlənmə linki yenidən göndərildi');
             } else {
-
                 Cookie::queue(Cookie::make('email', $user->email, 30 * 24 * 60));
-
                 return redirect()->route('front.index');
             }
         };
