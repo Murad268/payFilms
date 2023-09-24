@@ -1,5 +1,5 @@
     @if(Route::is('front.index'))
-  
+
 
     <div class="navbar__mini">
         <ul>
@@ -8,7 +8,7 @@
             <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
             <li><a href="">Sənədli Filmlər</a></li>
         </ul>
-        <a class="navbar__mini__profile">
+        <a href="{{route('front.account')}}" class="navbar__mini__profile">
             <div class="navbar__mini__profile__logo">
                 <img src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg" alt="">
             </div>
@@ -16,7 +16,7 @@
         </a>
         <ul>
             <li><a href="">İzləmə siyahısı</a></li>
-            <li><a href="">Çıxış et</a></li>
+            <li><a href="{{route('front.account.logout')}}">Çıxış et</a></li>
         </ul>
     </div>
     <div class="categroies">
@@ -63,7 +63,7 @@
             <div class="navbar__user">
                 <div class="navbar__user__search"><i class="fa fa-search" aria-hidden="true"></i></div>
                 <div class="navbar__user__logo">
-                    <a href="">
+                    <a href="{{route('front.account')}}">
                         <img src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg" alt="">
                     </a>
                     <div class="user__datas">
@@ -72,7 +72,7 @@
                                 <a href="">İzləmə Siyahısı</a>
                             </li>
                             <li>
-                                <a href="">Hesab Məlumatları</a>
+                                <a href="{{route('front.account')}}">Hesab Məlumatları</a>
                             </li>
                             <li> <a href="">Çıxış et</a></li>
                         </ul>

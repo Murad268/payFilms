@@ -70,7 +70,7 @@
     <!-- movie-area -->
 
 
-    <section class="movie-area movie-bg py-5" data-background="img/bg/movie_bg.jpg">
+    <section class="movie-area movie-bg py-5" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="user_image">
             <img id="profile-image" src="{{asset('assets/front/img/avatar/'.$user->avatar)}}" alt="">
         </div>
