@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
 use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
+use App\Http\Controllers\admin\UsersProcessController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\LastController;
@@ -52,6 +53,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
     Route::resource('/admins', AdminProccessController::class);
+    Route::resource('/users', UsersProcessController::class);
 
 
 

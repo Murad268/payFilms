@@ -18,7 +18,8 @@ class HomeController extends Controller
 {
 
 
-    public function front() {
+    public function front()
+    {
         $settings = Settings::first();
         return view('front.homeindex', compact('settings'));
     }
@@ -128,8 +129,11 @@ class HomeController extends Controller
                 ], function ($message) use ($subject) {
                     $message->to("agamedov94@mail.ru")->subject($subject);
                 });
-                return redirect()->route('front.login')->with('success', 'hesabınız aktivləşdirilməyib. Daxil etdiyiniz elektron poçta təstiqlənmə linki yenidən göndərildi');
+                return redirect()->route('front.login')->with('message', 'hesabınız aktivləşdirilməyib. Daxil etdiyiniz elektron poçta təstiqlənmə linki yenidən göndərildi');
             } else {
+                if ($user->isBlocked == 1) {
+                    return redirect()->route('front.login')->with('message', 'hesabınız ban edilib. Xahiş edirik administrator ilə əlaqə saxlayın');
+                }
                 Cookie::queue(Cookie::make('email', $user->email, 30 * 24 * 60));
                 return redirect()->route('front.index');
             }
