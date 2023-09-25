@@ -53,7 +53,11 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
     Route::resource('/admins', AdminProccessController::class);
-    Route::resource('/users', UsersProcessController::class);
+    // Route::resource('/users', UsersProcessController::class);
+    Route::get('/users', [UsersProcessController::class, 'index'])->name('users.index');
+
+    Route::get('/users/ban/{id}', [UsersProcessController::class, 'ban'])->name('ban');
+
 
 
 

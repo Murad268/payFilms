@@ -70,6 +70,20 @@
                                             <div class="btn btn-danger swalDefaultError">Hesab aktiv edilməyib</div>
                                             @endif
                                         </td>
+                                        <td>
+                                            @if ($admin->status === 1)
+                                            @if ($user->isBlocked == 0)
+                                            <a href="{{ route('admin.ban', $user->id) }}" class="btn btn-danger">Ban et</a>
+                                            @else
+                                            <a href="{{ route('admin.ban', $user->id) }}" class="btn btn-success">Bandan çıxart</a>
+                                            @endif
+                                            @else
+                                            <div style="font-size: 12px" class="alert alert-light text-dark">
+                                                Sizin admin kontroll hüququnuz yoxdur
+                                            </div>
+                                            @endif
+                                        </td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
