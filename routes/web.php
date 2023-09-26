@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AdminProccessController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
+use App\Http\Controllers\admin\DocumentsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\ScriptwriterController;
@@ -46,17 +47,13 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/settings', SettingsController::class);
     Route::resource('/home-categories', HomeCategoriesController::class);
-    Route::resource('/actors', ActorsController::class);
-    Route::resource('/directors', DirectorsController::class);
-    Route::resource('/scriptwriters', ScriptwriterController::class);
-    Route::resource('/countries', CountriesController::class);
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
     Route::resource('/admins', AdminProccessController::class);
     // Route::resource('/users', UsersProcessController::class);
     Route::get('/users', [UsersProcessController::class, 'index'])->name('users.index');
-
     Route::get('/users/ban/{id}', [UsersProcessController::class, 'ban'])->name('ban');
+    Route::resource('/documentals', DocumentsController::class);
 
 
 
