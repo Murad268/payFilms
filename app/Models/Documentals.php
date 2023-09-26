@@ -27,8 +27,8 @@ class Documentals extends Model
     }
 
 
-    // public function serie_seasons()
-    // {
-    //     return $this->hasMany(Seasons::class, 'serie_id');
-    // }
+    public function serie_seasons()
+    {
+        return $this->hasMany(DocumentalsSeasons::class, 'serie_id');
+    }
 }

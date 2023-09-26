@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AdminProccessController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
+use App\Http\Controllers\admin\DocumentalsSeasons;
 use App\Http\Controllers\admin\DocumentsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
@@ -55,6 +56,12 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/users/ban/{id}', [UsersProcessController::class, 'ban'])->name('ban');
     Route::resource('/documentals', DocumentsController::class);
 
+
+
+    Route::get('/documentals/seasons/{id}', [DocumentalsSeasons::class, 'index'])->name('documentals.documents');
+    Route::get('/documentals/seasons/create/new_season/{id}', [DocumentalsSeasons::class, 'create'])->name('documentals.create.new');
+    Route::post('/documentals/seasons/store/{id}', [DocumentalsSeasons::class, 'store'])->name('documentals.create.store');
+    Route::post('/documentals/seasons/destroy/{id}', [DocumentalsSeasons::class, 'destroy'])->name('documentals.seasons.destroy');
 
 
 

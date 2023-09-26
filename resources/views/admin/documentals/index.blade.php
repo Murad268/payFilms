@@ -75,7 +75,10 @@
                                         <td>{{ $serie->movie_home_categories->cat_name }}</td>
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
-
+                                        <td style="display: flex; align-items: center; column-gap: 5px">
+                                            <div style="font-size: 20px;" class="text-primary">{{$serie->serie_seasons()->count()}}</div>
+                                            <a href="{{route('admin.documentals.documents', $serie->id)}}" style="width: max-content" class="mt-2 btn btn-primary">sezonları gör</a>
+                                        </td>
                                         <td>
                                             @if($serie->status)
                                             <div class="btn btn-primary swalDefaultError">aktiv</div>
