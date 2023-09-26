@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'episode add')
+@section('page_title', 'episode edit')
 @section('content')
 <div class="">
     <section class="content">
@@ -73,7 +73,7 @@
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Filmin çıxış tarixi:</label>
-                                <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">
+                                <input value="{{old('release', $episode->release)}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
                             <div class="alert alert-danger mt-2" role="alert">

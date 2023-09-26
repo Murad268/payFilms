@@ -1,12 +1,12 @@
 @extends('admin.back')
-@section('page_title', 'episode add')
+@section('page_title', 'episode edit')
 @section('content')
 <div class="">
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.seasons.episodes.update',  ['id' => $id,'serie_id' => $serie_id])}}">
+                    <form method="post" action="{{route('admin.seasons.documentalsEpisodes.update',  ['id' => $id,'serie_id' => $serie_id])}}">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

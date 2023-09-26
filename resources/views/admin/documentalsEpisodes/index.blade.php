@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="{{route('admin.seasons.episodes.create', ['id' => $id,'serie_id' => $serie_id])}}" class="btn btn-primary">yeni epizod əlavə et</a>
+                                <a href="{{route('admin.seasons.documentalsEpisodes.create', ['id' => $id,'serie_id' => $serie_id])}}" class="btn btn-primary">yeni epizod əlavə et</a>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -68,8 +68,8 @@
                                             {{$episode->release}}
                                         </td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="">
-                                                <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.seasons.documentalsEpisodes.destroy', $episode->id)}}">
+                                                <a href="{{route('admin.seasons.documentalsEpisodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
                                                 @csrf
                                                 <input class="btn btn-danger" value="delete" type="submit">
                                             </form>

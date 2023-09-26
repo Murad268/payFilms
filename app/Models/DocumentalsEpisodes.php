@@ -12,5 +12,5 @@ class DocumentalsEpisodes extends Model
     use HasTranslations;
     public $translatable = ['slug', "episode_name"];
     protected $guarded = [];
-    public $table = "series_episodes";
+    public $table = "documentals_episodes";
 }

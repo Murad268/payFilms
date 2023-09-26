@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.seasons.episodes.store',  ['id' => $id,'serie_id' => $serie_id])}}">
+                    <form method="post" action="{{route('admin.seasons.documentalsEpisodes.store',  ['id' => $id,'serie_id' => $serie_id])}}">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\DocumentalsSeasons;
 use App\Http\Controllers\admin\DocumentsController;
+use App\Http\Controllers\admin\DocumentsEpisodesControllers;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\ScriptwriterController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\front\MoviesController as FrontMoviesController;
 use App\Http\Controllers\front\SearchController;
 use App\Http\Controllers\front\SerieDetailsController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
+use App\Models\DocumentalsEpisodes;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +66,16 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/documentals/seasons/destroy/{id}', [DocumentalsSeasons::class, 'destroy'])->name('documentals.seasons.destroy');
     Route::get('/documentals/seasons/edit/{id}', [DocumentalsSeasons::class, 'edit'])->name('seasons.documentals.edit');
     Route::post('/documentals/seasons/update/{id}', [DocumentalsSeasons::class, 'update'])->name('seasons.documentals.update');
+
+
+
+
+    Route::get('/documentals/seasons/episodes/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'index'])->name('seasons.documentalsEpisodes.index');
+    Route::get('/documentals/seasons/episodes/create/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'create'])->name('seasons.documentalsEpisodes.create');
+    Route::post('/documentals/seasons/episodes/create/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'store'])->name('seasons.documentalsEpisodes.store');
+    Route::get('/documentals/seasons/episodes/edit/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'edit'])->name('seasons.documentalsEpisodes.edit');
+    Route::post('/documentals/seasons/episodes/update/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'update'])->name('seasons.documentalsEpisodes.update');
+    Route::post('/documentals/seasons/episodes/destroy/{id}', [DocumentsEpisodesControllers::class, 'destroy'])->name('seasons.documentalsEpisodes.destroy');
 
 
 

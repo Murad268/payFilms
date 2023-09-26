@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('documentals_episodes', function (Blueprint $table) {
             $table->id();
+            $table->integer('episode_order');
+            $table->unsignedBigInteger('serie_id');
+            $table->unsignedBigInteger('season_id');
+            $table->string('episode_name')->nullable();
+            $table->string('quality');
+            $table->string('release');
+            $table->string('length');
+            $table->string('link');
+            $table->string('slug');
             $table->timestamps();
         });
     }
