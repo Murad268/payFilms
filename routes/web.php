@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\DocumentsController;
 use App\Http\Controllers\admin\DocumentsEpisodesControllers;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
+use App\Http\Controllers\admin\OneSerieDocumentalsController;
 use App\Http\Controllers\admin\ScriptwriterController;
 use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\front\SearchController;
 use App\Http\Controllers\front\SerieDetailsController;
 use App\Http\Controllers\front\SeriesController as FrontSeriesController;
 use App\Models\DocumentalsEpisodes;
+use App\Models\OneSerieDocumentals;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +78,10 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/documentals/seasons/episodes/edit/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'edit'])->name('seasons.documentalsEpisodes.edit');
     Route::post('/documentals/seasons/episodes/update/{id}/{serie_id}', [DocumentsEpisodesControllers::class, 'update'])->name('seasons.documentalsEpisodes.update');
     Route::post('/documentals/seasons/episodes/destroy/{id}', [DocumentsEpisodesControllers::class, 'destroy'])->name('seasons.documentalsEpisodes.destroy');
+
+
+    Route::resource('/oneseriedocumentals', OneSerieDocumentalsController::class);
+
 
 
 

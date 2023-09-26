@@ -94,6 +94,16 @@
                         </p>
                     </a>
                 </li>
+
+
+                <li class="nav-item">
+                    <a href="{{route('admin.oneseriedocumentals.index')}}" class="nav-link">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Bir bölmlük Sənədli filmlər
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

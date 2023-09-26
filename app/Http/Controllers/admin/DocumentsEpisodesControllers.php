@@ -68,7 +68,7 @@ class DocumentsEpisodesControllers extends Controller
                 'length' => $request->length,
                 'release' => $request->release,
             ]);
-            return redirect()->route('admin.seasons.documentalsEpisodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "tməlumatlar yeniləndilər");;
+            return redirect()->route('admin.seasons.documentalsEpisodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "məlumatlar yeniləndilər");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
