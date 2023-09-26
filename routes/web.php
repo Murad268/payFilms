@@ -62,7 +62,8 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/documentals/seasons/create/new_season/{id}', [DocumentalsSeasons::class, 'create'])->name('documentals.create.new');
     Route::post('/documentals/seasons/store/{id}', [DocumentalsSeasons::class, 'store'])->name('documentals.create.store');
     Route::post('/documentals/seasons/destroy/{id}', [DocumentalsSeasons::class, 'destroy'])->name('documentals.seasons.destroy');
-
+    Route::get('/documentals/seasons/edit/{id}', [DocumentalsSeasons::class, 'edit'])->name('seasons.documentals.edit');
+    Route::post('/documentals/seasons/update/{id}', [DocumentalsSeasons::class, 'update'])->name('seasons.documentals.update');
 
 
 
@@ -111,4 +112,3 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
 
 
 Route::post('/sendmessages', [MessagesController::class, 'sendmessages'])->name('front.sendmessages');
-

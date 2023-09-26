@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.seasons.update', $season->id)}}">
+                    <form method="post" action="{{route('admin.seasons.documentals.update', $season->id)}}">
                         @csrf
                         <div class="card-body">
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
@@ -33,7 +33,7 @@
                             @endforeach
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Sezonu əlavə et</button>
+                            <button type="submit" class="btn btn-primary">Sezonu yenilə</button>
                         </div>
                     </form>
                 </div>

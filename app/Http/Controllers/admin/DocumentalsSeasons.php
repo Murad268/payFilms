@@ -42,7 +42,7 @@ class DocumentalsSeasons extends Controller
     public function edit($id)
     {
         $season = ModelsDocumentalsSeasons::findOrFail($id);
-        return view('admin.seasons.edit', compact('season'));
+        return view('admin.documentalsSeasons.edit', compact('season'));
     }
 
     public function update(DocSeasonsRequests $request, $id)
@@ -54,7 +54,7 @@ class DocumentalsSeasons extends Controller
                 'season_name' => $request->season_name,
                 "slug" => $request->slug
             ]);
-            return redirect()->route('admin.seasons.index', $season->serie_id)->with("message", "məlumatlar yeniləndilər");;
+            return redirect()->route('admin.documentals.documents', $season->serie_id)->with("message", "məlumatlar yeniləndilər");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
