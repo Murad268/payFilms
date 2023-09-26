@@ -79,6 +79,6 @@ class DocumentsEpisodesControllers extends Controller
     {
         $episode = DocumentalsEpisodes::where('id', $id)->first();
         $episode->delete();
-        return redirect()->route('admin.seasons.documentalsEpisodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "tməlumatlar uğurla silindilər");;
+        return redirect()->route('admin.seasons.documentalsEpisodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "məlumatlar uğurla silindilər");;
     }
 }
