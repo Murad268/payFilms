@@ -90,8 +90,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.movies.destroy', $movie->id)}}">
-                                                <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.oneseriedocumentals.destroy', $movie->id)}}">
+                                                <a href="{{route('admin.oneseriedocumentals.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                                 @csrf
                                                 @method("delete")
                                                 <input class="btn btn-danger" value="sil" type="submit">

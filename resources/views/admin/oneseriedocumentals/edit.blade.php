@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'movie edit')
+@section('page_title', 'one serie documentals edit')
 @section('content')
 
 <div class="">
@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form enctype="multipart/form-data" method="post" action="{{route('admin.movies.update', $movie->id)}}">
+                    <form enctype="multipart/form-data" method="post" action="{{route('admin.oneseriedocumentals.update', $movie->id)}}">
                         @csrf
                         @method('put')
                         <div class="card-body">
@@ -215,7 +215,7 @@
                             </div>
                             @enderror
                             <div class="form-check">
-                                <input  {{old('status', $movie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input {{old('status', $movie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">filmin statusu</label>
                             </div>
                             @error('status')
