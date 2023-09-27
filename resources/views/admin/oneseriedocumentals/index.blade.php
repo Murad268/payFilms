@@ -64,22 +64,22 @@
                                     @foreach($movies as $movie)
                                     <tr>
                                         <td>{{$movie->id}}</td>
-                                        <td>{{ $movie->getTranslation('name', app()->getLocale()) }}</td>
-                                        <td>{{ $movie->getTranslation('slug', app()->getLocale()) }}</td>
+                                        <td>{{$movie->getTranslation('name', app()->getLocale()) }}</td>
+                                        <td>{{$movie->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td> <a target="_blank" href="{{asset('assets/front/images/'.$movie->poster)}}"><img style="width: 60px; height: 80px" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
                                         </td>
                                         <td> <a target="_blank" href="{{asset('assets/front/images/'.$movie->banner)}}"><img style="width: 90px; height: 50px" src="{{asset('assets/front/images/'.$movie->banner)}}" alt=""></a>
                                         </td>
-                                        <td>{{ $movie->length}}</td>
-                                        <td>{{ $movie->link }}</td>
+                                        <td>{{$movie->length}}</td>
+                                        <td>{{$movie->link }}</td>
                                         <td>{{$movie->ytrailer}}</td>
                                         <td>{{$movie->quality}}</td>
-                                        <td>{{ $movie->getTranslation('actors', app()->getLocale()) }}</td>
-                                        <td>{{ $movie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
-                                        <td>{{ $movie->getTranslation('directors', app()->getLocale()) }}</td>
-                                        <td>{{ $movie->getTranslation('countries', app()->getLocale()) }}</td>
-                                        <td>{{ $movie->movie_categories->name }}</td>
-                                        <td>{{ $movie->movie_home_categories->cat_name }}</td>
+                                        <td>{{$movie->getTranslation('actors', app()->getLocale()) }}</td>
+                                        <td>{{$movie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
+                                        <td>{{$movie->getTranslation('directors', app()->getLocale()) }}</td>
+                                        <td>{{$movie->getTranslation('countries', app()->getLocale()) }}</td>
+                                        <td>{{$movie->movie_categories->name }}</td>
+                                        <td>{{$movie->movie_home_categories->cat_name }}</td>
                                         <td>{{$movie->release}}</td>
                                         <td>{!! $movie->getTranslation('desc', app()->getLocale()) !!}</td>
                                         <td>

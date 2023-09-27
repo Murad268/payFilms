@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\DocumentalsSeasons;
 use App\Http\Controllers\admin\DocumentsController;
 use App\Http\Controllers\admin\DocumentsEpisodesControllers;
+use App\Http\Controllers\admin\HeaderSlidersController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\OneSerieDocumentalsController;
@@ -81,6 +82,14 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 
 
     Route::resource('/oneseriedocumentals', OneSerieDocumentalsController::class);
+
+
+    Route::resource('/headersliders', HeaderSlidersController::class);
+    Route::get('/search', [HeaderSlidersController::class, 'searchindex'])->name('headersliders.searchindex');
+
+    Route::get('/search/{type}', [HeaderSlidersController::class, 'search'])->name('headersliders.search');
+
+
 
 
 
