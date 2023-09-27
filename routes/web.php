@@ -87,7 +87,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/headersliders', HeaderSlidersController::class);
     Route::get('/search', [HeaderSlidersController::class, 'searchindex'])->name('headersliders.searchindex');
 
-    Route::get('/search/{type}', [HeaderSlidersController::class, 'search'])->name('headersliders.search');
+    Route::get('/searchresult', [HeaderSlidersController::class, 'search'])->name('headersliders.searchresult');
 
 
 

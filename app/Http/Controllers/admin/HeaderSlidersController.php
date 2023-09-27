@@ -51,12 +51,30 @@ class HeaderSlidersController extends Controller
     }
 
 
-    public function searchindex() {
+    public function searchindex()
+    {
         return view('admin.header_sliders.searchindex');
     }
 
 
-    public function search($type) {
-        dd($type);
+    public function search(Request $request)
+    {
+        $type = $request->input('type');
+        $search = $request->input('search');
+
+        if ($type == 'movies') {
+            $moviesResults = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($search) . '%'])->where('status', 1)->paginate(10);
+        } else if ($type == 'series') {
+            $moviesResults = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($search) . '%'])->where('status', 1)->paginate(10);
+        } else if ($type == 'documentals') {
+            $moviesResults = Documentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($search) . '%'])->where('status', 1)->paginate(10);
+        } else if ($type == "oneseriesdocumentals") {
+            $moviesResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($search) . '%'])->where('status', 1)->paginate(10);
+        }
+
+        if($moviesResults->count() < 1) {
+            return redirect()->back()->with('errornotfound', "Axtarışa uyğun nəticə tapılmadı. Ya belə bir məlumat bazada yoxdur, ya da bu məlumatın bazadakı statusu aktiv deyil");
+        }
+        return view('admin.header_sliders.search', compact("moviesResults"));
     }
 }
