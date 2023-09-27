@@ -22,12 +22,13 @@ class HeaderSliderRequest extends FormRequest
 
         $rules = [];
 
-        $rules['episode_order'] = 'integer';
-        $rules["episode_name.$lang"] = 'required|string|max:255';
-        $rules["slug.$lang"] = 'required|string|max:255|regex:/^[a-zA-Z0-9\-_]+$/';
-        $rules["length"] = 'required|numeric';
-        $rules["link"] = 'required';
-        $rules['release'] = 'required';
+        $rules["img1"] = 'required|image|mimes:jpeg,jpg,png';
+        $rules["img2"] = 'required|image|mimes:jpeg,jpg,png';
+        $rules["img3"] = 'required|image|mimes:jpeg,jpg,png';
+        $rules["img4"] = 'required|image|mimes:jpeg,jpg,png';
+        $rules["default_img"] = 'required|image|mimes:jpeg,jpg,png';
+
+
 
 
 
@@ -36,23 +37,14 @@ class HeaderSliderRequest extends FormRequest
 
     public function messages(): array
     {
-
-        $customMessages = [];
-
-
-        $customMessages["episode_order.required"] = __("The episode order field is required in $lang");
-        $customMessages["episode_order.integer"] = __("The episode order must be an integer in $lang");
-        $customMessages["episode_name.$lang.required"] = __("The episode name field is required in $lang");
-        $customMessages["episode_name.$lang.string"] = __("The episode name must be a string in $lang");
-        $customMessages["episode_name.$lang.max"] = __("The episode name may not be greater than 255 characters in $lang");
-        $customMessages["slug.$lang.required"] = __("The slug field is required in $lang");
-        $customMessages["slug.$lang.string"] = __("The slug must be a string in $lang");
-        $customMessages["slug.$lang.max"] = __("The slug may not be greater than 255 characters in $lang");
-        $customMessages["slug.$lang.regex"] = __("The slug format is invalid in $lang");
-        $customMessages["length.required"] = __("The length field is required in $lang");
-        $customMessages["length.numeric"] = __("The length must be a numeric value in $lang");
-        $customMessages["link.required"] = __("The link field is required in $lang");
-        $customMessages["release.required"] = "The release field is required.";
-        return $customMessages;
+        return [
+            'img1.required' => 'Şəklin yüklənməsi mütləqdir.',
+            'img2.required' => 'Şəklin yüklənməsi mütləqdir.',
+            'img3.required' => 'Şəklin yüklənməsi mütləqdir.',
+            'img4.required' => 'Şəklin yüklənməsi mütləqdir.',
+            'default_img.required' => 'Şəklin yüklənməsi mütləqdir.',
+            'image' => 'Yüklənən faylın şəkil tipində olmağı vacibdir.',
+            'mimes' => 'Şəkil faylının formatı yalnızca jpeg, jpg veya png olmalıdır.',
+        ];
     }
 }

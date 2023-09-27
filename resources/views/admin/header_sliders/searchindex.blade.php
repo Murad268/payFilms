@@ -6,14 +6,13 @@
     <section class="content">
         <div class="container-fluid">
             @if(session()->has('errornotfound'))
-            <div class="alert alert-alert">
+            <div class="alert alert-danger">
                 {{ session('errornotfound') }}
             </div>
             @endif
             <div class="row">
                 <div class="col-12">
                     <form method="get" action="{{route('admin.headersliders.searchresult')}}">
-                        @csrf
                         <div class="pt-4 ps-4 form-group">
                             <label for="exampleInputPassword1">Adı daxil et</label>
                             <input name="search" type="search" class="form-control" name="" id="">

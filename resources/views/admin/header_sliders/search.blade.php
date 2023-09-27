@@ -35,7 +35,7 @@
                                         <td>{{$result->name}}</td>
                                         <td>{{$result->slug}}</td>
                                         <td>
-                                            <a href="" class="btn btn-success">seçim edin</a>
+                                            <a href="{{route('admin.headersliders.headerslideradd', ['id'=>$result->id, 'type' => $type])}}" class="btn btn-success">seçim edin</a>
                                         </td>
                                     </tr>
                                     @endforeach
