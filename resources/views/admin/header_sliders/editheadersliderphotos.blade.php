@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form enctype="multipart/form-data" method="post" action="">
+                    <form enctype="multipart/form-data" method="post" action="{{route('admin.headersliders.changesliderimgupdate', $slider->id)}}">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -118,7 +118,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Slideni əlavə et</button>
+                            <button type="submit" class="btn btn-primary">Slidenin şəkillərini yenilə</button>
                         </div>
                     </form>
                 </div>

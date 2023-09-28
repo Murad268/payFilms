@@ -23,14 +23,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-
                             <h3 class="card-title">
                                 <a href="{{route('admin.headersliders.searchindex')}}" class="btn btn-primary">yeni slide əlavə et</a>
                             </h3>
                         </div>
-
                         <div class="card-body">
-                           
                             @if(count($sliders) > 0)
                             @if(session()->has('message'))
                             <div class="alert alert-success">

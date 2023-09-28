@@ -93,6 +93,8 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 
 
     Route::get('/changesliderimg/{id}', [HeaderSlidersController::class, 'changesliderimg'])->name('headersliders.changesliderimg');
+    Route::post('/changesliderimgupdate/{id}', [HeaderSlidersController::class, 'changesliderimgupdate'])->name('headersliders.changesliderimgupdate');
+
 
 
 

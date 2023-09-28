@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\headersliders\HeaderSliderRequest;
+use App\Http\Requests\headersliders\HeaderSlidersUpdate;
 use App\Models\Documentals;
 use App\Models\HeaderSlider;
 use App\Models\Movies;
@@ -139,5 +140,32 @@ class HeaderSlidersController extends Controller
         $slider = HeaderSlider::findOrFail($id);
 
         return view('admin.header_sliders.editheadersliderphotos', compact('slider'));
+    }
+
+
+    public function changesliderimgupdate(HeaderSlidersUpdate $request, $id)
+    {
+        $slide = HeaderSlider::findOrFail($id);
+
+        $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'img1', $slide->{'max-width: 400px'});
+        $result2 = $this->imageService->updateImage($request, 'assets/front/images/', 'img2', $slide->{'max-width: 768px'});
+        $result3 = $this->imageService->updateImage($request, 'assets/front/images/', 'img3', $slide->{'max-width: 1024px'});
+        $result4 = $this->imageService->updateImage($request, 'assets/front/images/', 'img4', $slide->{'max-width: 1368px'});
+        $result5 = $this->imageService->updateImage($request, 'assets/front/images/', 'default_img', $slide->{'default_img'});
+
+
+        $data = $request->all();
+
+        $data['max-width: 400px'] = $result1;
+        $data['max-width: 768px'] = $result2;
+        $data['max-width: 1024px'] = $result3;
+        $data['max-width: 1368px'] = $result4;
+        $data['default_img'] = $result5;
+        unset($data['img1']);
+        unset($data['img2']);
+        unset($data['img3']);
+        unset($data['img4']);
+        $this->dataServices->save($slide, $data, 'update');
+        return back();
     }
 }
