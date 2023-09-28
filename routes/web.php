@@ -20,6 +20,7 @@ use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\UsersProcessController;
 use App\Http\Controllers\front\AccountController;
+use App\Http\Controllers\front\DocumentalsController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\LastController;
 use App\Http\Controllers\front\MessagesController;
@@ -139,6 +140,8 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/account/logout', [AccountController::class, 'logout'])->name('account.logout')->middleware('userlogin');
     Route::get('/movies/{slug}', [FrontMoviesController::class, 'movies'])->name('movies')->middleware('userlogin');
     Route::get('/series', [FrontSeriesController::class, 'series'])->name('series')->middleware('userlogin');
+    Route::get('/documentals', [DocumentalsController::class, 'documentals'])->name('documentals')->middleware('userlogin');
+
     Route::get('/last_uploads', [LastController::class, 'last_uploads'])->name('last_uploads')->middleware('userlogin');
     Route::get('/contact', [MessagesController::class, 'index'])->name('contact')->middleware('userlogin');
     Route::get('/search', [SearchController::class, 'index'])->name('search')->middleware('userlogin');

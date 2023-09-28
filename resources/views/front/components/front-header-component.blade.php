@@ -610,7 +610,7 @@
                     <li><a href="{{route('front.last_uploads')}}">Ən Son Yüklənən Filmlər</a></li>
                     <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
                     <li><a href="{{route('front.series')}}">Seriallar</a></li>
-                    <li><a href="">Sənədli Filmlər</a></li>
+                    <li><a href="{{route('front.documentals')}}">Sənədli Filmlər</a></li>
                 </ul>
             </div>
             <div class="navbar__user">
