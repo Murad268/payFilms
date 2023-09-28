@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Documentals;
 use App\Models\HomeCategories;
 use App\Models\Movies;
+use App\Models\OneSerieDocumentals;
 use App\Models\Series;
 use Illuminate\Http\Request;
 
@@ -16,6 +18,9 @@ class SearchController extends Controller
         $searchQuery = $request->input('q');
         $moviesResults = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
         $seriesResults = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
-        return view('front.search', ['seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q]);
+        $documentalsResults = Documentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
+        $oneSeriesDocumentalsResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
+
+        return view('front.search', ['oneSeriesDocumentalsResults' => $oneSeriesDocumentalsResults, "documentalsResults" => $documentalsResults, 'seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q]);
     }
 }
