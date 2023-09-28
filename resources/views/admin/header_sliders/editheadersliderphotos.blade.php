@@ -7,9 +7,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+
                     <form enctype="multipart/form-data" method="post" action="{{route('admin.headersliders.changesliderimgupdate', $slider->id)}}">
                         @csrf
                         <div class="card-body">
+                            <a href="" class="mb-3 btn btn-primary">Filmi dəyiş</a>
+
                             <div class="form-group">
                                 <label for="exampleInputFile">Şəkil 400px ekran üçün</label>
                                 <div class="input-group">
@@ -22,7 +25,8 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px;width: 200px; height: 120px" class="img">
-                                    <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 400px'}) }}" alt="">
+                                    <a target="_blank" href="{{ asset('assets/front/images/' . $slider->{'max-width: 400px'}) }}"><img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 400px'}) }}" alt="">
+                                    </a>
                                 </div>
                                 @error("img1")
                                 <div class="alert alert-danger mt-2" role="alert">
@@ -42,7 +46,8 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px;width: 200px; height: 120px" class="img">
-                                    <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 768px'}) }}" alt="">
+                                    <a target="_blank" href="{{ asset('assets/front/images/' . $slider->{'max-width: 768px'}) }}"> <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 768px'}) }}" alt="">
+                                    </a>
                                 </div>
                                 @error("img2")
                                 <div class="alert alert-danger mt-2" role="alert">
@@ -62,7 +67,8 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px;width: 200px; height: 120px" class="img">
-                                    <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 1024px'}) }}" alt="">
+                                    <a target="_blank" href="{{ asset('assets/front/images/' . $slider->{'max-width: 1024px'}) }}"><img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 1024px'}) }}" alt="">
+                                    </a>
                                 </div>
                                 @error("img3")
                                 <div class="alert alert-danger mt-2" role="alert">
@@ -82,7 +88,8 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px;width: 200px; height: 120px" class="img">
-                                    <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 1368px'}) }}" alt="">
+                                    <a target="_blank" href="{{ asset('assets/front/images/' . $slider->{'max-width: 1368px'}) }}"><img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'max-width: 1368px'}) }}" alt="">
+                                    </a>
                                 </div>
                                 @error("img4")
                                 <div class="alert alert-danger mt-2" role="alert">
@@ -102,7 +109,8 @@
                                     </div>
                                 </div>
                                 <div style="margin-top: 20px;width: 200px; height: 120px" class="img">
-                                    <img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'default_img'}) }}" alt="">
+                                    <a target="_blank" href="{{ asset('assets/front/images/' . $slider->{'default_img'}) }}"><img style="width: 100%; height: 100%" src="{{ asset('assets/front/images/' . $slider->{'default_img'}) }}" alt="">
+                                    </a>
                                 </div>
                                 @error("default_img")
                                 <div class="alert alert-danger mt-2" role="alert">
