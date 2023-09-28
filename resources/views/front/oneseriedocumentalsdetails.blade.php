@@ -45,38 +45,6 @@
         color: red;
         cursor: pointer;
     }
-
-    .serie_template__top {
-        margin-top: 20px;
-        display: flex;
-        column-gap: 30px
-    }
-
-    label {
-        margin-bottom: 0;
-    }
-
-    .serie_template__top div {
-        display: flex;
-        column-gap: 10px;
-        align-items: center;
-    }
-
-    .serie_template__top select {
-        width: 100px;
-        height: 30px;
-        background-color: #23252D;
-        color: white;
-    }
-
-    .serie_template__content {
-        margin-top: 40px;
-    }
-
-    .serie_template__content iframe {
-        width: 100%;
-        height: 700px;
-    }
 </style>
 
 <main>
@@ -97,16 +65,16 @@
                         <h2>{{ $movie->getTranslation('name', app()->getLocale()) }}</h2>
                         <div class="banner-meta">
                             <ul>
-                                <!-- <li class="quality">
+                                <li class="quality">
                                     <span>{{$movie->quality}}</span>
-                                </li> -->
+                                </li>
                                 <li class="category">
                                     <span>{{$movie->movie_categories->name}}</span>
                                 </li>
-                                <!-- <li class="release-time">
+                                <li class="release-time">
                                     <span><i class="far fa-calendar-alt"></i> {{$movie->release}}</span>
                                     <span><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
                         <p>{!! $movie->desc !!}</p>
@@ -134,32 +102,16 @@
                         <div class="episode-watch-wrap">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
-
-
+                                    <div class="card-header" id="headingOne">
+                                        <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <!-- <span class="season">Season 1</span>
+                                                    <span class="video-count">5 Full Episodes</span> -->
+                                        </button>
+                                    </div>
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <ul>
-                                                <div class="serie_template">
-                                                    <form class="serie_template__top">
-                                                        <div>
-                                                            <label for="">Sezonlar və bölümlər</label>
-                                                            <select class="season_movie" name="season" id="">
-                                                                @foreach($serie_seasons as $season)
-                                                                <optgroup label="{{$season->getTranslation('season_name', app()->getLocale())}}">
-                                                                    @foreach($season->episodes as $episode)
-                                                                    <option value="{{$episode->id}}">{{$episode->episode_order}}</option>
-                                                                    @endforeach
-                                                                </optgroup>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-
-                                                    </form>
-
-                                                    <div class="serie_template__content">
-                                                        <iframe class="iframe_serie" width="560" height="315" src="{{$first_episode->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                    </div>
-                                                </div>
+                                                <li class="play_film"><a><i class="fas fa-play"></i>{{ $movie->getTranslation('name', app()->getLocale()) }}</a> <span class="duration"><i class="far fa-clock"></i> {{$movie->length}} dəq</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -179,7 +131,10 @@
     </div>
 
 
-
+    <div class="movie__overlay">
+        <i class="fa fa-window-close close" aria-hidden="true"></i>
+        <iframe width="560" height="315" src="{{$movie->link}}" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+    </div>
 
 
 

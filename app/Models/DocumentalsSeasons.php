@@ -17,8 +17,8 @@ class DocumentalsSeasons extends Model
     protected $guarded = [];
 
 
-    // public function episodes()
-    // {
-    //     return $this->hasMany(SeriesEpisodes::class, 'season_id');
-    // }
+    public function episodes()
+    {
+        return $this->hasMany(DocumentalsEpisodes::class, 'season_id');
+    }
 }

@@ -140,7 +140,13 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/account/logout', [AccountController::class, 'logout'])->name('account.logout')->middleware('userlogin');
     Route::get('/movies/{slug}', [FrontMoviesController::class, 'movies'])->name('movies')->middleware('userlogin');
     Route::get('/series', [FrontSeriesController::class, 'series'])->name('series')->middleware('userlogin');
+
+
     Route::get('/documentals', [DocumentalsController::class, 'documentals'])->name('documentals')->middleware('userlogin');
+    Route::get('/documental/{id}', [DocumentalsController::class, 'documental'])->name('documental')->middleware('userlogin');
+    Route::get('/sezonedDocumental/{id}', [DocumentalsController::class, 'sezonedDocumental'])->name('sezonedDocumental')->middleware('userlogin');
+
+
 
     Route::get('/last_uploads', [LastController::class, 'last_uploads'])->name('last_uploads')->middleware('userlogin');
     Route::get('/contact', [MessagesController::class, 'index'])->name('contact')->middleware('userlogin');
