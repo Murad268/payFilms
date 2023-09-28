@@ -154,6 +154,7 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/movie/{id}', [MovieDeatilController::class, 'index'])->name('movie')->middleware('userlogin');
     Route::get('/serie/{id}', [SerieDetailsController::class, 'index'])->name('serie')->middleware('userlogin');
     Route::get('/get_serie/{id}', [SerieDetailsController::class, 'get_serie'])->name('get_serie')->middleware('userlogin');
+    Route::get('/get_documentals/{id}', [DocumentalsController::class, 'get_documentals'])->name('get_documentals')->middleware('userlogin');
 });
 
 

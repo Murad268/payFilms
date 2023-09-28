@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Documentals;
+use App\Models\DocumentalsEpisodes;
 use App\Models\OneSerieDocumentals;
 use App\Models\Series;
 use Illuminate\Http\Request;
@@ -36,5 +37,12 @@ class DocumentalsController extends Controller
 
         $first_episode = $first_season->episodes->first();
         return view('front.serie_details', compact('movie', 'seasonFirst', 'serie_seasons', 'first_episode'));
+    }
+
+
+    public function get_documentals(Request $request)
+    {
+        $episode = DocumentalsEpisodes::where('id', $request->id)->first();
+        return response()->json(['success' => false, 'id' => $request->id, 'episode' => $episode]);
     }
 }

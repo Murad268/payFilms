@@ -28,52 +28,90 @@
             dots: true
         });
 
-        document.querySelector('.navbar__user__search').addEventListener('click', function() {
-            document.querySelector('.search__panel').classList.toggle('active');
-            if (document.querySelector('.navbar__user__search').querySelector('.fa').classList.contains('fa-search')) {
-                document.querySelector('.navbar__user__search').querySelector('.fa').classList.remove('fa-search');
-                document.querySelector('.navbar__user__search').querySelector('.fa').classList.add('fa-times');
-            } else {
-                document.querySelector('.navbar__user__search').querySelector('.fa').classList.add('fa-search');
-                document.querySelector('.navbar__user__search').querySelector('.fa').classList.remove('fa-times');
-            }
-        })
+        let navbarUserSearch = document.querySelector('.navbar__user__search');
+        if (navbarUserSearch) {
+            navbarUserSearch.addEventListener('click', function() {
+                let searchPanel = document.querySelector('.search__panel');
+                if (searchPanel) {
+                    searchPanel.classList.toggle('active');
+                    let navbarUserSearchIcon = navbarUserSearch.querySelector('.fa');
+                    if (navbarUserSearchIcon) {
+                        navbarUserSearchIcon.classList.toggle('fa-search');
+                        navbarUserSearchIcon.classList.toggle('fa-times');
+                    }
+                }
+            });
+        }
 
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('categories__btn')) {
-                document.querySelector('.categroies').classList.toggle('active')
-
+                let categories = document.querySelector('.categories');
+                if (categories) {
+                    categories.classList.toggle('active');
+                }
             }
-        })
-        document.querySelector('.categories__btn').addEventListener('click', function() {
-            alert()
-        })
+        });
 
-        document.querySelector('.navbar__hamburger').addEventListener('click', function(e) {
-            document.querySelector('.navbar__hamburger').classList.toggle('active')
-            document.querySelector('.navbar__mini').classList.toggle('active')
-        })
+        let categoriesBtn = document.querySelector('.categories__btn');
+        if (categoriesBtn) {
+            categoriesBtn.addEventListener('click', function() {
+                alert();
+            });
+        }
+
+        if (document.querySelector('.navbar__hamburger')) {
+            document.querySelector('.navbar__hamburger').addEventListener('click', function(e) {
+                let navbarHamburger = document.querySelector('.navbar__hamburger');
+                let navbarMini = document.querySelector('.navbar__mini');
+                if (navbarHamburger && navbarMini) {
+                    navbarHamburger.classList.toggle('active');
+                    navbarMini.classList.toggle('active');
+                }
+            });
+        }
 
 
         let getData = async (url) => {
             let res = await fetch(url);
-            return await res.json()
+            return await res.json();
         }
 
+        let seriesSelects = document.querySelectorAll('.serie_template__top select');
+        if (seriesSelects.length > 0) {
+            seriesSelects.forEach(select => {
+                select.addEventListener('change', () => {
+                    let season = document.querySelector('.season_movie');
+                    if (season) {
+                        getData(`http://127.0.0.1:8000/get_serie/${season.value}`).then(res => {
+                            let iframeSerie = document.querySelector('.iframe_documents');
+                            console.log(iframeSerie);
 
-        document.querySelectorAll('.serie_template__top select')?.forEach(select => {
-            select.addEventListener('change', () => {
-                let season = document.querySelector('.season_movie');
+                            if (iframeSerie) {
+                                iframeSerie.src = res.episode.link;
+                            }
+                        });
+                    }
+                });
+            });
+        }
 
-                getData(`http://127.0.0.1:8000/get_serie/${season.value}`).then(res => {
-                    console.log(res);
-                    document.querySelector('.iframe_serie').src = res.episode.link;
-                })
-            })
-        });
-
-
-
+        let sezonedSelects = document.querySelectorAll('.serie_template__top select');
+        if (sezonedSelects.length > 0) {
+            sezonedSelects.forEach(select => {
+                select.addEventListener('change', () => {
+                    let season = document.querySelector('.season_movie');
+                    if (season) {
+                        getData(`http://127.0.0.1:8000/get_documentals/${season.value}`).then(res => {
+                            console.log(res);
+                            let iframeSerie = document.querySelector('.iframe_serie');
+                            if (iframeSerie) {
+                                iframeSerie.src = res.episode.link;
+                            }
+                        });
+                    }
+                });
+            });
+        }
 
         $('#logout-link').click(function(e) {
             e.preventDefault();

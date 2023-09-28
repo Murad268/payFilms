@@ -134,13 +134,11 @@
                         <div class="episode-watch-wrap">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
-
-
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <ul>
                                                 <div class="serie_template">
-                                                    <form class="serie_template__top">
+                                                    <form class="serie_template__top sezoned">
                                                         <div>
                                                             <label for="">Sezonlar və bölümlər</label>
                                                             <select class="season_movie" name="season" id="">
@@ -157,7 +155,7 @@
                                                     </form>
 
                                                     <div class="serie_template__content">
-                                                        <iframe class="iframe_serie" width="560" height="315" src="{{$first_episode->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                        <iframe class="iframe_documents" width="560" height="315" src="{{$first_episode->link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                                     </div>
                                                 </div>
                                             </ul>
