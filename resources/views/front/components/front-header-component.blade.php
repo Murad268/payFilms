@@ -556,8 +556,6 @@
 
     <div class="navbar__mini">
         <ul>
-            <li><a href="">Əsas Səhifə</a></li>
-            <li><a href="">Ən Son Yüklənən Filmlər</a></li>
             <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
             <li><a href="">Sənədli Filmlər</a></li>
         </ul>
@@ -700,7 +698,6 @@
                                 </div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
-                                        <li><a href="{{route('front.index')}}">Əsas Səhİfə</a></li>
                                         <li><a href="{{route('front.last_uploads')}}">Son Yüklənən Fİlmlər</a></li>
                                         <li class="menu-item-has-children"><a href="#">Kateqorİyalar</a>
                                             <ul class="submenu">
@@ -710,6 +707,8 @@
                                             </ul>
                                         </li>
                                         <li><a href="{{route('front.series')}}">Seriallar</a></li>
+                                        <li><a href="{{route('front.documentals')}}">Sənədli Filmlər</a></li>
+
                                         <!-- <li><a href="tv-show">Kateqoriyalar</a></li> -->
                                         <!-- <li><a href="pricing">Pricing</a></li> -->
                                         <!-- <li class="menu-item-has-children"><a href="#">blog</a>
