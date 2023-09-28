@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Categories;
 use App\Models\create_mainUsers;
+use App\Models\HeaderSlider;
 use App\Models\Settings;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -37,6 +38,7 @@ class FrontHeaderComponent extends Component
                 return redirect()->route('front.login');
             }
         }
-        return view('front.components.front-header-component', compact('settings', 'categories'));
+        $sliders = HeaderSlider::all();
+        return view('front.components.front-header-component', compact('settings', 'categories', 'sliders'));
     }
 }

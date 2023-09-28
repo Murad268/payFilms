@@ -24,7 +24,7 @@ class HeaderSlidersController extends Controller
     public function headersliderstore(HeaderSliderRequest $request, $id, $type)
     {
 
-
+        $logo = $this->imageService->downloadImage($request, 'assets/front/images/', 'logo', 'notfound.png');
         $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img1', 'notfound.png');
         $result2 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img2', 'notfound.png');
         $result3 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img3', 'notfound.png');
@@ -35,6 +35,8 @@ class HeaderSlidersController extends Controller
         $data['max-width: 768px'] = $result2;
         $data['max-width: 1024px'] = $result3;
         $data['max-width: 1368px'] = $result4;
+        $data['logo'] = $logo;
+
         $data['default_img'] = $result5;
         if ($type == 'movies') {
             $data['movie_id'] = $id;
@@ -164,6 +166,8 @@ class HeaderSlidersController extends Controller
     public function changesliderimgupdate(HeaderSlidersUpdate $request, $id)
     {
         $slide = HeaderSlider::findOrFail($id);
+       
+        $logo = $this->imageService->updateImage($request, 'assets/front/images/', 'logo', $slide->logo);
 
         $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'img1', $slide->{'max-width: 400px'});
         $result2 = $this->imageService->updateImage($request, 'assets/front/images/', 'img2', $slide->{'max-width: 768px'});
@@ -179,6 +183,8 @@ class HeaderSlidersController extends Controller
         $data['max-width: 1024px'] = $result3;
         $data['max-width: 1368px'] = $result4;
         $data['default_img'] = $result5;
+        $data['logo'] = $logo;
+
         unset($data['img1']);
         unset($data['img2']);
         unset($data['img3']);

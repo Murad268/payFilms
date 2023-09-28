@@ -647,19 +647,20 @@
             </div>
         </nav>
         <div class="header__slider slider__main">
+            @foreach($sliders as $slider)
             <div class="header__slide">
                 <div class="overlay"></div>
                 <div class="header__slide__body">
                     <div class="header__slide__img">
-                        <img src="./microgain-9f959.appspot.png" alt="">
+                        <img src="{{asset('assets/front/images/'.$slider->logo)}}" alt="">
                     </div>
                     <div class="header__slide__category">
                         <span></span>
-                        <span>Program</span>
+                        <span>{{$slider->getCategory($slider)}} </span>
+
                     </div>
                     <div class="header__slide__desc">
-                        Bir Şifa Bağımlısının İtirafları
-                        Kızının çaresi olmayan hastalığına çözüm arayan bir anne, yogadan şaman ayinlerine, sülük tedavisinden ayuverdik beslenmeye kadar giden şifa arayışına çıkar. Ela Başak Atakan’ın
+                        {!! $slider->getName($slider) !!}
                     </div>
                     <div class="header__slide__bottom">
                         <a class="watch__now" href="">
@@ -670,103 +671,15 @@
                     </div>
                 </div>
                 <picture>
-                    <source media="(max-width: 400px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-400.jpg">
-                    <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-600.jpg">
-                    <source media="(max-width: 1024px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-960.jpg">
-                    <source media="(max-width: 1368px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1280.jpg">
-                    <img class="hero-bg" width="100%" src="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1920.jpg" alt="Parade’s End">
+                    <source media="(max-width: 400px)" srcset="{{asset('assets/front/images/'.$slider->{'max-width: 400px'})}}">
+                    <source media="(max-width: 768px)" srcset="{{asset('assets/front/images/'.$slider->{'max-width: 768px'})}}">
+                    <source media="(max-width: 1024px)" srcset="{{asset('assets/front/images/'.$slider->{'max-width: 1024px'})}}">
+                    <source media="(max-width: 1368px)" srcset="{{asset('assets/front/images/'.$slider->{'max-width: 1368px'})}}">
+                    <img class="hero-bg" width="100%" src="{{asset('assets/front/images/'.$slider->default_img)}}" alt="Parade’s End">
                 </picture>
             </div>
-            <div class="header__slide">
-                <div class="overlay"></div>
-                <div class="header__slide__body">
-                    <div class="header__slide__img">
-                        <img src="./microgain-9f959.appspot.png" alt="">
-                    </div>
-                    <div class="header__slide__category">
-                        <span></span>
-                        <span>Program</span>
-                    </div>
-                    <div class="header__slide__desc">
-                        Bir Şifa Bağımlısının İtirafları
-                        Kızının çaresi olmayan hastalığına çözüm arayan bir anne, yogadan şaman ayinlerine, sülük tedavisinden ayuverdik beslenmeye kadar giden şifa arayışına çıkar. Ela Başak Atakan’ın
-                    </div>
-                    <div class="header__slide__bottom">
-                        <a class="watch__now" href="">
-                            <div>
-                                <span>&#9658;</span><span>İndi İzlə</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <picture>
-                    <source media="(max-width: 400px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-400.jpg">
-                    <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-600.jpg">
-                    <source media="(max-width: 1024px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-960.jpg">
-                    <source media="(max-width: 1368px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1280.jpg">
-                    <img class="hero-bg" width="100%" src="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1920.jpg" alt="Parade’s End">
-                </picture>
-            </div>
-            <div class="header__slide">
-                <div class="overlay"></div>
-                <div class="header__slide__body">
-                    <div class="header__slide__img">
-                        <img src="./microgain-9f959.appspot.png" alt="">
-                    </div>
-                    <div class="header__slide__category">
-                        <span></span>
-                        <span>Program</span>
-                    </div>
-                    <div class="header__slide__desc">
-                        Bir Şifa Bağımlısının İtirafları
-                        Kızının çaresi olmayan hastalığına çözüm arayan bir anne, yogadan şaman ayinlerine, sülük tedavisinden ayuverdik beslenmeye kadar giden şifa arayışına çıkar. Ela Başak Atakan’ın
-                    </div>
-                    <div class="header__slide__bottom">
-                        <a class="watch__now" href="">
-                            <div>
-                                <span>&#9658;</span><span>İndi İzlə</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <picture>
-                    <source media="(max-width: 400px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-400.jpg">
-                    <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-600.jpg">
-                    <source media="(max-width: 1024px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-960.jpg">
-                    <source media="(max-width: 1368px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1280.jpg">
-                    <img class="hero-bg" width="100%" src="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1920.jpg" alt="Parade’s End">
-                </picture>
-            </div>
-            <div class="header__slide">
-                <div class="overlay"></div>
-                <div class="header__slide__body">
-                    <div class="header__slide__img">
-                        <img src="./microgain-9f959.appspot.png" alt="">
-                    </div>
-                    <div class="header__slide__category">
-                        <span></span>
-                        <span>Program</span>
-                    </div>
-                    <div class="header__slide__desc">
-                        Bir Şifa Bağımlısının İtirafları
-                        Kızının çaresi olmayan hastalığına çözüm arayan bir anne, yogadan şaman ayinlerine, sülük tedavisinden ayuverdik beslenmeye kadar giden şifa arayışına çıkar. Ela Başak Atakan’ın
-                    </div>
-                    <div class="header__slide__bottom">
-                        <a class="watch__now" href="">
-                            <div>
-                                <span>&#9658;</span><span>İndi İzlə</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <picture>
-                    <source media="(max-width: 400px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-400.jpg">
-                    <source media="(max-width: 768px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/vertical/HW24Vaod-600.jpg">
-                    <source media="(max-width: 1024px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-960.jpg">
-                    <source media="(max-width: 1368px)" srcset="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1280.jpg">
-                    <img class="hero-bg" width="100%" src="https://storage.googleapis.com/microgain-9f959.appspot.com/tr/images/titles/covers/horizontal/HW24Vaod-1920.jpg" alt="Parade’s End">
-                </picture>
-            </div>
+            @endforeach
+
         </div>
     </header>
 

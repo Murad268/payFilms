@@ -11,6 +11,23 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="exampleInputFile">Slider logo</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input name="logo" type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                </div>
+                                @error("img1")
+                                <div class="alert alert-danger mt-2" role="alert">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputFile">Şəkil 400px ekran üçün</label>
                                 <div class="input-group">
                                     <div class="custom-file">
