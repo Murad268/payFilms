@@ -12,6 +12,7 @@ use App\Models\OneSerieDocumentals;
 use App\Models\Series;
 use App\Services\DataServices;
 use App\Services\ImageService;
+use Exception;
 use Illuminate\Http\Request;
 
 class HeaderSlidersController extends Controller
@@ -22,6 +23,8 @@ class HeaderSlidersController extends Controller
 
     public function headersliderstore(HeaderSliderRequest $request, $id, $type)
     {
+
+
         $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img1', 'notfound.png');
         $result2 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img2', 'notfound.png');
         $result3 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img3', 'notfound.png');
@@ -35,14 +38,13 @@ class HeaderSlidersController extends Controller
         $data['default_img'] = $result5;
         if ($type == 'movies') {
             $data['movie_id'] = $id;
-        } else if ($type = 'series') {
+        } else if ($type == 'series') {
             $data['serie_id'] = $id;
-        } else if ($type = 'documentals') {
+        } else if ($type == 'documentals') {
             $data['documental_id'] = $id;
-        } else if ($type = 'oneseriesdocumentals') {
+        } else if ($type == 'oneseriesdocumentals') {
             $data['oneseriedocumentals_id'] = $id;
         }
-
         $slider = new HeaderSlider();
         $this->dataServices->save($slider, $data, 'create');
         return redirect()->route('admin.headersliders.index')->with('message', 'slide uğurla əlavə edildi');
@@ -55,39 +57,56 @@ class HeaderSlidersController extends Controller
         $movieSliders = HeaderSlider::where('movie_id', '!=', null)->get();
         $documentalSliders = HeaderSlider::where('documental_id', '!=', null)->get();
         $oneserieDocumentalsSliders = HeaderSlider::where('oneseriedocumentals_id', '!=', null)->get();
-
         $sliders = [];
-
         // Seriyalara aid sliderlar
-        foreach ($seriesSliders as $seriesSlider) {
-            $series = Series::findOrFail($seriesSlider->serie_id);
-            $series->type = "serial";
-            $series->slider_id = $seriesSlider->id; // Sliderın id-sini əlavə edirik
-            $sliders[] = $series;
+        if (count($seriesSliders) > 0) {
+
+            foreach ($seriesSliders as $seriesSlider) {
+
+                $series = Series::find($seriesSlider->serie_id);
+                if ($series) {
+                    $series->type = "serial";
+                    $series->slider_id = $seriesSlider->id; // Sliderın id-sini əlavə edirik
+                    $sliders[] = $series;
+                }
+            }
         }
 
         // Filmlərə aid sliderlar
-        foreach ($movieSliders as $movieSlider) {
-            $movie = Movies::findOrFail($movieSlider->movie_id);
-            $movie->type = "film";
-            $movie->slider_id = $movieSlider->id; // Sliderın id-sini əlavə edirik
-            $sliders[] = $movie;
+        if (count($movieSliders) > 0) {
+            foreach ($movieSliders as $movieSlider) {
+
+                $movie = Movies::find($movieSlider->movie_id);
+                if ($movie) {
+                    $movie->type = "film";
+                    $movie->slider_id = $movieSlider->id; // Sliderın id-sini əlavə edirik
+                    $sliders[] = $movie;
+                }
+            }
         }
 
         // Sənədli filmlərə aid sliderlar
-        foreach ($documentalSliders as $documentalSlider) {
-            $documental = Documentals::findOrFail($documentalSlider->documental_id);
-            $documental->type = "sənədli film";
-            $documental->slider_id = $documentalSlider->id; // Sliderın id-sini əlavə edirik
-            $sliders[] = $documental;
+        if (count($documentalSliders) > 0) {
+            foreach ($documentalSliders as $documentalSlider) {
+                $documental = Documentals::find($documentalSlider->documental_id);
+                if ($documental) {
+                    $documental->type = "sənədli film";
+                    $documental->slider_id = $documentalSlider->id; // Sliderın id-sini əlavə edirik
+                    $sliders[] = $documental;
+                }
+            }
         }
 
         // Bir bölümlük sənədli filmlərə aid sliderlar
-        foreach ($oneserieDocumentalsSliders as $oneserieDocumentalSlider) {
-            $documental = OneSerieDocumentals::findOrFail($oneserieDocumentalSlider->oneseriedocumentals_id);
-            $documental->type = "bir bölümlük sənədli film";
-            $documental->slider_id = $oneserieDocumentalSlider->id; // Sliderın id-sini əlavə edirik
-            $sliders[] = $documental;
+        if (count($oneserieDocumentalsSliders) > 0) {
+            foreach ($oneserieDocumentalsSliders as $oneserieDocumentalSlider) {
+                $documental = OneSerieDocumentals::find($oneserieDocumentalSlider->oneseriedocumentals_id);
+                if ($documental) {
+                    $documental->type = "bir bölümlük sənədli film";
+                    $documental->slider_id = $oneserieDocumentalSlider->id; // Sliderın id-sini əlavə edirik
+                    $sliders[] = $documental;
+                }
+            }
         }
 
 
@@ -117,7 +136,6 @@ class HeaderSlidersController extends Controller
         } else if ($type == "oneseriesdocumentals") {
             $moviesResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($search) . '%'])->where('status', 1)->paginate(10);
         }
-
         if ($moviesResults->count() < 1) {
             return redirect()->back()->with('errornotfound', "Axtarışa uyğun nəticə tapılmadı. Ya belə bir məlumat bazada yoxdur, ya da bu məlumatın bazadakı statusu aktiv deyil");
         }
@@ -139,7 +157,7 @@ class HeaderSlidersController extends Controller
     {
         $slider = HeaderSlider::findOrFail($id);
 
-        return view('admin.header_sliders.editheadersliderphotos', compact('slider'));
+        return view('admin.header_sliders.editheadersliderphotos', compact('slider', 'id'));
     }
 
 
@@ -167,5 +185,22 @@ class HeaderSlidersController extends Controller
         unset($data['img4']);
         $this->dataServices->save($slide, $data, 'update');
         return back();
+    }
+
+
+    public function headersliderdelete($id)
+    {
+        try {
+            $slide = HeaderSlider::findOrFail($id);
+            $slide->delete();
+            $this->imageService->deleteImage('assets/front/images/', $slide->{'max-width: 400px'});
+            $this->imageService->deleteImage('assets/front/images/', $slide->{'max-width: 768px'});
+            $this->imageService->deleteImage('assets/front/images/', $slide->{'max-width: 1024px'});
+            $this->imageService->deleteImage('assets/front/images/', $slide->{'max-width: 1368px'});
+            $this->imageService->deleteImage('assets/front/images/', $slide->{'default_img'});
+            return redirect()->route('admin.headersliders.index')->with('message', 'slide uğurla silindi');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }

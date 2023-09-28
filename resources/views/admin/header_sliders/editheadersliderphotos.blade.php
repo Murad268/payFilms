@@ -11,7 +11,6 @@
                     <form enctype="multipart/form-data" method="post" action="{{route('admin.headersliders.changesliderimgupdate', $slider->id)}}">
                         @csrf
                         <div class="card-body">
-                            <a href="" class="mb-3 btn btn-primary">Filmi dəyiş</a>
 
                             <div class="form-group">
                                 <label for="exampleInputFile">Şəkil 400px ekran üçün</label>
