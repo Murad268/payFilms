@@ -30,11 +30,7 @@
                         </div>
 
                         <div class="card-body">
-                            @if(session()->has('message'))
-                            <div class="alert alert-danger">
-                                {{ session('message') }}
-                            </div>
-                            @endif
+                           
                             @if(count($sliders) > 0)
                             @if(session()->has('message'))
                             <div class="alert alert-success">
@@ -48,7 +44,6 @@
                                         <th>Adı</th>
                                         <th>Tipi</th>
                                         <th>Kategoriyası</th>
-
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -59,7 +54,14 @@
                                         <td>{{$slider->name}}</td>
                                         <td>{{$slider->type}}</td>
                                         <td>{{$slider->movie_categories->name}}</td>
-
+                                        <td>
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="">
+                                                <a href="{{route('admin.headersliders.changesliderimg', $slider->slider_id)}}" class="btn btn-warning text-light">Slideri dəyiş</a>
+                                                @csrf
+                                                @method("delete")
+                                                <input class="btn btn-danger" value="sil" type="submit">
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

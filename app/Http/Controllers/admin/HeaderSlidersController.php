@@ -24,7 +24,7 @@ class HeaderSlidersController extends Controller
         $result1 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img1', 'notfound.png');
         $result2 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img2', 'notfound.png');
         $result3 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img3', 'notfound.png');
-        $result4 = $this->imageService->downloadImage($request, 'assets/front/images/', 'mimg4', 'notfound.png');
+        $result4 = $this->imageService->downloadImage($request, 'assets/front/images/', 'img4', 'notfound.png');
         $result5 = $this->imageService->downloadImage($request, 'assets/front/images/', 'default_img', 'notfound.png');
 
         $data['max-width: 400px'] = $result1;
@@ -49,42 +49,51 @@ class HeaderSlidersController extends Controller
 
     public function index()
     {
-        $seriesSlider = HeaderSlider::where('serie_id', '!=', null)->first();
-        $movieSlider = HeaderSlider::where('movie_id', '!=', null)->first();
-        $documentalSlider = HeaderSlider::where('documental_id', '!=', null)->first();
-        $oneserieDocumentals = HeaderSlider::where('oneseriedocumentals_id', '!=', null)->first();
+        // Sliderları məlumat bazasından əldə et
+        $seriesSliders = HeaderSlider::where('serie_id', '!=', null)->get();
+        $movieSliders = HeaderSlider::where('movie_id', '!=', null)->get();
+        $documentalSliders = HeaderSlider::where('documental_id', '!=', null)->get();
+        $oneserieDocumentalsSliders = HeaderSlider::where('oneseriedocumentals_id', '!=', null)->get();
 
         $sliders = [];
 
-
-        if ($seriesSlider) {
+        // Seriyalara aid sliderlar
+        foreach ($seriesSliders as $seriesSlider) {
             $series = Series::findOrFail($seriesSlider->serie_id);
             $series->type = "serial";
+            $series->slider_id = $seriesSlider->id; // Sliderın id-sini əlavə edirik
             $sliders[] = $series;
         }
 
-        if ($movieSlider) {
-            $movies = Movies::findOrFail($movieSlider->movie_id);
-            $movies->type = "film";
-            $sliders[] = $movies;
+        // Filmlərə aid sliderlar
+        foreach ($movieSliders as $movieSlider) {
+            $movie = Movies::findOrFail($movieSlider->movie_id);
+            $movie->type = "film";
+            $movie->slider_id = $movieSlider->id; // Sliderın id-sini əlavə edirik
+            $sliders[] = $movie;
         }
 
-        if ($documentalSlider) {
-            $documentals = Documentals::findOrFail($documentalSlider->documental_id);
-            $documentals->type = "sənədli film";
-            $sliders[] = $documentals;
+        // Sənədli filmlərə aid sliderlar
+        foreach ($documentalSliders as $documentalSlider) {
+            $documental = Documentals::findOrFail($documentalSlider->documental_id);
+            $documental->type = "sənədli film";
+            $documental->slider_id = $documentalSlider->id; // Sliderın id-sini əlavə edirik
+            $sliders[] = $documental;
         }
 
-        if ($oneserieDocumentals) {
-            $documentals = OneSerieDocumentals::findOrFail($oneserieDocumentals->oneseriedocumentals_id);
-            $documentals->type = "bir bölümlük sənədli film";
-            $sliders[] = $documentals;
+        // Bir bölümlük sənədli filmlərə aid sliderlar
+        foreach ($oneserieDocumentalsSliders as $oneserieDocumentalSlider) {
+            $documental = OneSerieDocumentals::findOrFail($oneserieDocumentalSlider->oneseriedocumentals_id);
+            $documental->type = "bir bölümlük sənədli film";
+            $documental->slider_id = $oneserieDocumentalSlider->id; // Sliderın id-sini əlavə edirik
+            $sliders[] = $documental;
         }
 
 
 
         return view('admin.header_sliders.index', compact('sliders'));
     }
+
 
 
     public function searchindex()
@@ -119,5 +128,16 @@ class HeaderSlidersController extends Controller
     public function headerslideradd($id, $type)
     {
         return view('admin.header_sliders.headerslidersadd', compact('id', 'type'));
+    }
+
+
+
+
+
+    public function changesliderimg($id)
+    {
+        $slider = HeaderSlider::findOrFail($id);
+
+        return view('admin.header_sliders.editheadersliderphotos', compact('slider'));
     }
 }

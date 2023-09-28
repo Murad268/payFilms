@@ -85,11 +85,15 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 
 
     Route::resource('/headersliders', HeaderSlidersController::class);
-    
+
     Route::get('/search', [HeaderSlidersController::class, 'searchindex'])->name('headersliders.searchindex');
     Route::get('/searchresult', [HeaderSlidersController::class, 'search'])->name('headersliders.searchresult');
     Route::get('/headerslideradd/{id}/{type}', [HeaderSlidersController::class, 'headerslideradd'])->name('headersliders.headerslideradd');
     Route::post('/headersliderstore/{id}/{type}', [HeaderSlidersController::class, 'headersliderstore'])->name('headersliders.headersliderstore');
+
+
+    Route::get('/changesliderimg/{id}', [HeaderSlidersController::class, 'changesliderimg'])->name('headersliders.changesliderimg');
+
 
 
 
