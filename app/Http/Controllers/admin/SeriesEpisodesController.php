@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\episodes\EpisodeRequest;
 use App\Models\SeriesEpisodes;
+use App\Models\Views;
 use Exception;
 
 class SeriesEpisodesController extends Controller

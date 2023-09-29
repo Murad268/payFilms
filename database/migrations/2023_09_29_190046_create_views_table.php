@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->string('movie_id');
-            $table->string('serie_id');
-            $table->string('documental_id');
-            $table->string('oneseriesdocumentals_id');
+            $table->string('movie_id')->nullable();
+            $table->string('serie_id')->nullable();;
+            $table->string('documental_id')->nullable();;
+            $table->string('oneseriesdocumentals_id')->nullable();
+            $table->bigInteger('count')->default(0);
+
             $table->timestamps();
         });
     }

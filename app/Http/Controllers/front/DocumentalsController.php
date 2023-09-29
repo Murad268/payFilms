@@ -7,6 +7,7 @@ use App\Models\Documentals;
 use App\Models\DocumentalsEpisodes;
 use App\Models\OneSerieDocumentals;
 use App\Models\Series;
+use App\Models\Views;
 use Illuminate\Http\Request;
 
 class DocumentalsController extends Controller
@@ -22,6 +23,15 @@ class DocumentalsController extends Controller
     public function documental($id)
     {
         $movie = OneSerieDocumentals::findOrFail($id);
+        $views = Views::where('oneseriesdocumentals_id', $id)->get();
+
+        if ($views->isEmpty()) {
+            Views::create(['oneseriesdocumentals_id' => $id, 'count' => 1]);
+        } else {
+            $view = $views->first();
+            $view->count += 1;
+            $view->save();
+        }
         return view('front.details', compact('movie'));
     }
 
@@ -31,6 +41,15 @@ class DocumentalsController extends Controller
     public function sezonedDocumental($id)
     {
         $movie = Documentals::findOrFail($id);
+        $views = Views::where('documental_id', $id)->get();
+
+        if ($views->isEmpty()) {
+            Views::create(['documental_id' => $id, 'count' => 1]);
+        } else {
+            $view = $views->first();
+            $view->count += 1;
+            $view->save();
+        }
         $seasonFirst = $movie->serie_seasons()->first();
         $serie_seasons = $movie->serie_seasons()->get();
         $first_season = $movie->serie_seasons()->first();
