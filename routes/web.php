@@ -19,6 +19,7 @@ use App\Http\Controllers\admin\SeriesController;
 use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
 use App\Http\Controllers\admin\UsersProcessController;
+use App\Http\Controllers\admin\ViewsController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\DocumentalsController;
 use App\Http\Controllers\front\HomeController;
@@ -163,6 +164,8 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
 
     Route::get('/add_cookie/{type}/{id}', [HomeController::class, 'add_cookie'])->name('add_cookie')->middleware('userlogin');
     Route::get('/remove_cookie/{type}/{id}', [HomeController::class, 'remove_cookie'])->name('remove_cookie')->middleware('userlogin');
+
+    Route::get('/views/{type}/{id}', [ViewsController::class, 'views'])->name('views')->middleware('userlogin');
 
 
 

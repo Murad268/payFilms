@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\Series;
 use App\Models\SeriesEpisodes;
+use App\Models\Views;
 use Illuminate\Http\Request;
 
 class SerieDetailsController extends Controller

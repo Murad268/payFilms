@@ -133,7 +133,7 @@
 
     <div class="movie__overlay">
         <i class="fa fa-window-close close" aria-hidden="true"></i>
-        <iframe width="560" height="315" src="{{$movie->link}}" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+        <iframe id="videoIframe" width="560" height="315" src="{{$movie->link}}" frameborder="0" allow="autoplay" allowfullscreen></iframe>
     </div>
 
 
