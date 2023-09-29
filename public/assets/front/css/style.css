@@ -3741,3 +3741,18 @@ label {
         font-size: 12px;
     }
 }
+
+
+.movie-item, .grid-item {
+    position: relative;
+}
+.add_fav, .remove_fav {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.remove_fav {
+    color: orange
+}

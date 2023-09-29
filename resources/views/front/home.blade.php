@@ -90,6 +90,7 @@
                                     <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                     <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                                 </div>
+
                                 <div class="bottom">
                                     <ul>
                                         <li><span class="quality">{{$movie->quality}}</span></li>
@@ -98,6 +99,13 @@
                                             <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
                                         </li>
                                     </ul>
+                                </div>
+                                <div class="movie__star">
+                                    @if($cats->checkFavorite('movies', $movie->id))
+                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                                    @else
+                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -113,6 +121,11 @@
                                     <h5 class="title"><a href="">{{$serie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                 </div>
                             </div>
+                            @if($cats->checkFavorite('series', $serie->id))
+                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            @else
+                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            @endif
                         </div>
                         @endforeach
 
@@ -135,6 +148,11 @@
                                         </li>
                                     </ul>
                                 </div>
+                                @if($cats->checkFavorite('documentals', $movie->id))
+                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                                @else
+                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                                @endif
                             </div>
                         </div>
                         @endforeach
@@ -150,6 +168,11 @@
                                     <h5 class="title"><a href="">{{$serie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                 </div>
                             </div>
+                            @if($cats->checkFavorite('oneseriedocumentals', $serie->id))
+                            <i data-id='{{$serie->id}}' type="oneseriedocumentals" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            @else
+                            <i data-id='{{$serie->id}}' type="oneseriedocumentals" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            @endif
                         </div>
                         @endforeach
                         <?php

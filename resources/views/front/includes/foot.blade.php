@@ -307,5 +307,29 @@
         });
 
 
+
+
+
+
+        document.addEventListener('click', (e) => {
+
+            if (e.target.classList.contains('add_fav')) {
+                e.target.classList.remove('add_fav')
+                e.target.classList.add('remove_fav')
+
+                let id = e.target.getAttribute('data-id');
+                let type = e.target.getAttribute('type');
+                getData(`http://127.0.0.1:8000/add_cookie/${type}/${id}`).then(res => console.log(res))
+            }
+        })
+
+
+
+
+
+
+
+
+
     });
 </script>

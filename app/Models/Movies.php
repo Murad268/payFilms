@@ -19,7 +19,13 @@ class Movies extends Model
     {
         return $this->hasOne(Categories::class, 'id', 'movie_category_id');
     }
-
+    public function checkFavorite($type, $id)
+    {
+        $favorite = Favorites::where('type', $type)->where('movie_id', $id)->get();
+        if ($favorite->count() > 0) {
+            return true;
+        } else false;
+    }
 
     public function movie_home_categories()
     {

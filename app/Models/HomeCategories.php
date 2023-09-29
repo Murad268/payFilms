@@ -39,7 +39,12 @@ class HomeCategories extends Model
         return $this->hasMany(OneSerieDocumentals::class, 'movie_home_category_id')->where('status', 1);;
     }
 
-
+    public function checkFavorite($type, $id) {
+        $favorite = Favorites::where('type', $type)->where('movie_id', $id)->get();
+        if($favorite->count() > 0) {
+            return true;
+        } else false;
+    }
 
     public static function boot()
     {

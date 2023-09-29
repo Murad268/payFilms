@@ -119,7 +119,11 @@
                                 <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                 <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                             </div>
-
+                            @if($movie->checkFavorite('series', $movie->id))
+                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            @else
+                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,13 @@ class Documentals extends Model
         return $this->hasOne(HomeCategories::class, 'id', 'movie_home_category_id');
     }
 
-
+    public function checkFavorite($type, $id)
+    {
+        $favorite = Favorites::where('type', $type)->where('movie_id', $id)->get();
+        if ($favorite->count() > 0) {
+            return true;
+        } else false;
+    }
     public function serie_seasons()
     {
         return $this->hasMany(DocumentalsSeasons::class, 'serie_id');

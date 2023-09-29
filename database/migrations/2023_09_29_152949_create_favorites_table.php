@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('header_sliders', function (Blueprint $table) {
-            $table->string('oneseriedocumentals_id')->nullable();
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->id();
+            $table->string('movie_id');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('header_sliders', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('favorites');
     }
 };

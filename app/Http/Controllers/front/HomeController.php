@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
 use App\Models\create_mainUsers;
+use App\Models\Favorites;
 use App\Models\HomeCategories;
 use App\Models\Settings;
 use Exception;
@@ -138,5 +139,17 @@ class HomeController extends Controller
                 return redirect()->route('front.index');
             }
         };
+    }
+
+
+
+    public function add_cookie(Request $request, $type, $id)
+    {
+        try {
+            Favorites::create(['type' => $type, 'movie_id' => $id]);
+            return response()->json(['success' => false, 'type' => $type, 'id' => $id]);
+        } catch (Exception $e) {
+            return response()->json(['error' => true]);
+        }
     }
 }

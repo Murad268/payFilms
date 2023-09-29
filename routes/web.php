@@ -155,6 +155,17 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
     Route::get('/serie/{id}', [SerieDetailsController::class, 'index'])->name('serie')->middleware('userlogin');
     Route::get('/get_serie/{id}', [SerieDetailsController::class, 'get_serie'])->name('get_serie')->middleware('userlogin');
     Route::get('/get_documentals/{id}', [DocumentalsController::class, 'get_documentals'])->name('get_documentals')->middleware('userlogin');
+
+
+
+
+
+
+    Route::get('/add_cookie/{type}/{id}', [HomeController::class, 'add_cookie'])->name('add_cookie')->middleware('userlogin');
+
+
+
+
 });
 
 
