@@ -102,9 +102,9 @@
                                 </div>
                                 <div class="movie__star">
                                     @if($cats->checkFavorite('movies', $movie->id))
-                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart active" aria-hidden="true"></i>
                                     @else
-                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                                    <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart " aria-hidden="true"></i>
                                     @endif
                                 </div>
                             </div>
@@ -122,9 +122,9 @@
                                 </div>
                             </div>
                             @if($cats->checkFavorite('series', $serie->id))
-                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart active" aria-hidden="true"></i>
                             @else
-                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            <i data-id='{{$serie->id}}' type="series" class="fa fa-heart " aria-hidden="true"></i>
                             @endif
                         </div>
                         @endforeach
@@ -149,9 +149,9 @@
                                     </ul>
                                 </div>
                                 @if($cats->checkFavorite('documentals', $movie->id))
-                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart active" aria-hidden="true"></i>
                                 @else
-                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                                <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart " aria-hidden="true"></i>
                                 @endif
                             </div>
                         </div>
@@ -161,20 +161,21 @@
                         @foreach($cats->oneseriedocumentals as $serie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href="{{route('front.serie', $serie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
+                                <a href="{{ route('front.serie', $serie->id) }}"><img class="home-movie-photo" src="{{ asset('assets/front/images/'.$serie->poster) }}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">
-                                    <h5 class="title"><a href="">{{$serie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                                    <h5 class="title"><a href="">{{ $serie->getTranslation('name', app()->getLocale()) }}</a></h5>
                                 </div>
                             </div>
                             @if($cats->checkFavorite('oneseriedocumentals', $serie->id))
-                            <i data-id='{{$serie->id}}' type="oneseriedocumentals" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            <i data-id="{{ $serie->id }}" type="oneseriedocumentals" class="fa fa-heart active" aria-hidden="true"></i>
                             @else
-                            <i data-id='{{$serie->id}}' type="oneseriedocumentals" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            <i data-id="{{ $serie->id }}" type="oneseriedocumentals" class="fa fa-heart " aria-hidden="true"></i>
                             @endif
                         </div>
                         @endforeach
+
                         <?php
                         // try {
                         //     $sql = $conn->query("SELECT * FROM movies ORDER BY id desc");

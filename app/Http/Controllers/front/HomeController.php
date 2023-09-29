@@ -147,9 +147,22 @@ class HomeController extends Controller
     {
         try {
             Favorites::create(['type' => $type, 'movie_id' => $id]);
-            return response()->json(['success' => false, 'type' => $type, 'id' => $id]);
+            return response()->json(['success' => true, 'type' => $type, 'id' => $id]);
         } catch (Exception $e) {
-            return response()->json(['error' => true]);
+            return response()->json(['error' => true, 'message' => $e->getMessage()]);
+        }
+    }
+
+
+
+    public function remove_cookie(Request $request, $type, $id)
+    {
+        try {
+            $favorite = Favorites::where('type', $type)->where('movie_id', $id)->first();
+            $favorite->delete();
+            return response()->json(['success' => true, 'type' => $type, 'id' => $favorite]);
+        } catch (Exception $e) {
+            return response()->json(['error' => true, 'message' => $e->getMessage()]);
         }
     }
 }

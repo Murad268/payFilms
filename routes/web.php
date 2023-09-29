@@ -162,6 +162,7 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
 
 
     Route::get('/add_cookie/{type}/{id}', [HomeController::class, 'add_cookie'])->name('add_cookie')->middleware('userlogin');
+    Route::get('/remove_cookie/{type}/{id}', [HomeController::class, 'remove_cookie'])->name('remove_cookie')->middleware('userlogin');
 
 
 

@@ -308,20 +308,49 @@
 
 
 
+        // // Tüm add_fav sınıfına sahip öğeleri seçin ve her birine bir olay dinleyici ekleyin
+        // document.querySelectorAll('.add_fav').forEach(function(element) {
+        //     element.addEventListener('click', function(e) {
+        //         e.target.classList.remove('add_fav');
+        //         e.target.classList.add('remove_fav');
+        //         let id = e.target.getAttribute('data-id');
+        //         let type = e.target.getAttribute('type');
+        //         getData(`http://127.0.0.1:8000/add_cookie/${type}/${id}`);
+        //     });
+        // });
+
+        // // Tüm remove_fav sınıfına sahip öğeleri seçin ve her birine bir olay dinleyici ekleyin
+        // document.querySelectorAll('.remove_fav').forEach(function(element) {
+        //     element.addEventListener('click', function(e) {
+        //         console.log(element)
+        //         e.target.classList.remove('remove_fav');
+        //         e.target.classList.add('add_fav');
+        //         let id = e.target.getAttribute('data-id');
+        //         let type = e.target.getAttribute('type');
+        //         getData(`http://127.0.0.1:8000/remove_cookie/${type}/${id}`);
+        //     });
+        // });
 
 
+        const addFav = async (url) => {
+            const res = await fetch(url);
+            return res.text()
+        }
 
-        document.addEventListener('click', (e) => {
-
-            if (e.target.classList.contains('add_fav')) {
-                e.target.classList.remove('add_fav')
-                e.target.classList.add('remove_fav')
-
-                let id = e.target.getAttribute('data-id');
-                let type = e.target.getAttribute('type');
-                getData(`http://127.0.0.1:8000/add_cookie/${type}/${id}`).then(res => console.log(res))
+        document.addEventListener('click', function(e) {
+            let id = e.target.getAttribute('data-id');
+            let type = e.target.getAttribute('type');
+            if (e.target.classList.contains('fa-heart')) {
+                if (e.target.classList.contains('active')) {
+                    addFav(`http://127.0.0.1:8000/remove_cookie/${type}/${id}`).then(res => console.log(res));
+                    e.target.classList.remove('active')
+                } else {
+                    addFav(`http://127.0.0.1:8000/add_cookie/${type}/${id}`).then(res => console.log(res));
+                    e.target.classList.add('active')
+                }
             }
         })
+
 
 
 

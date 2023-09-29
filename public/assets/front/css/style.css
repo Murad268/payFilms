@@ -3746,13 +3746,13 @@ label {
 .movie-item, .grid-item {
     position: relative;
 }
-.add_fav, .remove_fav {
+.fa-heart {
     position: absolute;
     top: 5px;
     right: 10px;
     cursor: pointer;
     font-size: 20px;
 }
-.remove_fav {
+.fa-heart.active {
     color: orange
 }
