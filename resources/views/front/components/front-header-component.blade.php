@@ -584,8 +584,8 @@
             <input type="search" placeholder="Açar sözü daxil edin" name="q" id="">
         </form>
         <div class="search__panel__popular">
+            @if($views->count() > 0)
             <h6>Ən çox izlənənlər</h6>
-
             <div class="search__panel__popular__wrapper">
                 @foreach($views as $view)
                 @foreach($view->movies as $item)
@@ -602,6 +602,7 @@
                 @endforeach
                 @endforeach
             </div>
+            @endif
         </div>
     </div>
     <header>
