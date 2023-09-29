@@ -4,7 +4,9 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use App\Models\Documentals;
 use App\Models\Movies;
+use App\Models\OneSerieDocumentals;
 use App\Models\Series;
 use Illuminate\Http\Request;
 
@@ -21,10 +23,13 @@ class MoviesController extends Controller
             return abort(404);
         }
         $seriesResults = Series::where('movie_category_id', $category->id)->paginate(10);
-
         $moviesResults = Movies::where('movie_category_id', $category->id)->paginate(10);
+        $documentalsResults = Documentals::where('movie_category_id', $category->id)->paginate(10);
+        $oneSeriesDocumentalsResults = OneSerieDocumentals::where('movie_category_id', $category->id)->paginate(10);
 
 
-        return view('front.movies', compact('category', 'moviesResults', 'seriesResults'));
+
+
+        return view('front.movies', compact('category', 'moviesResults', 'seriesResults', 'documentalsResults', 'oneSeriesDocumentalsResults'));
     }
 }

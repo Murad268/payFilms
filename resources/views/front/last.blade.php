@@ -128,6 +128,11 @@
                                     </li>
                                 </ul>
                             </div>
+                            @if($movie->checkFavorite('movies', $movie->id))
+                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart active" aria-hidden="true"></i>
+                            @else
+                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart" aria-hidden="true"></i>
+                            @endif
                         </div>
                     </div>
                 </div>

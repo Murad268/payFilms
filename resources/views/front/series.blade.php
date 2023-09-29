@@ -120,9 +120,9 @@
                                 <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                             </div>
                             @if($movie->checkFavorite('series', $movie->id))
-                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart active" aria-hidden="true"></i>
                             @else
-                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart" aria-hidden="true"></i>
                             @endif
                         </div>
                     </div>
