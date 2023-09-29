@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $homeCats = HomeCategories::with(['movies', 'series'])
+        $homeCats = HomeCategories::with(['movies', 'series', 'documentals', 'oneseriedocumentals'])
             ->where('status', 1)
             ->get();
         return view('front.home', compact('homeCats'));

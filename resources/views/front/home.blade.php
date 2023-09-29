@@ -115,6 +115,43 @@
                             </div>
                         </div>
                         @endforeach
+
+                        @foreach($cats->documentals as $movie)
+                        <div class="movie-item mb-50">
+                            <div class="movie-poster">
+                                <a href="{{route('front.movie', $movie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                                    <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                                </div>
+                                <div class="bottom">
+                                    <ul>
+                                        <li><span class="quality">{{$movie->quality}}</span></li>
+                                        <li>
+                                            <span class="duration"><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
+                                            <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                        @foreach($cats->oneseriedocumentals as $serie)
+                        <div class="movie-item mb-50">
+                            <div class="movie-poster">
+                                <a href="{{route('front.serie', $serie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a href="">{{$serie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                         <?php
                         // try {
                         //     $sql = $conn->query("SELECT * FROM movies ORDER BY id desc");

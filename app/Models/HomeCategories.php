@@ -29,7 +29,15 @@ class HomeCategories extends Model
         return $this->hasMany(Series::class, 'movie_home_category_id')->where('status', 1);;
     }
 
+    public function documentals()
+    {
+        return $this->hasMany(Documentals::class, 'movie_home_category_id')->where('status', 1);;
+    }
 
+    public function oneseriedocumentals()
+    {
+        return $this->hasMany(OneSerieDocumentals::class, 'movie_home_category_id')->where('status', 1);;
+    }
 
 
 
