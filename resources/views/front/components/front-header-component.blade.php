@@ -587,11 +587,20 @@
             <h6>Ən çox izlənənlər</h6>
 
             <div class="search__panel__popular__wrapper">
-                <div><img src="https://img.freepik.com/free-psd/real-estate-house-property-web-banner-template_120329-1947.jpg" alt=""></div>
-                <div><img src="https://img.freepik.com/free-psd/real-estate-house-property-web-banner-template_120329-1947.jpg" alt=""></div>
-                <div><img src="https://img.freepik.com/free-psd/real-estate-house-property-web-banner-template_120329-1947.jpg" alt=""></div>
-                <div><img src="https://img.freepik.com/free-psd/real-estate-house-property-web-banner-template_120329-1947.jpg" alt=""></div>
-                <div><img src="https://img.freepik.com/free-psd/real-estate-house-property-web-banner-template_120329-1947.jpg" alt=""></div>
+                @foreach($views as $view)
+                @foreach($view->movies as $item)
+                <a href="{{route('front.movie', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
+                @endforeach
+                @foreach($view->series as $item)
+                <a href="{{route('front.serie', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
+                @endforeach
+                @foreach($view->documentals as $item)
+                <a href="{{route('front.documentals', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
+                @endforeach
+                @foreach($view->oneseriesdocumentals as $item)
+                <a href="{{route('front.oneseriesdocumentals', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
+                @endforeach
+                @endforeach
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\create_mainUsers;
 use App\Models\HeaderSlider;
 use App\Models\Settings;
+use App\Models\Views;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cookie;
@@ -39,6 +40,11 @@ class FrontHeaderComponent extends Component
             }
         }
         $sliders = HeaderSlider::all();
-        return view('front.components.front-header-component', compact('settings', 'categories', 'sliders'));
+
+        $views = Views::orderBy('count')->paginate(10);
+
+
+
+        return view('front.components.front-header-component', compact('settings', 'categories', 'sliders', 'views'));
     }
 }
