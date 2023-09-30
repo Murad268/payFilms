@@ -10,7 +10,7 @@ class LastController extends Controller
 {
     public function last_uploads()
     {
-        $movies = Movies::orderBy('created_at', 'desc')->paginate(10);
+        $movies = Movies::orderBy('created_at', 'desc')->where('status', 1)->paginate(10);
         return view('front.last', compact('movies'));
     }
 }

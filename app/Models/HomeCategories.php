@@ -24,20 +24,39 @@ class HomeCategories extends Model
 
 
 
-    public function series()
-    {
-        return $this->hasMany(Series::class, 'movie_home_category_id')->where('status', 1);;
-    }
+
 
     public function documentals()
     {
-        return $this->hasMany(Documentals::class, 'movie_home_category_id')->where('status', 1);;
+        return $this->hasMany(Documentals::class, 'movie_home_category_id')->whereHas('serie_seasons.episodes')->where('status', 1);
     }
+
+
+
+
+
+
+
+
+    public function series()
+    {
+        return $this->hasMany(Series::class, 'movie_home_category_id')->whereHas('serie_seasons.episodes')->where('status', 1);
+    }
+
 
     public function oneseriedocumentals()
     {
-        return $this->hasMany(OneSerieDocumentals::class, 'movie_home_category_id')->where('status', 1);;
+        return $this->hasMany(OneSerieDocumentals::class, 'movie_home_category_id')->where('status', 1);
     }
+
+
+
+
+
+
+
+
+
 
     public function checkFavorite($type, $id) {
         $favorite = Favorites::where('type', $type)->where('movie_id', $id)->get();

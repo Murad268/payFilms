@@ -16,10 +16,10 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         $searchQuery = $request->input('q');
-        $moviesResults = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
-        $seriesResults = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
-        $documentalsResults = Documentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
-        $oneSeriesDocumentalsResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->paginate(10);
+        $moviesResults = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->where('status', 1)->paginate(10);
+        $seriesResults = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
+        $documentalsResults = Documentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
+        $oneSeriesDocumentalsResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->where('status', 1)->paginate(10);
 
         return view('front.search', ['oneSeriesDocumentalsResults' => $oneSeriesDocumentalsResults, "documentalsResults" => $documentalsResults, 'seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q]);
     }

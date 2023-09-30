@@ -14,8 +14,8 @@ class DocumentalsController extends Controller
 {
     public function documentals()
     {
-        $documentals = Documentals::paginate(10);
-        $oneseriesdocumentals = OneSerieDocumentals::paginate(10);
+        $documentals = Documentals::whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
+        $oneseriesdocumentals = OneSerieDocumentals::where('status', 1)->paginate(10);
         return view('front.documentals', compact('documentals', 'oneseriesdocumentals'));
     }
 
