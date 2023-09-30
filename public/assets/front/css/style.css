@@ -3789,3 +3789,6 @@ footer img, .details_banner img {
 body.active {
     overflow: hidden;
 }
+.remove_fav {
+    color: orange !important
+}

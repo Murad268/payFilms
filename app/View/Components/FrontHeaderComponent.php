@@ -38,13 +38,15 @@ class FrontHeaderComponent extends Component
 
                 return redirect()->route('front.login');
             }
+            $views = Views::orderBy('count')->paginate(10);
+
+            $sliders = HeaderSlider::all();
+
+
+            return view('front.components.front-header-component', compact('user', 'settings', 'categories', 'sliders', 'views'));
+        } else {
+            return redirect()->route('front.login');
+
         }
-        $sliders = HeaderSlider::all();
-
-        $views = Views::orderBy('count')->paginate(10);
-
-
-
-        return view('front.components.front-header-component', compact('user','settings', 'categories', 'sliders', 'views'));
     }
 }

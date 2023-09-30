@@ -7,8 +7,12 @@ use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
 use App\Models\Adver;
 use App\Models\create_mainUsers;
+use App\Models\Documentals;
 use App\Models\Favorites;
 use App\Models\HomeCategories;
+use App\Models\Movies;
+use App\Models\OneSerieDocumentals;
+use App\Models\Series;
 use App\Models\Settings;
 use Exception;
 use Illuminate\Http\Request;
@@ -158,7 +162,7 @@ class HomeController extends Controller
                     return redirect()->route('front.login');
                 }
             }
-            Favorites::create(['type' => $type, 'movie_id' => $id, 'user_id'=>$user->id]);
+            Favorites::create(['type' => $type, 'movie_id' => $id, 'user_id' => $user->id]);
 
             return response()->json(['success' => true, 'type' => $type, 'id' => $id]);
         } catch (Exception $e) {
@@ -174,17 +178,80 @@ class HomeController extends Controller
             if (Cookie::has('email')) {
                 $loginCookieValue = Cookie::get('email');
                 $user = create_mainUsers::where('email', $loginCookieValue)->first();
-                if ($user->isBlocked != 0 or $user->activationStatus != 1) {
-                    Cookie::queue(Cookie::make('email', "", -1));
-
+                if (!$user || $user->isBlocked != 0 || $user->activationStatus != 1) {
+                    // User not found or not eligible, clear the email cookie and redirect.
+                    Cookie::queue(Cookie::forget('email'));
                     return redirect()->route('front.login');
                 }
+
+                // User is eligible, proceed with deleting the favorite.
+                $favorite = Favorites::where('type', $type)
+                    ->where('movie_id', $id)
+                    ->where('user_id', $user->id)
+                    ->first();
+
+                if ($favorite) {
+                    $favorite->delete();
+                    return response()->json(['success' => true, 'type' => $favorite, 'id' => $id, 'user_id' => $user->id]);
+                } else {
+                    // The favorite doesn't exist, return an error.
+                    return response()->json(['error' => true, 'message' => 'Favorite not found.', 'TYPE'=>$type]);
+                }
+            } else {
+                // The 'email' cookie doesn't exist, return an error or handle as needed.
+                return response()->json(['error' => true, 'message' => 'Email cookie not found.']);
             }
-            $favorite = Favorites::where('type', $type)->where('movie_id', $id)->where('user_id', $user->id)->first();
-            $favorite->delete();
-            return response()->json(['success' => true, 'type' => $type, 'id' => $favorite, 'user_id' => $user->id]);
         } catch (Exception $e) {
             return response()->json(['error' => true, 'message' => $e->getMessage()]);
         }
+    }
+
+
+
+    public function favorites()
+    {
+        if (Cookie::has('email')) {
+            $loginCookieValue = Cookie::get('email');
+            $user = create_mainUsers::where('email', $loginCookieValue)->first();
+            if ($user->isBlocked != 0 or $user->activationStatus != 1) {
+                Cookie::queue(Cookie::make('email', "", -1));
+
+                return redirect()->route('front.login');
+            }
+        }
+        $series = Favorites::where('type', '=', 'series')->where('user_id', $user->id)->get();
+        $seriesIds = [];
+        foreach ($series as $serie) {
+            $serieFound = $serie->movie_id;
+            array_push($seriesIds, $serieFound);
+        }
+        $seriesResults = Series::whereIn('id', $seriesIds)->get();
+
+        $movies = Favorites::where('type', '=', 'movies')->where('user_id', $user->id)->get();
+        $moviesIds = [];
+        foreach ($movies as $movie) {
+            $serieFound = $movie->movie_id;
+            array_push($moviesIds, $serieFound);
+        }
+        $moviesResults = Movies::whereIn('id', $moviesIds)->get();
+
+        $documentals = Favorites::where('type', '=', 'documentals')->where('user_id', $user->id)->get();
+        $documentalsIds = [];
+        foreach ($documentals as $documental) {
+            $serieFound = $documental->movie_id;
+            array_push($documentalsIds, $serieFound);
+        }
+        $documentalsResults = Documentals::whereIn('id', $documentalsIds)->get();
+
+
+        $onseSeriesDocumentalsResults = Favorites::where('type', '=', 'oneseriedocumentals')->where('user_id', $user->id)->get();
+        $onseSeriesIds = [];
+        foreach ($onseSeriesDocumentalsResults as $documental) {
+            $serieFound = $documental->movie_id;
+            array_push($onseSeriesIds, $serieFound);
+        }
+        $onseSeriesDocumentalsResults = OneSerieDocumentals::whereIn('id', $onseSeriesIds)->get();
+
+        return view('front.favorites', compact('seriesResults', 'moviesResults', 'documentalsResults', 'onseSeriesDocumentalsResults'));
     }
 }

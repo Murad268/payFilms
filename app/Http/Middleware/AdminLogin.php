@@ -18,7 +18,7 @@ class AdminLogin
     {
         $login = Cookie::get('login');
         if (!$login) {
-            return redirect()->route('admin.login');
+            return redirect()->route('front.index');
         }
         return $next($request);
     }

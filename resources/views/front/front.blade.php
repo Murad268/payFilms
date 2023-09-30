@@ -1,7 +1,11 @@
 @include('front.includes.head')
 @section('title', "peroPlay")
-<body>
+
+<body style="background-color: #1C1F28;">
+    @if(Cookie::has('email'))
     <x-front-header-component />
+
+    @endif
 
     <!-- preloader -->
     <div id="preloader">

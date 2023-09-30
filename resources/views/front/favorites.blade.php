@@ -46,34 +46,14 @@
             /* Fare üzerine geldiğinde sayfa linklerinin arka plan rengi */
         }
     </style>
-    <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{asset('assets/front/images/'.$lastPhoto['img'])}}">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2 class="title">{{$q}}</h2>
-                        <!-- <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Movie</li>
-                            </ol>
-                        </nav> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb-area-end -->
+
 
     <!-- movie-area -->
 
-    @if(count($moviesResults) > 0)
+    @if($moviesResults->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
-                <img src="{{asset('assets/front/images/'.$first->banner)}}" alt="">
-            </a>
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -141,29 +121,17 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$moviesResults->links()}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </section>
     @endif
 
 
-    @if(count($seriesResults) > 0)
+    @if($seriesResults->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
-                <img src="{{asset('assets/front/images/'.$second->banner)}}" alt="">
-            </a>
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -215,35 +183,23 @@
                             @if($movie->checkFavorite('series', $movie->id))
                             <i data-id='{{$movie->id}}' type="series" class="fa fa-heart active" aria-hidden="true"></i>
                             @else
-                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart" aria-hidden="true"></i>
+                            <i data-id='{{$movie->id}}' type="series" class="fa fa-heart " aria-hidden="true"></i>
                             @endif
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$seriesResults->links()}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </section>
     @endif
 
-    @if(count($documentalsResults) > 0)
+    @if($documentalsResults->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
-                <img src="{{asset('assets/front/images/'.$third->banner)}}" alt="">
-            </a>
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -271,6 +227,8 @@
             </div>
             <div class="row tr-movie-active">
                 @foreach($documentalsResults as $movie)
+
+
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
                         <div class="movie-poster">
@@ -302,28 +260,16 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$documentalsResults->links()}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </section>
     @endif
 
-    @if(count($oneSeriesDocumentalsResults) > 0)
+    @if($onseSeriesDocumentalsResults->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
-                <img src="{{asset('assets/front/images/'.$fifty->banner)}}" alt="">
-            </a>
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -350,7 +296,7 @@
                 </div> -->
             </div>
             <div class="row tr-movie-active">
-                @foreach($oneSeriesDocumentalsResults as $movie)
+                @foreach($onseSeriesDocumentalsResults as $movie)
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
                         <div class="movie-poster">
@@ -382,17 +328,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$oneSeriesDocumentalsResults->links()}}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </section>

@@ -116,9 +116,9 @@
                             <li><a href="{{route('front.movie', $movie->id)}}" class="btn">Details</a></li>
                         </ul>
                         @if($movie->checkFavorite('movies', $movie->id))
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart active" aria-hidden="true"></i>
                         @else
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart" aria-hidden="true"></i>
                         @endif
                     </div>
                     <div class="movie-content">
@@ -212,9 +212,9 @@
                             <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                         </div>
                         @if($movie->checkFavorite('series', $movie->id))
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="series" class="fa fa-heart active" aria-hidden="true"></i>
                         @else
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="series" class="fa fa-heart" aria-hidden="true"></i>
                         @endif
                     </div>
                 </div>
@@ -292,9 +292,9 @@
                             <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                         </div>
                         @if($movie->checkFavorite('documentals', $movie->id))
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart active" aria-hidden="true"></i>
                         @else
-                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        <i data-id='{{$movie->id}}' type="documentals" class="fa fa-heart" aria-hidden="true"></i>
                         @endif
                     </div>
                 </div>
@@ -371,7 +371,7 @@
                             <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
                             <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
                         </div>
-                        @if($movie->checkFavorite('documentals', $movie->id))
+                        @if($movie->checkFavorite('oneseriesdocumentals', $movie->id))
                         <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart active" aria-hidden="true"></i>
                         @else
                         <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart" aria-hidden="true"></i>

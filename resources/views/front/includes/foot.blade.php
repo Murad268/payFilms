@@ -361,6 +361,7 @@
             let type = e.target.getAttribute('type');
             if (e.target.classList.contains('fa-heart')) {
                 if (e.target.classList.contains('active')) {
+                    console.log(1)
                     addFav(`http://127.0.0.1:8000/remove_cookie/${type}/${id}`).then(res => console.log(res));
                     e.target.classList.remove('active')
                 } else {
