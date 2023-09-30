@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-lg-7">
                         <a class="footer_banner" href="">
-                            <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                            <img src="{{asset('assets/front/images/'.$banner->banner)}}" alt="">
                         </a>
                     </div>
                     <div class="col-lg-2">

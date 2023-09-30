@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
+use App\Models\Adver;
 use App\Models\create_mainUsers;
 use App\Models\Favorites;
 use App\Models\HomeCategories;
@@ -38,10 +39,12 @@ class HomeController extends Controller
 
     public function index()
     {
+        $fixed = Adver::where('status', 1)->where('place', 'ana səhifə fixed reklamı')->first();
+
         $homeCats = HomeCategories::with(['movies', 'series', 'documentals', 'oneseriedocumentals'])
             ->where('status', 1)
             ->get();
-        return view('front.home', compact('homeCats'));
+        return view('front.home', compact('homeCats', 'fixed'));
     }
     public function login()
     {

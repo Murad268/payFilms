@@ -71,9 +71,9 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$first->banner)}}"" alt="">
             </a>
-            <div class="row align-items-end mb-60">
+            <div class=" row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
                         <!-- <span class="sub-title">ONLINE STREAMING</span> -->
@@ -97,60 +97,60 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
-            <div class="row tr-movie-active">
-                @foreach($moviesResults as $movie)
-                <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
-                    <div class="movie-item movie-item-three mb-50">
-                        <div class="movie-poster">
-                            <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
-                            <ul class="overlay-btn">
-                                <!-- <li class="rating">
+        </div>
+        <div class="row tr-movie-active">
+            @foreach($moviesResults as $movie)
+            <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
+                <div class="movie-item movie-item-three mb-50">
+                    <div class="movie-poster">
+                        <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
+                        <ul class="overlay-btn">
+                            <!-- <li class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </li> -->
-                                <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.movie', $movie->id)}}" class="btn">Details</a></li>
-                            </ul>
-                            @if($movie->checkFavorite('movies', $movie->id))
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
-                            @else
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
-                            @endif
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
-                                <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">{{$movie->quality}}</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
-                                        <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                            <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
+                            <li><a href="{{route('front.movie', $movie->id)}}" class="btn">Details</a></li>
+                        </ul>
+                        @if($movie->checkFavorite('movies', $movie->id))
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        @else
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        @endif
                     </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
+                    <div class="movie-content">
+                        <div class="top">
+                            <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                            <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                        </div>
+                        <div class="bottom">
                             <ul>
-                                {{$moviesResults->links()}}
+                                <li><span class="quality">{{$movie->quality}}</span></li>
+                                <li>
+                                    <span class="duration"><i class="far fa-clock"></i> {{$movie->length}} dəq</span>
+                                    <!-- <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span> -->
+                                </li>
                             </ul>
-                        </nav>
+                        </div>
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pagination-wrap mt-30">
+                    <nav>
+                        <ul>
+                            {{$moviesResults->links()}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>
@@ -161,9 +161,9 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$second->banner)}}"" alt="">
             </a>
-            <div class="row align-items-end mb-60">
+            <div class=" row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
                         <!-- <span class="sub-title">ONLINE STREAMING</span> -->
@@ -187,51 +187,51 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
-            <div class="row tr-movie-active">
-                @foreach($seriesResults as $movie)
-                <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
-                    <div class="movie-item movie-item-three mb-50">
-                        <div class="movie-poster">
-                            <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
-                            <ul class="overlay-btn">
-                                <!-- <li class="rating">
+        </div>
+        <div class="row tr-movie-active">
+            @foreach($seriesResults as $movie)
+            <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
+                <div class="movie-item movie-item-three mb-50">
+                    <div class="movie-poster">
+                        <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
+                        <ul class="overlay-btn">
+                            <!-- <li class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </li> -->
-                                <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.serie', $movie->id)}}" class="btn">Details</a></li>
-                            </ul>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
-                                <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
-                            </div>
-                            @if($movie->checkFavorite('series', $movie->id))
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
-                            @else
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
-                            @endif
-                        </div>
+                            <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
+                            <li><a href="{{route('front.serie', $movie->id)}}" class="btn">Details</a></li>
+                        </ul>
                     </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$seriesResults->links()}}
-                            </ul>
-                        </nav>
+                    <div class="movie-content">
+                        <div class="top">
+                            <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                            <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                        </div>
+                        @if($movie->checkFavorite('series', $movie->id))
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        @else
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pagination-wrap mt-30">
+                    <nav>
+                        <ul>
+                            {{$seriesResults->links()}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>
@@ -241,9 +241,9 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$third->banner)}}"" alt="">
             </a>
-            <div class="row align-items-end mb-60">
+            <div class=" row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
                         <!-- <span class="sub-title">ONLINE STREAMING</span> -->
@@ -267,51 +267,51 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
-            <div class="row tr-movie-active">
-                @foreach($documentalsResults as $movie)
-                <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
-                    <div class="movie-item movie-item-three mb-50">
-                        <div class="movie-poster">
-                            <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
-                            <ul class="overlay-btn">
-                                <!-- <li class="rating">
+        </div>
+        <div class="row tr-movie-active">
+            @foreach($documentalsResults as $movie)
+            <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
+                <div class="movie-item movie-item-three mb-50">
+                    <div class="movie-poster">
+                        <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
+                        <ul class="overlay-btn">
+                            <!-- <li class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </li> -->
-                                <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.sezonedDocumental', $movie->id)}}" class="btn">Details</a></li>
-                            </ul>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
-                                <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
-                            </div>
-                            @if($movie->checkFavorite('documentals', $movie->id))
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
-                            @else
-                            <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
-                            @endif
-                        </div>
+                            <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
+                            <li><a href="{{route('front.sezonedDocumental', $movie->id)}}" class="btn">Details</a></li>
+                        </ul>
                     </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$documentalsResults->links()}}
-                            </ul>
-                        </nav>
+                    <div class="movie-content">
+                        <div class="top">
+                            <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                            <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                        </div>
+                        @if($movie->checkFavorite('documentals', $movie->id))
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart remove_fav" aria-hidden="true"></i>
+                        @else
+                        <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart add_fav" aria-hidden="true"></i>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pagination-wrap mt-30">
+                    <nav>
+                        <ul>
+                            {{$documentalsResults->links()}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>
@@ -321,9 +321,9 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$fifty->banner)}}"" alt="">
             </a>
-            <div class="row align-items-end mb-60">
+            <div class=" row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
                         <!-- <span class="sub-title">ONLINE STREAMING</span> -->
@@ -347,51 +347,51 @@
                         </form>
                     </div>
                 </div> -->
-            </div>
-            <div class="row tr-movie-active">
-                @foreach($oneSeriesDocumentalsResults as $movie)
-                <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
-                    <div class="movie-item movie-item-three mb-50">
-                        <div class="movie-poster">
-                            <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
-                            <ul class="overlay-btn">
-                                <!-- <li class="rating">
+        </div>
+        <div class="row tr-movie-active">
+            @foreach($oneSeriesDocumentalsResults as $movie)
+            <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
+                <div class="movie-item movie-item-three mb-50">
+                    <div class="movie-poster">
+                        <img src="{{asset('assets/front/images/'.$movie->poster)}}" width="303" height="430" alt="">
+                        <ul class="overlay-btn">
+                            <!-- <li class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </li> -->
-                                <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.documental', $movie->id)}}" class="btn">Details</a></li>
-                            </ul>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
-                                <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
-                            </div>
-                            @if($movie->checkFavorite('documentals', $movie->id))
-                            <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart active" aria-hidden="true"></i>
-                            @else
-                            <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart" aria-hidden="true"></i>
-                            @endif
-                        </div>
+                            <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
+                            <li><a href="{{route('front.documental', $movie->id)}}" class="btn">Details</a></li>
+                        </ul>
                     </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="pagination-wrap mt-30">
-                        <nav>
-                            <ul>
-                                {{$oneSeriesDocumentalsResults->links()}}
-                            </ul>
-                        </nav>
+                    <div class="movie-content">
+                        <div class="top">
+                            <h5 class="title"><a href="">{{$movie->getTranslation('name', app()->getLocale()) }}</a></h5>
+                            <!-- <span class="date">{!! $movie->getTranslation('desc', app()->getLocale()) !!}</span> -->
+                        </div>
+                        @if($movie->checkFavorite('documentals', $movie->id))
+                        <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart active" aria-hidden="true"></i>
+                        @else
+                        <i data-id='{{$movie->id}}' type="oneseriesdocumentals" class="fa fa-heart" aria-hidden="true"></i>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="pagination-wrap mt-30">
+                    <nav>
+                        <ul>
+                            {{$oneSeriesDocumentalsResults->links()}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>

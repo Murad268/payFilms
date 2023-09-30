@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Adver;
 use App\Models\Settings;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -30,7 +31,7 @@ class FrontFooterComponent extends Component
             'twitter' => $settings->twitter,
             'logo' => $settings->logo,
         ];
-
-        return view('front.components.front-footer-component', compact('settingsData'));
+        $banner = Adver::where('status', 1)->where('place', 'footer reklamı')->first();
+        return view('front.components.front-footer-component', compact('settingsData', 'banner'));
     }
 }
