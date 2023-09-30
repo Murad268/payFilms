@@ -23,12 +23,27 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="card-body">
+                                <!-- Add the search input field here -->
+                                <div class="mb-3">
+                                    <form action="{{ route('admin.users.index') }}" method="GET">
+                                        <div class="input-group">
+                                            <input type="text" name="search" class="form-control" placeholder="Search users...">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                             @if($users->count() > 0)
                             @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}
                             </div>
                             @endif
+
+
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>

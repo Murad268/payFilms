@@ -55,6 +55,7 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.log
 Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, "index"])->name("index");
     Route::resource('/categories', CategoriesController::class);
+    
     Route::resource('/settings', SettingsController::class);
     Route::resource('/home-categories', HomeCategoriesController::class);
     Route::resource('/movies', MoviesController::class);

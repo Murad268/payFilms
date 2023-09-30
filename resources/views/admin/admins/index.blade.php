@@ -28,7 +28,22 @@
                             @endif
                         </div>
                         <div class="card-body">
+                            <div class="mb-3">
+                                <form method="GET" action="{{ route('admin.admins.index') }}">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Admin axtar...">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Rest of your table and content -->
+                        </div>
+                        <div class="card-body">
                             @if($admins->count() > 0)
+
+
                             @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}

@@ -17,7 +17,19 @@ class UsersProcessController extends Controller
             $loginCookieValue = $allCookies['login'];
             $admin = Admin::where('login', $loginCookieValue)->first();
         }
-        $users = create_mainUsers::paginate(10);
+
+        // Get the search query from the request
+        $searchQuery = $request->input('search');
+
+        // Query the users table with a search condition
+        $users = create_mainUsers::where(function ($query) use ($searchQuery) {
+            if (!empty($searchQuery)) {
+                $query->where('full_name', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('phone', 'like', '%' . $searchQuery . '%');
+            }
+        })->paginate(10);
+
         return view('admin.users.index', compact('users', 'admin'));
     }
 

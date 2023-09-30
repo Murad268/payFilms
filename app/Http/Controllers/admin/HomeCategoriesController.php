@@ -13,11 +13,24 @@ class HomeCategoriesController extends Controller
     public function __construct(private HomeCategoriesService $homeCategoriesService)
     {
     }
-    public function index()
+    public function index(Request $request)
     {
-        $categories = HomeCategories::paginate(10);
+        $query = HomeCategories::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('cat_name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $categories = $query->paginate(10);
+
         return view('admin.home_categories.index', compact('categories'));
     }
+
 
     public function create()
     {

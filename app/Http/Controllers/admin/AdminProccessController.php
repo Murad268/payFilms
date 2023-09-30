@@ -17,8 +17,19 @@ class AdminProccessController extends Controller
     }
     public function index(Request $request)
     {
-        $admins = Admin::paginate(10);
+        $query = Admin::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('surname', 'like', '%' . $search . '%')
+                ->orWhere('login', 'like', '%' . $search . '%');
+        }
+
+        $admins = $query->paginate(10);
         $allCookies = $request->cookies->all();
+
         if (isset($allCookies['login'])) {
             $loginCookieValue = $allCookies['login'];
             $admin = Admin::where('login', $loginCookieValue)->first();
@@ -27,6 +38,7 @@ class AdminProccessController extends Controller
             dd('Login cookie not found');
         }
     }
+
 
 
     public function create()

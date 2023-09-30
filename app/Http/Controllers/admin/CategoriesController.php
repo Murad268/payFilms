@@ -13,9 +13,21 @@ class CategoriesController extends Controller
     public function __construct(private CategoriesService $categoriesService)
     {
     }
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Categories::paginate(10);
+        $query = Categories::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $categories = $query->paginate(10);
+
         return view('admin.categories.index', compact('categories'));
     }
 
