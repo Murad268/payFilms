@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Documentals;
 use App\Models\DocumentalsEpisodes;
 use App\Models\OneSerieDocumentals;
+use App\Models\PagesPhotos;
 use App\Models\Series;
 use App\Models\Views;
 use Illuminate\Http\Request;
@@ -16,7 +17,9 @@ class DocumentalsController extends Controller
     {
         $documentals = Documentals::whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
         $oneseriesdocumentals = OneSerieDocumentals::where('status', 1)->paginate(10);
-        return view('front.documentals', compact('documentals', 'oneseriesdocumentals'));
+        $lastPhoto = PagesPhotos::where('page', 'sənədli filmlər səhvəsi')->first();
+
+        return view('front.documentals', compact('documentals', 'oneseriesdocumentals', 'lastPhoto'));
     }
 
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\HeaderSlidersController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\OneSerieDocumentalsController;
+use App\Http\Controllers\admin\PagesPhotosController;
 use App\Http\Controllers\admin\ScriptwriterController;
 use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
@@ -101,6 +102,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/headersliderdelete/{id}', [HeaderSlidersController::class, 'headersliderdelete'])->name('headersliders.headersliderdelete');
 
 
+    Route::resource('/pages_photos', PagesPhotosController::class);
 
 
 
@@ -164,11 +166,6 @@ Route::group(['prefix' => '', 'as' => 'front.'], function () {
 
     Route::get('/add_cookie/{type}/{id}', [HomeController::class, 'add_cookie'])->name('add_cookie')->middleware('userlogin');
     Route::get('/remove_cookie/{type}/{id}', [HomeController::class, 'remove_cookie'])->name('remove_cookie')->middleware('userlogin');
-
-
-
-
-
 });
 
 

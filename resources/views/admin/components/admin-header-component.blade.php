@@ -113,6 +113,16 @@
                         </p>
                     </a>
                 </li>
+
+
+                <li class="nav-item">
+                    <a href="{{route('admin.pages_photos.index')}}" class="nav-link">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Page fotoları
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\PagesPhotos;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -12,7 +13,9 @@ class MessagesController extends Controller
     public function index()
     {
         $settings = Settings::first();
-        return view('front.contact', compact('settings'));
+        $lastPhoto = PagesPhotos::where('page', 'əlaqə səhvəsi')->first();
+
+        return view('front.contact', compact('settings', 'lastPhoto'));
     }
 
 

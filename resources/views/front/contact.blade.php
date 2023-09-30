@@ -43,7 +43,7 @@
 <main>
 
     <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{asset('assets/front/img/bg/breadcrumb_bg.jpg')}}">
+    <section class="breadcrumb-area breadcrumb-bg" data-background="{{asset('assets/front/images/'.$lastPhoto->img)}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">

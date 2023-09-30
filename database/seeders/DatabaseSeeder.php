@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Settings::class,
             AdminDatasSeeder::class,
+            PagesPhotos::class
             // Diğer seeder'lar buraya eklenir
         ]);
         // \App\Models\User::factory(10)->create();
