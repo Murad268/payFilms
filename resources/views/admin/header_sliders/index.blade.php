@@ -52,7 +52,7 @@
                                         <td>{{$slider->type}}</td>
                                         <td>{{$slider->movie_categories->name}}</td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.headersliders.headersliderdelete', $slider->slider_id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.headersliders.headersliderdelete', $slider->slider_id)}}">
                                                 <a href="{{route('admin.headersliders.changesliderimg', $slider->slider_id)}}" class="btn btn-warning text-light">Sliderin şəkillərini dəyiş</a>
                                                 @csrf
                                                 <input class="btn btn-danger" value="sil" type="submit">

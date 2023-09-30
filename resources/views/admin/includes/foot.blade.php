@@ -107,6 +107,23 @@
     }
 
 
+    function deleteAdmin(event, text = false) {
+        event.preventDefault();
+        Swal.fire({
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Bu admin ilə əlaqədar bütün məlumatlar silinəcəkdir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, exit!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit();
+            }
+        });;
+    }
+
 
 
 
