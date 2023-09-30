@@ -52,8 +52,9 @@
     <!-- movie-details-area -->
     <section class="movie-details-area" data-background="{{asset('assets/front/img/bg/movie_details_bg.jpg')}}">
         <div class="container">
+            
             <div class="row align-items-center position-relative">
-                '<div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4">
                     <div class="movie-details-img">
                         <img src="{{asset('assets/front/images/'.$movie->poster)}}" alt="">
                         <a href="' . $result['video'] . '" class="popup-video"><img src="img/images/play_icon.png" alt=""></a>
@@ -96,6 +97,7 @@
 
     <section class="episode-area episode-bg" data-background="{{asset('assets/front/img/bg/episode_bg.jpg')}}">
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="movie-episode-wrap">

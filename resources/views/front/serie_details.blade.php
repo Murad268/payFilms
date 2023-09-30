@@ -84,6 +84,9 @@
     <!-- movie-details-area -->
     <section class="movie-details-area" data-background="{{asset('assets/front/img/bg/movie_details_bg.jpg')}}">
         <div class="container">
+            <a class="details_banner" href="">
+                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+            </a>
             <div class="row align-items-center position-relative">
                 '<div class="col-xl-3 col-lg-4">
                     <div class="movie-details-img">

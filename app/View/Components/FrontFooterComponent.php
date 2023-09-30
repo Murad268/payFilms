@@ -28,6 +28,7 @@ class FrontFooterComponent extends Component
             'instagram' => $settings->instagram,
             'linkedin' => $settings->linkedin,
             'twitter' => $settings->twitter,
+            'logo' => $settings->logo,
         ];
 
         return view('front.components.front-footer-component', compact('settingsData'));

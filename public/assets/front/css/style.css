@@ -3756,3 +3756,18 @@ label {
 .fa-heart.active {
     color: orange
 }
+footer img, .details_banner img {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+}
+.footer_banner {
+    display: block;
+    height: 130px
+}
+
+.details_banner {
+    display: block;
+    height: 180px;
+    margin-bottom: 30px;
+}

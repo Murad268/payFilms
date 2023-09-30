@@ -5,10 +5,15 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="footer-logo">
-                            <a href="index.php"><img src="img/logo/" alt=""></a>
+                            <a href="{{route('front.index')}}"><img src="{{asset('assets/front/icons/'.$settingsData['logo'])}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-7">
+                        <a class="footer_banner" href="">
+                            <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-2">
                         <div class="footer-menu">
                             <nav>
                                 <div class="footer-social">
