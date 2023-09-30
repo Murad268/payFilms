@@ -126,6 +126,40 @@
 
 
 
+    function deleteSerie(event, text = false) {
+        event.preventDefault();
+        Swal.fire({
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Əlaqədar bütün sezonlar və bölümlər silinəcəkdir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, exit!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit();
+            }
+        });;
+    }
+
+    function deleteSeason(event, text = false) {
+        event.preventDefault();
+        Swal.fire({
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Əlaqədar bütün bölümlər silinəcəkdir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, exit!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit();
+            }
+        });;
+    }
+
 
     ClassicEditor
         .create(document.querySelector('#editor'))

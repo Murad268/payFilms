@@ -47,4 +47,20 @@ class Documentals extends Model
     {
         return $this->hasMany(DocumentalsSeasons::class, 'serie_id');
     }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($series) {
+            $seasons = $series->serie_seasons;
+
+            foreach ($seasons as $season) {
+                $season->episodes()->delete();
+            }
+
+            $series->serie_seasons()->delete();
+        });
+    }
 }

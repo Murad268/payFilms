@@ -87,7 +87,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.documentals.destroy', $serie->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteSerie(event)" class="mt-2" method="post" action="{{route('admin.documentals.destroy', $serie->id)}}">
                                                 <a href="{{route('admin.documentals.edit', $serie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                                 @csrf
                                                 @method("delete")

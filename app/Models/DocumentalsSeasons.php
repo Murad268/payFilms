@@ -21,4 +21,13 @@ class DocumentalsSeasons extends Model
     {
         return $this->hasMany(DocumentalsEpisodes::class, 'season_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($movies) {
+            $movies->episodes()->delete();
+        });
+    }
 }

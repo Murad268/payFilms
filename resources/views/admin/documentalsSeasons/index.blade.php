@@ -44,7 +44,7 @@
                                             <a href="{{route('admin.seasons.documentalsEpisodes.index', ['id' => $season->id,'serie_id' => $serie_id])}}" style="width: max-content" class="mt-2 btn btn-primary">epizodları gör</a>
                                         </td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.documentals.seasons.destroy', $season->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteSeason(event)" class="mt-2" method="post" action="{{route('admin.documentals.seasons.destroy', $season->id)}}">
                                                 <a href="{{route('admin.seasons.documentals.edit', $season->id)}}" class="btn btn-warning text-light">Sezonu dəyiş</a>
                                                 @csrf
                                                 <input class="btn btn-danger" value="sil" type="submit">

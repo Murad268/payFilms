@@ -18,4 +18,13 @@ class Seasons extends Model
     public function episodes() {
         return $this->hasMany(SeriesEpisodes::class, 'season_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($movies) {
+            $movies->episodes()->delete();
+        });
+    }
 }
