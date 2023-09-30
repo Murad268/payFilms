@@ -28,7 +28,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.settings.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa fa-cog" aria-hidden="true"></i>
                         <p>
                             Tənzimləmələr
                         </p>

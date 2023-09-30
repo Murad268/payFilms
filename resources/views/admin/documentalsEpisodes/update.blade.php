@@ -52,9 +52,17 @@
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Epizodun keyfiyyəti:</label>
-                                <select name="quality" id="quality" class="form-control">
-                                    <option value="HD" {{ old('quality', $episode->quality) === 'HD' ? 'selected' : '' }}>HD</option>
-                                    <option value="4k" {{ old('quality', $episode->quality) === '4k' ? 'selected' : '' }}>4k</option>
+
+
+                                <select name="quality" id="" class="form-control">
+                                    <option value="SD" {{ old('quality',$episode->quality) === 'SD' ? 'selected' : '' }}>SD (Standard Definition)</option>
+                                    <option value="HD" {{ old('quality',$episode->quality) === 'HD' ? 'selected' : '' }}>HD (High Definition)</option>
+                                    <option value="4K" {{ old('quality',$episode->quality) === '4K' ? 'selected' : '' }}>Ultra HD (UHD) or 4K</option>
+                                    <option value="8K" {{ old('quality',$episode->quality) === '8k' ? 'selected' : '' }}>8K</option>
+                                    <option value="HDR" {{ old('quality',$episode->quality) === 'HDR' ? 'selected' : '' }}>HDR (High Dynamic Range)</option>
+                                    <option value="2K" {{ old('quality',$episode->quality) === '2K' ? 'selected' : '' }}>2K (Digital Cinema Resolution):</option>
+                                    <option value="3D" {{ old('quality',$episode->quality) === '3D' ? 'selected' : '' }}>3D</option>
+                                    <option value="360-Degree Video" {{ old('quality') === '360-Degree Video' ? 'selected' : '' }}>360-Degree Video</option>
                                 </select>
                             </div>
                             @error("quality")

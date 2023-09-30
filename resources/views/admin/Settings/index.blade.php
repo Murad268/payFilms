@@ -47,7 +47,7 @@
                                                 <a target="_blank" href="{{asset('assets/front/icons/'.$setting->icon)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/icons/'.$setting->icon)}}" alt=""></a>
                                             </td>
                                             <td>
-                                                <a target="_blank" href="{{asset('assets/front/icons/'.$setting->logo)}}"><img style="width: 50px; height: 50px" src="{{asset('assets/front/icons/'.$setting->logo)}}" alt=""></a>
+                                                <a target="_blank" href="{{asset('assets/front/icons/'.$setting->logo)}}"><img style="width: 150px; height: 50px" src="{{asset('assets/front/icons/'.$setting->logo)}}" alt=""></a>
                                             </td>
                                             <td>{{ $setting->getTranslation('title', app()->getLocale()) }}</td>
                                             <td>{{$setting->phone}}</td>
