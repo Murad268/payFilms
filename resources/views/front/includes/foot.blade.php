@@ -45,11 +45,32 @@
 
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('categories__btn')) {
-
                 let categories = document.querySelector('.categroies');
                 categories.classList.toggle('active');
             }
         });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('cat_exit_times')) {
+                let categories = document.querySelector('.categroies');
+                categories.classList.toggle('active');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('categories__btn__mini')) {
+
+                let categories = document.querySelector('.categroies');
+                let navbar__mini = document.querySelector('.navbar__mini');
+
+                categories.classList.add('active');
+                navbar__mini.classList.remove('active');
+
+                console.log(categories)
+
+            }
+        });
+
 
         // let categoriesBtn = document.querySelector('.categories__btn');
         // if (categoriesBtn) {

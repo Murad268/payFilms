@@ -303,7 +303,7 @@
             top: 0;
             left: 0;
             background: rgba(0, 0, 0, 0.9);
-            z-index: 19;
+            z-index: 190;
             font-family: 'Mooli', sans-serif;
         }
 
@@ -565,11 +565,27 @@
                 padding-bottom: 10px;
             }
         }
+
+        .categroies_block {
+            z-index: 3000
+        }
+
+        .categroies_block ul {
+            position: relative;
+        }
+
+        .categroies_block .cat_exit {
+            position: absolute;
+            font-size: 30px;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
     </style>
 
     <div class="navbar__mini">
         <ul>
-            <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
+            <li class=""><a class="categories__btn categories__btn__mini">Kateqoriyalar</a></li>
             <li><a href="">Sənədli Filmlər</a></li>
         </ul>
         <a href="{{route('front.account')}}" class="navbar__mini__profile">
@@ -583,7 +599,10 @@
             <li><a href="{{route('front.account.logout')}}">Çıxış et</a></li>
         </ul>
     </div>
-    <div class="categroies">
+    <div class="categroies categroies_block">
+        <div class="cat_exit">
+            <i class="fa fa-times cat_exit_times" aria-hidden="true"></i>
+        </div>
         <ul>
             @foreach($categories as $category)
             <li><a href="{{route('front.movies', $category->slug)}}">{{ $category->getTranslation('name', app()->getLocale()) }}</a></li>
