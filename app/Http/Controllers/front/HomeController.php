@@ -149,7 +149,17 @@ class HomeController extends Controller
     public function add_cookie(Request $request, $type, $id)
     {
         try {
-            Favorites::create(['type' => $type, 'movie_id' => $id]);
+            if (Cookie::has('email')) {
+                $loginCookieValue = Cookie::get('email');
+                $user = create_mainUsers::where('email', $loginCookieValue)->first();
+                if ($user->isBlocked != 0 or $user->activationStatus != 1) {
+                    Cookie::queue(Cookie::make('email', "", -1));
+
+                    return redirect()->route('front.login');
+                }
+            }
+            Favorites::create(['type' => $type, 'movie_id' => $id, 'user_id'=>$user->id]);
+
             return response()->json(['success' => true, 'type' => $type, 'id' => $id]);
         } catch (Exception $e) {
             return response()->json(['error' => true, 'message' => $e->getMessage()]);
@@ -161,9 +171,18 @@ class HomeController extends Controller
     public function remove_cookie(Request $request, $type, $id)
     {
         try {
-            $favorite = Favorites::where('type', $type)->where('movie_id', $id)->first();
+            if (Cookie::has('email')) {
+                $loginCookieValue = Cookie::get('email');
+                $user = create_mainUsers::where('email', $loginCookieValue)->first();
+                if ($user->isBlocked != 0 or $user->activationStatus != 1) {
+                    Cookie::queue(Cookie::make('email', "", -1));
+
+                    return redirect()->route('front.login');
+                }
+            }
+            $favorite = Favorites::where('type', $type)->where('movie_id', $id)->where('user_id', $user->id)->first();
             $favorite->delete();
-            return response()->json(['success' => true, 'type' => $type, 'id' => $favorite]);
+            return response()->json(['success' => true, 'type' => $type, 'id' => $favorite, 'user_id' => $user->id]);
         } catch (Exception $e) {
             return response()->json(['error' => true, 'message' => $e->getMessage()]);
         }

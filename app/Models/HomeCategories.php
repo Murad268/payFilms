@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cookie;
 use Spatie\Translatable\HasTranslations;
 
 class HomeCategories extends Model
@@ -59,7 +60,16 @@ class HomeCategories extends Model
 
 
     public function checkFavorite($type, $id) {
-        $favorite = Favorites::where('type', $type)->where('movie_id', $id)->get();
+        if (Cookie::has('email')) {
+            $loginCookieValue = Cookie::get('email');
+            $user = create_mainUsers::where('email', $loginCookieValue)->first();
+            if ($user->isBlocked != 0 or $user->activationStatus != 1) {
+                Cookie::queue(Cookie::make('email', "", -1));
+
+                return redirect()->route('front.login');
+            }
+        }
+        $favorite = Favorites::where('type', $type)->where('movie_id', $id)->where('user_id', $user->id)->get();
         if($favorite->count() > 0) {
             return true;
         } else false;
