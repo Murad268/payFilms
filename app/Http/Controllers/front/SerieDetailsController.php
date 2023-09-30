@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adver;
 use App\Models\Series;
 use App\Models\SeriesEpisodes;
 use App\Models\Views;
@@ -13,6 +14,7 @@ class SerieDetailsController extends Controller
     public function index($id)
     {
         $views = Views::where('serie_id', $id)->get();
+        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
         if ($views->isEmpty()) {
             Views::create(['serie_id' => $id, 'count' => 1]);
@@ -29,7 +31,7 @@ class SerieDetailsController extends Controller
         $first_season = $movie->serie_seasons()->first();
 
         $first_episode = $first_season->episodes->first();
-        return view('front.serie_details', compact('movie', 'seasonFirst', 'serie_seasons', 'first_episode'));
+        return view('front.serie_details', compact('movie', 'firsl','seasonFirst', 'serie_seasons', 'first_episode'));
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adver;
 use App\Models\Movies;
 use App\Models\Views;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ class MovieDeatilController extends Controller
 {
     public function index($id)
     {
+        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
+
         $movie = Movies::findOrFail($id);
         $views = Views::where('movie_id', $id)->get();
 
@@ -21,6 +24,6 @@ class MovieDeatilController extends Controller
             $view->count += 1;
             $view->save();
         }
-        return view('front.details', compact('movie'));
+        return view('front.details', compact('movie', 'firsl'));
     }
 }

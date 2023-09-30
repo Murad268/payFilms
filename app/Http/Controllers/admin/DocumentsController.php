@@ -21,7 +21,6 @@ class DocumentsController extends Controller
     {
         $query = Documentals::query();
 
-        // Check if a search query is provided
         if ($request->has('search')) {
             $searchTerm = $request->input('search');
             $query->where(function ($q) use ($searchTerm) {

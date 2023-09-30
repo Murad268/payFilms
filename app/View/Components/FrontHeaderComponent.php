@@ -46,12 +46,12 @@ class FrontHeaderComponent extends Component
 
             $sliders = HeaderSlider::all();
 
-            $moviesCount = Movies::count();
-            $seriesCount = Series::count();
-            $documentalsCount = Documentals::count();
-            $oneSeriesDocumentalsCount = OneSerieDocumentals::count();
-            $cateoriesCount = Categories::count();
-            return view('front.components.front-header-component', compact('cateoriesCount','moviesCount', 'seriesCount', 'oneSeriesDocumentalsCount', 'documentalsCount', 'user', 'settings', 'categories', 'sliders', 'views'));
+            $moviesCount = Movies::where('status', 1)->count();
+            $seriesCount = Series::whereHas('serie_seasons.episodes')->where('status', 1)->count();
+            $documentalsCount = Documentals::whereHas('serie_seasons.episodes')->where('status', 1)->count();
+            $oneSeriesDocumentalsCount = OneSerieDocumentals::where('status', 1)->count();
+            $cateoriesCount = Categories::where('status', 1)->count();
+            return view('front.components.front-header-component', compact('cateoriesCount', 'moviesCount', 'seriesCount', 'oneSeriesDocumentalsCount', 'documentalsCount', 'user', 'settings', 'categories', 'sliders', 'views'));
         } else {
             return redirect()->route('front.login');
         }

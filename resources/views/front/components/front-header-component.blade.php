@@ -623,7 +623,6 @@
         @if($cateoriesCount > 0)
         @if(($seriesCount > 0) || ($moviesCount > 0) || ($documentalsCount>0) || ($oneSeriesDocumentalsCount>0))
         <li class=""><a class="categories__btn categories__btn__mini">Kateqoriyalar</a></li>
-
         @endif
         @endif
     </ul>

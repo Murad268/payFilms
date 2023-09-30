@@ -30,6 +30,9 @@ class Adver extends Seeder
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi -  filmlər bölməsi'],
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi - seriallar bölməsi'],
 
+            ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'detallar'],
+
+
 
 
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'footer reklamı'],

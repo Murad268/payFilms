@@ -85,7 +85,7 @@
     <section class="movie-details-area" data-background="{{asset('assets/front/img/bg/movie_details_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$firsl->banner)}}" alt="">
             </a>
             <div class="row align-items-center position-relative">
                 '<div class="col-xl-3 col-lg-4">
@@ -112,6 +112,11 @@
                                 </li> -->
                             </ul>
                         </div>
+                        <p>Rejissorlar: {{$movie->directors}}</p>
+                        <p>Aktyorlar: {{$movie->actors}}</p>
+                        <p>Ölkələr: {{$movie->countries}}</p>
+                        <p>Ölkələr: {{$movie->scriptwriters}}</p>
+                        <p class="mb-5">Ssenaristlər: {{$movie->scriptwriters}}</p>
                         <p>{!! $movie->desc !!}</p>
                         <div class="movie-details-prime">
                             <ul>

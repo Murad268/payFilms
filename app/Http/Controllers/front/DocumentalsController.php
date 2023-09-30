@@ -29,6 +29,7 @@ class DocumentalsController extends Controller
     {
         $movie = OneSerieDocumentals::findOrFail($id);
         $views = Views::where('oneseriesdocumentals_id', $id)->get();
+        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
         if ($views->isEmpty()) {
             Views::create(['oneseriesdocumentals_id' => $id, 'count' => 1]);
@@ -37,7 +38,7 @@ class DocumentalsController extends Controller
             $view->count += 1;
             $view->save();
         }
-        return view('front.details', compact('movie'));
+        return view('front.details', compact('movie','firsl'));
     }
 
 
@@ -47,6 +48,7 @@ class DocumentalsController extends Controller
     {
         $movie = Documentals::findOrFail($id);
         $views = Views::where('documental_id', $id)->get();
+        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
         if ($views->isEmpty()) {
             Views::create(['documental_id' => $id, 'count' => 1]);
@@ -60,7 +62,7 @@ class DocumentalsController extends Controller
         $first_season = $movie->serie_seasons()->first();
 
         $first_episode = $first_season->episodes->first();
-        return view('front.serie_details', compact('movie', 'seasonFirst', 'serie_seasons', 'first_episode'));
+        return view('front.serie_details', compact('movie', 'firsl', 'seasonFirst', 'serie_seasons', 'first_episode'));
     }
 
 
