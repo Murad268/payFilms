@@ -16,13 +16,25 @@ class OneSerieDocumentalsController extends Controller
     public function __construct(private OneSerieDocumentalsService $movieService)
     {
     }
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $movies = OneSerieDocumentals::paginate(10);
+        $query = OneSerieDocumentals::query();
 
-        return view('admin.oneseriedocumentals.index', compact("movies"));
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $movies = $query->paginate(10);
+
+        return view('admin.oneseriedocumentals.index', compact('movies'));
     }
-
 
     public function create()
     {
