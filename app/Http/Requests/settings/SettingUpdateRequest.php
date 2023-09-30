@@ -27,19 +27,17 @@ class SettingUpdateRequest extends FormRequest
             $rules["desc.$lang"] = 'required|string';
             $rules["copywrite.$lang"] = 'required|string';
             $rules["keywords.$lang"] = 'required|string';
+            $rules["address.$lang"] = 'required|string';
         }
 
         $rules['icon'] = 'image|mimes:jpeg,jpg,png|max:2048';
         $rules['logo'] = 'image|mimes:jpeg,jpg,png|max:2048';
+        $rules['email'] = 'required|email';
         $rules['phone'] = 'required';
         $rules['facebook'] = 'required';
         $rules['instagram'] = 'required';
         $rules['linkedin'] = 'required';
         $rules['twitter'] = 'required';
-
-
-
-
 
         return $rules;
     }
@@ -51,18 +49,28 @@ class SettingUpdateRequest extends FormRequest
         $customMessages = [];
 
         foreach ($supportedLanguages as $lang) {
-            $customMessages["title.$lang.required"] = "The title field for language $lang is required.";
-            $customMessages["desc.$lang.required"] = "The desc field for language $lang is required.";
-            $customMessages["copywrite.$lang.required"] = "The copywrite field for language $lang is required.";
-            $customMessages["keywords.$lang.required"] = "The keywords field for language $lang is required.";
+            $customMessages["title.$lang.required"] = "Dil $lang üçün başlıq sahəsi tələb olunur.";
+            $customMessages["desc.$lang.required"] = "Dil $lang üçün təsvir sahəsi tələb olunur.";
+            $customMessages["copywrite.$lang.required"] = "Dil $lang üçün müəlliflik sahəsi tələb olunur.";
+            $customMessages["keywords.$lang.required"] = "Dil $lang üçün açar sözlər sahəsi tələb olunur.";
+            $customMessages["address.$lang.required"] = "Dil $lang üçün ünvan sahəsi tələb olunur.";
         }
 
-        $customMessages['icon.image'] = 'The icon must be an image.';
-        $customMessages['icon.mimes'] = 'The icon must be a jpeg, jpg, or png file.';
-        $customMessages['icon.max'] = 'The icon may not be greater than 2048 kilobytes in size.';
-        $customMessages['logo.image'] = 'The logo must be an image.';
-        $customMessages['logo.mimes'] = 'The logo must be a jpeg, jpg, or png file.';
-        $customMessages['logo.max'] = 'The logo may not be greater than 2048 kilobytes in size.';
+        $customMessages['icon.image'] = 'İkon şəkil olmalıdır.';
+        $customMessages['icon.mimes'] = 'İkon jpeg, jpg və ya png faylı olmalıdır.';
+        $customMessages['icon.max'] = 'İkon 2048 kilobaytdan böyük olmamalıdır.';
+        $customMessages['logo.image'] = 'Logo şəkil olmalıdır.';
+        $customMessages['logo.mimes'] = 'Logo jpeg, jpg və ya png faylı olmalıdır.';
+        $customMessages['logo.max'] = 'Logo 2048 kilobaytdan böyük olmamalıdır.';
+
+        $customMessages['email.required'] = 'E-poçt sahəsi tələb olunur.';
+        $customMessages['email.email'] = 'Düzgün bir e-poçt ünvanı daxil edin.';
+        $customMessages['phone.required'] = 'Telefon sahəsi tələb olunur.';
+        $customMessages['facebook.required'] = 'Facebook sahəsi tələb olunur.';
+        $customMessages['instagram.required'] = 'Instagram sahəsi tələb olunur.';
+        $customMessages['linkedin.required'] = 'LinkedIn sahəsi tələb olunur.';
+        $customMessages['twitter.required'] = 'Twitter sahəsi tələb olunur.';
+
         return $customMessages;
     }
 }

@@ -1,5 +1,3 @@
-
-
 <footer>
     <div class="footer-top-wrap">
         <div class="container">
@@ -15,10 +13,10 @@
                             <nav>
                                 <div class="footer-social">
                                     <ul>
-                                        <li><a href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://instagram.com/"><i class="fab fa-pinterest-p"></i></a></li>
-                                        <li><a href="https://linkedin.com/in/"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="{{$settingsData['facebook']}}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="{{$settingsData['twitter']}}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{$settingsData['instagram']}}"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="{{$settingsData['linkedin']}}"><i class="fab fa-linkedin-in"></i></a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -46,7 +44,3 @@
     </div>
 </footer>
 <!-- footer-area-end -->
-
-
-
-

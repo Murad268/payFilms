@@ -10,7 +10,7 @@ class Settings extends Model
 {
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['title', 'desc', 'copywrite', 'keywords'];
+    public $translatable = ['title', 'desc', 'copywrite', 'keywords',"address"];
 
     public $table = 'settings';
     protected $guarded = [];

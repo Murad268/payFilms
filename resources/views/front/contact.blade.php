@@ -102,7 +102,7 @@
                             <ul>
                                 <li>
                                     <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                                    <p><span>Ünvan:</span>{{$settings->address}}</p>
+                                    <p><span>Ünvan:</span>{{ $settings->getTranslation('address', app()->getLocale()) }}</p>
                                 </li>
                                 <li>
                                     <div class="icon"><i class="fas fa-phone-alt"></i></div>

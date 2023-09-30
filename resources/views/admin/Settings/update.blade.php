@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'settings eit')
+@section('page_title', 'settings edit')
 @section('content')
 <div class="">
 
@@ -89,7 +89,26 @@
                                 {{ $message }}
                             </div>
                             @enderror
-
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input name="email" value="{{ old('email', $setting->email) }}" type="text" class="form-control" placeholder="Emaili daxil edin">
+                            </div>
+                            @error("email")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label>Ünvan {{$lang}} dilində</label>
+                                <input name="address[{{ $lang }}]" value="{{ old('address.' . $lang, $setting->getTranslation('address', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                            </div>
+                            @endforeach
+                            @error("address.$lang")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
                             <div class="form-group">
                                 <label>Facebook</label>
                                 <input name="facebook" value="{{ old('facebook', $setting->facebook) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">

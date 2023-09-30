@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Settings;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,14 @@ class FrontFooterComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('front.components.front-footer-component');
+        $settings = Settings::firstOrFail(); // Use firstOrFail to make sure a record exists
+        $settingsData = [
+            'facebook' => $settings->facebook,
+            'instagram' => $settings->instagram,
+            'linkedin' => $settings->linkedin,
+            'twitter' => $settings->twitter,
+        ];
+
+        return view('front.components.front-footer-component', compact('settingsData'));
     }
 }
