@@ -45,6 +45,6 @@ class FrontHeaderComponent extends Component
 
 
 
-        return view('front.components.front-header-component', compact('settings', 'categories', 'sliders', 'views'));
+        return view('front.components.front-header-component', compact('user','settings', 'categories', 'sliders', 'views'));
     }
 }

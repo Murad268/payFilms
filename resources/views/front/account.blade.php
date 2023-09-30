@@ -2,21 +2,14 @@
 @extends('front.front')
 @section('content')
 <main>
-    <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-content">
-                        <h2 class="title">Hesab <span>Məlumatları</span></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb-area-end -->
+
 
     <style>
+        main {
+            padding-top: 100px;
+            background: #191820
+        }
+
         .shadow {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
         }

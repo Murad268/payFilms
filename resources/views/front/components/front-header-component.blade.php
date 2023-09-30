@@ -13,6 +13,11 @@
             @endif
         }
 
+        .navbar__user__logo a {
+            width: 50px;
+            height: 50px;
+        }
+
         .slick-track {
             height: 100%;
         }
@@ -459,6 +464,11 @@
             position: absolute;
         }
 
+        @media(max-width: 1350px) {
+            .navbar__links a {
+                font-size: 15px !important;
+            }
+        }
 
         @media(max-width: 1150px) {
             .navbar__hamburger {
@@ -664,7 +674,7 @@
                 @if(isset($_COOKIE['email']))
                 <div class="navbar__user__logo">
                     <a href="{{route('front.account')}}">
-                        <img src="https://static.vecteezy.com/system/resources/previews/005/005/788/original/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg" alt="">
+                        <img src="{{asset('assets/front/img/avatar/'.$user->avatar)}}" alt="">
                     </a>
                     <div class="user__datas">
                         <ul>
