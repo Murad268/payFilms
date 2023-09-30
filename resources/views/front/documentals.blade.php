@@ -95,6 +95,7 @@
                 </div> -->
             </div>
             <div class="row tr-movie-active">
+                @if($documentals->count() > 1)
                 @foreach($documentals as $movie)
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
@@ -126,6 +127,7 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
             </div>
             <div class="row">
                 <div class="col-12">
@@ -170,6 +172,7 @@
                 </div> -->
             </div>
             <div class="row tr-movie-active">
+                @if($oneseriesdocumentals->count() > 0)
                 @foreach($oneseriesdocumentals as $movie)
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
@@ -201,6 +204,8 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
+
             </div>
             <div class="row">
                 <div class="col-12">
