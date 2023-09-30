@@ -50,7 +50,8 @@ class FrontHeaderComponent extends Component
             $seriesCount = Series::count();
             $documentalsCount = Documentals::count();
             $oneSeriesDocumentalsCount = OneSerieDocumentals::count();
-            return view('front.components.front-header-component', compact('moviesCount', 'seriesCount', 'oneSeriesDocumentalsCount', 'documentalsCount', 'user', 'settings', 'categories', 'sliders', 'views'));
+            $cateoriesCount = Categories::count();
+            return view('front.components.front-header-component', compact('cateoriesCount','moviesCount', 'seriesCount', 'oneSeriesDocumentalsCount', 'documentalsCount', 'user', 'settings', 'categories', 'sliders', 'views'));
         } else {
             return redirect()->route('front.login');
         }

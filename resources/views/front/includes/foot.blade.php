@@ -63,9 +63,12 @@
 
                 let categories = document.querySelector('.categroies');
                 let navbar__mini = document.querySelector('.navbar__mini');
+                let navbar__hamburger = document.querySelector('.navbar__hamburger');
 
                 categories.classList.add('active');
                 navbar__mini.classList.remove('active');
+                navbar__hamburger.classList.remove('active');
+
 
                 console.log(categories)
 

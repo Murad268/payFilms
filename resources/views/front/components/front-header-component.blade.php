@@ -608,8 +608,24 @@
 
 <div class="navbar__mini">
     <ul>
+        <li><a href="{{route('front.index')}}">Əsas Səhifə</a></li>
+        @if($moviesCount > 0)
+        <li><a href="{{route('front.last_uploads')}}">Ən Son Yüklənən Filmlər</a></li>
+        @endif
+
+        @if($seriesCount > 0)
+        <li><a href="{{route('front.series')}}">Seriallar</a></li>
+        @endif
+        @if($documentalsCount>0 OR $oneSeriesDocumentalsCount>0)
+        <li><a href="{{route('front.documentals')}}">Sənədli Filmlər</a></li>
+        @endif
+        <li><a href="{{route('front.documentals')}}">Əlaqə</a></li>
+        @if($cateoriesCount > 0)
+        @if(($seriesCount > 0) || ($moviesCount > 0) || ($documentalsCount>0) || ($oneSeriesDocumentalsCount>0))
         <li class=""><a class="categories__btn categories__btn__mini">Kateqoriyalar</a></li>
-        <li><a href="">Sənədli Filmlər</a></li>
+
+        @endif
+        @endif
     </ul>
     <a href="{{route('front.account')}}" class="navbar__mini__profile">
         <div class="navbar__mini__profile__logo">
@@ -679,7 +695,11 @@
                 @if($moviesCount > 0)
                 <li><a href="{{route('front.last_uploads')}}">Ən Son Yüklənən Filmlər</a></li>
                 @endif
+                @if($cateoriesCount > 0)
+                @if(($seriesCount > 0) || ($moviesCount > 0) || ($documentalsCount>0) || ($oneSeriesDocumentalsCount>0))
                 <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
+                @endif
+                @endif
                 @if($seriesCount > 0)
                 <li><a href="{{route('front.series')}}">Seriallar</a></li>
                 @endif
