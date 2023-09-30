@@ -17,18 +17,13 @@ class MoviesController extends Controller
         $currentLocale = app()->getLocale();
 
         $category = Categories::where("slug->$currentLocale", $slug)->first();
-
         if (!$category) {
-
             return abort(404);
         }
         $seriesResults = Series::where('movie_category_id', $category->id)->whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
         $moviesResults = Movies::where('movie_category_id', $category->id)->where('status', 1)->paginate(10);
         $documentalsResults = Documentals::where('movie_category_id', $category->id)->whereHas('serie_seasons.episodes')->where('status', 1)->paginate(10);
         $oneSeriesDocumentalsResults = OneSerieDocumentals::where('movie_category_id', $category->id)->where('status', 1)->paginate(10);
-
-
-
 
         return view('front.movies', compact('category', 'moviesResults', 'seriesResults', 'documentalsResults', 'oneSeriesDocumentalsResults'));
     }

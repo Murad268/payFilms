@@ -550,7 +550,20 @@
         .navbar__mini__profile span {
             font-family: 'Mooli', sans-serif;
             color: white;
+        }
 
+        @media(max-width: 460px) {
+            .header__slide__img {
+                width: 200px;
+            }
+
+            .sr::placeholder {
+                font-size: 12px !important;
+            }
+
+            .sr {
+                padding-bottom: 10px;
+            }
         }
     </style>
 
@@ -572,16 +585,19 @@
     </div>
     <div class="categroies">
         <ul>
+            @foreach($categories as $category)
+            <li><a href="{{route('front.movies', $category->slug)}}">{{ $category->getTranslation('name', app()->getLocale()) }}</a></li>
+            @endforeach
+            <!-- <li><a href="">Home</a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
-            <li><a href="">Home</a></li>
+            <li><a href="">Home</a></li> -->
         </ul>
     </div>
     <div class="search__panel">
         <form action="{{route('front.search')}}">
-            <input type="search" placeholder="Açar sözü daxil edin" name="q" id="">
+            <input type="search" class="sr" placeholder="Açar sözü daxil edin" name="q" id="">
         </form>
         <div class="search__panel__popular">
             @if($views->count() > 0)
@@ -598,7 +614,7 @@
                 <a href="{{route('front.documentals', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
                 @endforeach
                 @foreach($view->oneseriesdocumentals as $item)
-                <a href="{{route('front.oneseriesdocumentals', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
+                <a href="{{route('front.sezonedDocumental', $item->id)}}"><img src="{{asset('assets/front/images/'.$item->banner)}}" alt=""></a>
                 @endforeach
                 @endforeach
             </div>
