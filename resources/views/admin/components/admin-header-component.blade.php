@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.admins.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa-solid fa-user"></i>
                         <p>
                             Adminlər
                         </p>
@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.users.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa fa-users" aria-hidden="true"></i>
                         <p>
                             İstifadəçilər
                         </p>
@@ -52,7 +52,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.categories.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <p>
                             Kategoriyalar
                         </p>
@@ -61,7 +61,7 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.home-categories.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <p>
                             Ana səhifə kateqoriyaları
                         </p>
@@ -69,7 +69,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.movies.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa fa-film" aria-hidden="true"></i>
                         <p>
                             Filmlər
                         </p>
@@ -78,7 +78,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.series.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fas fa-tv"></i>
+
                         <p>
                             Seriallar
                         </p>
@@ -88,7 +89,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.documentals.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fas fa-tv"></i>
+
                         <p>
                             Sənədli filmlər
                         </p>
@@ -98,7 +100,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.oneseriedocumentals.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fas fa-tv"></i>
+
                         <p>
                             Bir bölmlük Sənədli filmlər
                         </p>
@@ -107,7 +110,8 @@
 
                 <li class="nav-item">
                     <a href="{{route('admin.headersliders.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fab fa-slideshare"></i>
+
                         <p>
                             Ana səhifə slider
                         </p>
