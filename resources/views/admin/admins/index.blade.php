@@ -46,21 +46,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($admins as $admin)
+                                    @foreach($admins as $adminmain)
                                     <tr>
-                                        <td>{{$admin->id}}</td>
-                                        <td>{{$admin->name}}</td>
-                                        <td>{{$admin->surname}}</td>
-                                        <td>{{$admin->login}}</td>
-                                        <td>{{$admin->status}}</td>
+                                        <td>{{$adminmain->id}}</td>
+                                        <td>{{$adminmain->name}}</td>
+                                        <td>{{$adminmain->surname}}</td>
+                                        <td>{{$adminmain->login}}</td>
+                                        <td>{{$adminmain->status}}</td>
                                         <td>
                                             @if($admin->status === 1)
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.admins.destroy', $admin->id)}}">
-                                                <a href="{{route('admin.admins.edit', $admin->id)}}" class="btn btn-warning text-light">Yenilə</a>
+                                            <a href="{{route('admin.admins.edit', $adminmain->id)}}" class="btn btn-warning text-light">Yenilə</a>
+                                            @if($adminmain->id != $admin->id)
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.admins.destroy', $adminmain->id)}}">
                                                 @csrf
                                                 @method("delete")
                                                 <input class="btn btn-danger" value="sil" type="submit">
                                             </form>
+                                            @endif
                                             @else
                                             <div style="font-size: 12px" class="alert alert-light text-dark">
                                                 sizin admin kontroll hüququnuz yoxdur
