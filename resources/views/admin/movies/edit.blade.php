@@ -215,7 +215,7 @@
                             </div>
                             @enderror
                             <div class="form-check">
-                                <input  {{old('status', $movie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input  {{old('status', $img->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">filmin statusu</label>
                             </div>
                             @error('status')

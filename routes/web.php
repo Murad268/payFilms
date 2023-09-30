@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminProccessController;
+use App\Http\Controllers\admin\AdversController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
@@ -103,6 +104,8 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 
 
     Route::resource('/pages_photos', PagesPhotosController::class);
+    Route::resource('/advertaisment', AdversController::class);
+
 
 
 

@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<a class="details_banner details_banner__fixed" href="">
+    <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+</a>
 <!-- main-area -->
 <main>
     <!-- banner-area -->

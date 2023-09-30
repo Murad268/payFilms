@@ -64,7 +64,7 @@ class DocumentalsController extends Controller
 
     public function get_documentals(Request $request)
     {
-        $episode = DocumentalsEpisodes::where('id', $request->id)->first();
+        $episode = DocumentalsEpisodes::whereHas('serie_seasons.episodes')->where('id', $request->id)->first();
         return response()->json(['success' => false, 'id' => $request->id, 'episode' => $episode]);
     }
 }

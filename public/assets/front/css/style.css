@@ -3771,3 +3771,18 @@ footer img, .details_banner img {
     height: 180px;
     margin-bottom: 30px;
 }
+
+
+.details_banner__fixed {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 100%;
+    height: 110px;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000000000 !important;
+}
+.details_banner__fixed img {
+    margin: 0 auto;
+    width: 80%;
+}

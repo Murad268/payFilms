@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Filmi yenilə</button>
+                            <button type="submit" class="btn btn-primary">Şəkilləri yenilə</button>
                         </div>
                     </form>
                 </div>

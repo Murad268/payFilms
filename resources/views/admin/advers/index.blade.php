@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'pages photos')
+@section('page_title', 'advertaisment')
 @section('content')
 <style>
     .card-body {
@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                         
+
 
                         </div>
                         <div class="card-body">
@@ -37,20 +37,24 @@
                                 <thead>
                                     <tr>
                                         <th>Rəsim</th>
-                                        <th>Səhifə</th>
+                                        <th>Yerləşmə nöqtəsi</th>
+                                        <th>Link</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($imgs as $img)
                                     <tr>
-                                        <td> <a target="_blank" href="{{asset('assets/front/images/'.$img->img)}}"><img style="width: 90px; height: 50px" src="{{asset('assets/front/images/'.$img->img)}}" alt=""></a>
+                                        <td> <a target="_blank" href="{{ asset('assets/front/images/' . $img->banner) }}"><img style="width: 160px; height: 50px" src="{{ asset('assets/front/images/' . $img->banner) }}" alt=""></a>
                                         </td>
                                         <td>
-                                            {{$img->page}}
+                                            {{$img->place}}
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.pages_photos.edit', $img->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
+                                            {{$img->link}}
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.advertaisment.edit', $img->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                         </td>
                                     </tr>
                                     @endforeach

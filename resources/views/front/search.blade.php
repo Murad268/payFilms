@@ -47,7 +47,7 @@
         }
     </style>
     <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{asset('assets/front/images/'.$lastPhoto->img)}}">
+    <section class="breadcrumb-area breadcrumb-bg" data-background="{{asset('assets/front/images/'.$lastPhoto['img'])}}">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -71,6 +71,9 @@
     @if(count($moviesResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
+            <a class="details_banner" href="">
+                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+            </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -158,6 +161,9 @@
     @if(count($seriesResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
+            <a class="details_banner" href="">
+                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+            </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -235,6 +241,9 @@
     @if(count($documentalsResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
+            <a class="details_banner" href="">
+                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+            </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -312,6 +321,9 @@
     @if(count($oneSeriesDocumentalsResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
+            <a class="details_banner" href="">
+                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+            </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
