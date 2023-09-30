@@ -687,9 +687,6 @@
         </div>
         <div class="navbar__links">
             <ul>
-
-
-
                 <li><a href="{{route('front.index')}}">Əsas Səhifə</a></li>
                 @if($moviesCount > 0)
                 <li><a href="{{route('front.last_uploads')}}">Ən Son Yüklənən Filmlər</a></li>
@@ -706,12 +703,10 @@
                 <li><a href="{{route('front.documentals')}}">Sənədli Filmlər</a></li>
                 @endif
                 <li><a href="{{route('front.documentals')}}">Əlaqə</a></li>
-
             </ul>
         </div>
         <div class="navbar__user">
             <div class="navbar__user__search"><i class="fa fa-search" aria-hidden="true"></i></div>
-
             @if(isset($_COOKIE['email']))
             <div class="navbar__user__logo">
                 <a href="{{route('front.account')}}">
@@ -734,7 +729,6 @@
                 <div class="header-btn"><a href="{{route('front.account')}}" class="btn">Daxil ol</a></div>
             </div>
             @endif
-
             <div class="navbar__hamburger">
                 <span></span>
                 <span></span>
@@ -754,7 +748,6 @@
                 <div class="header__slide__category">
                     <span></span>
                     <span>{{$slider->getCategory($slider)}} </span>
-
                 </div>
                 <div class="header__slide__desc">
                     {!! $slider->getName($slider) !!}
@@ -776,9 +769,7 @@
             </picture>
         </div>
         @endforeach
-
     </div>
     @endif
 </header>
-
 @endif

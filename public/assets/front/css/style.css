@@ -3792,3 +3792,8 @@ body.active {
 .remove_fav {
     color: orange !important
 }
+
+
+.video__overlay {
+    z-index: 10000000 !important;
+}
