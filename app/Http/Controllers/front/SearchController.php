@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Adver;
 use App\Models\Documentals;
 use App\Models\HomeCategories;
 use App\Models\Movies;
@@ -23,6 +24,12 @@ class SearchController extends Controller
         $oneSeriesDocumentalsResults = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(name, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($searchQuery) . '%'])->where('status', 1)->paginate(10);
         $lastPhoto = PagesPhotos::where('page', 'axtarış nəticəsi səhvəsi')->first();
 
-        return view('front.search', ['oneSeriesDocumentalsResults' => $oneSeriesDocumentalsResults, "documentalsResults" => $documentalsResults, 'seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q, 'lastPhoto' => $lastPhoto]);
+
+        $first = Adver::where('status', 1)->where('place', 'axtarış nəticəsi-filmlər bölməsi')->first();
+        $second = Adver::where('status', 1)->where('place', 'axtarış nəticəsi-seriallar bölməsi')->first();
+        $third = Adver::where('status', 1)->where('place', 'axtarış nəticəsi-çox sezonlu sənədli filmlər bölməsi')->first();
+        $fifty = Adver::where('status', 1)->where('place', 'axtarış nəticəsi-tek sezonlu sənədli filmlər bölməsi')->first();
+
+        return view('front.search', ['oneSeriesDocumentalsResults' => $oneSeriesDocumentalsResults, "documentalsResults" => $documentalsResults, 'seriesResults' => $seriesResults, 'moviesResults' => $moviesResults, 'q' => $request->q, 'lastPhoto' => $lastPhoto, 'first'=>$first, 'second'=>$second, "third" => $third, 'fifty' => $fifty]);
     }
 }

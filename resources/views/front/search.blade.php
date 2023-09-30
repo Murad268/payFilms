@@ -72,7 +72,7 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$first->banner)}}" alt="">
             </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
@@ -162,7 +162,7 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$second->banner)}}" alt="">
             </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
@@ -242,7 +242,7 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$third->banner)}}" alt="">
             </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
@@ -322,7 +322,7 @@
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <a class="details_banner" href="">
-                <img src="https://previews.123rf.com/images/avgust01/avgust011903/avgust01190300028/124429726-summer-sale-advertisement-banner-horizontal-banner-with-realistic-glass-bottle-with-message.jpg" alt="">
+                <img src="{{asset('assets/front/images/'.$fifty->banner)}}" alt="">
             </a>
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">

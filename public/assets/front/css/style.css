@@ -3786,3 +3786,6 @@ footer img, .details_banner img {
     margin: 0 auto;
     width: 80%;
 }
+body.active {
+    overflow: hidden;
+}

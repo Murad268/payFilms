@@ -34,6 +34,7 @@
                 let searchPanel = document.querySelector('.search__panel');
                 if (searchPanel) {
                     searchPanel.classList.toggle('active');
+                    document.body.classList.toggle('active');
                     let navbarUserSearchIcon = navbarUserSearch.querySelector('.fa');
                     if (navbarUserSearchIcon) {
                         navbarUserSearchIcon.classList.toggle('fa-search');

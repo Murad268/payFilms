@@ -23,6 +23,15 @@ class Adver extends Seeder
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'keteqoriya əsaslı filmlər səhifəsi - seriallar bölməsi reklamı'],
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'keteqoriya əsaslı filmlər səhifəsi - sənədli filmlər bölməsi reklamı'],
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'keteqoriya əsaslı filmlər səhifəsi - bir sezonlu sənədli filmlər bölməsi'],
+
+
+            ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi - tek sezonlu sənədli filmlər bölməsi'],
+            ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi - çox sezonlu sənədli filmlər bölməsi'],
+            ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi -  filmlər bölməsi'],
+            ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'axtarış nəticəsi filmlər səhifəsi - seriallar bölməsi'],
+
+
+
             ['banner' => 'template', 'link' => 'template', 'status' => 1, 'place' => 'footer reklamı'],
         ];
         foreach ($pages as $page) {
