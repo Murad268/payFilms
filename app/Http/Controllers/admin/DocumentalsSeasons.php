@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class DocumentalsSeasons extends Controller
 {
+
+    
     public function index($id)
     {
         $seasons = ModelsDocumentalsSeasons::where('serie_id', $id)->paginate(4);
@@ -27,7 +29,6 @@ class DocumentalsSeasons extends Controller
     public function store(DocSeasonsRequests $request, $id)
     {
         try {
-
             ModelsDocumentalsSeasons::create([
                 'serie_id' => (int)$id,
                 'season_name' => $request->season_name,
@@ -49,7 +50,6 @@ class DocumentalsSeasons extends Controller
     {
         try {
             $season = ModelsDocumentalsSeasons::findOrFail($id);
-
             $season->update([
                 'season_name' => $request->season_name,
                 "slug" => $request->slug

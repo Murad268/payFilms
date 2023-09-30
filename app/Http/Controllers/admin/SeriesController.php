@@ -18,9 +18,21 @@ class SeriesController extends Controller
     public function __construct(private SeriesService $seriesService)
     {
     }
-    public function index()
+    public function index(Request $request)
     {
-        $series = Series::paginate(10);
+        $query = Series::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $series = $query->paginate(10);
+
         return view('admin.series.index', compact('series'));
     }
 

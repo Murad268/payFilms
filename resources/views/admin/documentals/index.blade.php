@@ -28,6 +28,16 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            <div class="mt-3">
+                                <form action="{{ route('admin.documentals.index') }}" method="GET">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="search" class="form-control" placeholder="Search for categories" value="{{ request('search') }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             @if($series->count())
                             @if(session()->has('message'))
                             <div class="alert alert-success">
@@ -102,7 +112,7 @@
                             <div class="not-found">Data Not Found</div>
                             @endif
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">
-                                {{ $series->links() }}
+                                {{ $series->appends(['search' => request('search')])->links() }}
                             </div>
                         </div>
                     </div>

@@ -16,12 +16,24 @@ class DocumentsController extends Controller
     public function __construct(private DocumentalsService $documentalsService)
     {
     }
-    public function index()
+
+    public function index(Request $request)
     {
-        $series = Documentals::paginate(10);
+        $query = Documentals::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $series = $query->paginate(10);
+
         return view('admin.documentals.index', compact('series'));
     }
-
     public function create()
     {
         $categories = Categories::all();
