@@ -67,6 +67,7 @@
     <!-- breadcrumb-area-end -->
 
     <!-- movie-area -->
+    @if($documentals->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <div class="row align-items-end mb-60">
@@ -95,7 +96,6 @@
                 </div> -->
             </div>
             <div class="row tr-movie-active">
-                @if($documentals->count() > 1)
                 @foreach($documentals as $movie)
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
@@ -127,7 +127,6 @@
                     </div>
                 </div>
                 @endforeach
-                @endif
             </div>
             <div class="row">
                 <div class="col-12">
@@ -143,7 +142,9 @@
 
         </div>
     </section>
+    @endif
 
+    @if($oneseriesdocumentals->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
             <div class="row align-items-end mb-60">
@@ -172,7 +173,6 @@
                 </div> -->
             </div>
             <div class="row tr-movie-active">
-                @if($oneseriesdocumentals->count() > 0)
                 @foreach($oneseriesdocumentals as $movie)
                 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one cat-two">
                     <div class="movie-item movie-item-three mb-50">
@@ -204,8 +204,6 @@
                     </div>
                 </div>
                 @endforeach
-                @endif
-
             </div>
             <div class="row">
                 <div class="col-12">
@@ -221,6 +219,7 @@
 
         </div>
     </section>
+    @endif
 
     <!-- movie-area-end -->
 
