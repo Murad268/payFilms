@@ -18,7 +18,9 @@ class PagesPhotos extends Seeder
             ['img' => 'template', 'page' => 'kateqoriya üzrə filmlər səhvəsi'],
             ['img' => 'template', 'page' => 'seriallar səhvəsi'],
             ['img' => 'template', 'page' => 'əlaqə səhvəsi'],
-            ['img' => 'template', 'page' => 'sənədli filmlər səhvəsi']
+            ['img' => 'template', 'page' => 'sənədli filmlər səhvəsi'],
+            ['img' => 'template', 'page' => 'axtarış nəticəsi səhvəsi']
+
         ];
         foreach ($pages as $page) {
             DB::table('pages_photos')->insert([
