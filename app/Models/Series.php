@@ -46,6 +46,9 @@ class Series extends Model
         return $this->hasMany(Seasons::class, 'serie_id');
     }
 
+    public function headerSlider() {
+        return $this->hasMany(HeaderSlider::class, 'serie_id');
+    }
 
     public static function boot()
     {
@@ -59,6 +62,7 @@ class Series extends Model
             }
 
             $series->serie_seasons()->delete();
+            $series->headerSlider()->delete();
         });
     }
 }

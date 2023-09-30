@@ -4,7 +4,11 @@ namespace App\View\Components;
 
 use App\Models\Categories;
 use App\Models\create_mainUsers;
+use App\Models\Documentals;
 use App\Models\HeaderSlider;
+use App\Models\Movies;
+use App\Models\OneSerieDocumentals;
+use App\Models\Series;
 use App\Models\Settings;
 use App\Models\Views;
 use Closure;
@@ -42,11 +46,13 @@ class FrontHeaderComponent extends Component
 
             $sliders = HeaderSlider::all();
 
-
-            return view('front.components.front-header-component', compact('user', 'settings', 'categories', 'sliders', 'views'));
+            $moviesCount = Movies::count();
+            $seriesCount = Series::count();
+            $documentalsCount = Documentals::count();
+            $oneSeriesDocumentalsCount = OneSerieDocumentals::count();
+            return view('front.components.front-header-component', compact('moviesCount', 'seriesCount', 'oneSeriesDocumentalsCount', 'documentalsCount', 'user', 'settings', 'categories', 'sliders', 'views'));
         } else {
             return redirect()->route('front.login');
-
         }
     }
 }

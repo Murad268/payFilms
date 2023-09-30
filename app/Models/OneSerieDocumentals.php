@@ -28,4 +28,19 @@ class OneSerieDocumentals extends Model
     {
         return $this->hasOne(HomeCategories::class, 'id', 'movie_home_category_id');
     }
+
+    public function headerSlider()
+    {
+        return $this->hasMany(HeaderSlider::class, 'oneseriedocumentals_id');
+    }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($series) {
+            $series->headerSlider()->delete();
+        });
+    }
 }

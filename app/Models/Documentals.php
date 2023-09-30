@@ -48,7 +48,10 @@ class Documentals extends Model
         return $this->hasMany(DocumentalsSeasons::class, 'serie_id');
     }
 
-
+    public function headerSlider()
+    {
+        return $this->hasMany(HeaderSlider::class, 'documental_id');
+    }
     public static function boot()
     {
         parent::boot();
@@ -61,6 +64,8 @@ class Documentals extends Model
             }
 
             $series->serie_seasons()->delete();
+            $series->headerSlider()->delete();
+
         });
     }
 }

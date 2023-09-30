@@ -1,7 +1,8 @@
 @include('front.includes.head')
 @section('title', "peroPlay")
 
-<body style="background-color: #1C1F28;">
+<body style="{{ !Cookie::has('email') ? 'background-color: #1C1F28;' : '' }}">
+
     @if(Cookie::has('email'))
     <x-front-header-component />
 

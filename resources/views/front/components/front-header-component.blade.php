@@ -672,11 +672,20 @@
         </div>
         <div class="navbar__links">
             <ul>
+
+
+
                 <li><a href="{{route('front.index')}}">Əsas Səhifə</a></li>
+                @if($moviesCount > 0)
                 <li><a href="{{route('front.last_uploads')}}">Ən Son Yüklənən Filmlər</a></li>
+                @endif
                 <li class=""><a class="categories__btn">Kateqoriyalar</a></li>
+                @if($seriesCount > 0)
                 <li><a href="{{route('front.series')}}">Seriallar</a></li>
+                @endif
+                @if($documentalsCount>0 OR $oneSeriesDocumentalsCount>0)
                 <li><a href="{{route('front.documentals')}}">Sənədli Filmlər</a></li>
+                @endif
                 <li><a href="{{route('front.documentals')}}">Əlaqə</a></li>
 
             </ul>
