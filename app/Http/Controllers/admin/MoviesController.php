@@ -21,11 +21,24 @@ class MoviesController extends Controller
     public function __construct(private MovieService $movieService)
     {
     }
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movies::paginate(10);
+        $query = Movies::query();
+
+        // Check if a search query is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('slug', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $movies = $query->paginate(10);
+
         return view('admin.movies.index', compact('movies'));
     }
+
 
     public function create()
     {
