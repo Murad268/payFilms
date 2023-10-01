@@ -39,7 +39,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label>Sayt başlığı {{$lang}} dilində</label>
-                                <input name="title[{{ $lang }}]" value="{{ old('title.' . $lang, $setting->getTranslation('title', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="title[{{ $lang }}]" value="{{ old('title.' . $lang, $setting->getTranslation('title', $lang)) }}" type="text" class="form-control" placeholder="Sayt başlığnı daxil edin">
                             </div>
                             @endforeach
                             @error("title.$lang")
@@ -50,7 +50,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label>Sayt açıqlaması {{$lang}} dilində</label>
-                                <input name="desc[{{ $lang }}]" value="{{ old('desc.' . $lang, $setting->getTranslation('desc', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="desc[{{ $lang }}]" value="{{ old('desc.' . $lang, $setting->getTranslation('desc', $lang)) }}" type="text" class="form-control" placeholder="Sayt açıqlamasını">
                             </div>
                             @endforeach
                             @error("desc.$lang")
@@ -61,7 +61,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label>Müəllif hüququ mətni {{$lang}} dilində</label>
-                                <input name="copywrite[{{ $lang }}]" value="{{ old('copywrite.' . $lang, $setting->getTranslation('copywrite', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="copywrite[{{ $lang }}]" value="{{ old('copywrite.' . $lang, $setting->getTranslation('copywrite', $lang)) }}" type="text" class="form-control" placeholder="Müəllif hüququ mətnini axil edin">
                             </div>
                             @endforeach
                             @error("copywrite.$lang")
@@ -72,7 +72,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label>Açar sözləri {{$lang}} dilində</label>
-                                <input name="keywords[{{ $lang }}]" value="{{ old('keywords.' . $lang, $setting->getTranslation('keywords', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="keywords[{{ $lang }}]" value="{{ old('keywords.' . $lang, $setting->getTranslation('keywords', $lang)) }}" type="text" class="form-control" placeholder="Açar sözləri daxil edin">
                             </div>
                             @endforeach
                             @error("keywords.$lang")
@@ -82,7 +82,7 @@
                             @enderror
                             <div class="form-group">
                                 <label>Telefon</label>
-                                <input name="phone" value="{{ old('phone', $setting->phone) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="phone" value="{{ old('phone', $setting->phone) }}" type="text" class="form-control" placeholder="Telefon nömrəsi">
                             </div>
                             @error("phone")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -101,7 +101,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label>Ünvan {{$lang}} dilində</label>
-                                <input name="address[{{ $lang }}]" value="{{ old('address.' . $lang, $setting->getTranslation('address', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="address[{{ $lang }}]" value="{{ old('address.' . $lang, $setting->getTranslation('address', $lang)) }}" type="text" class="form-control" placeholder="Ünvanı daxil edin">
                             </div>
                             @endforeach
                             @error("address.$lang")
@@ -111,7 +111,7 @@
                             @enderror
                             <div class="form-group">
                                 <label>Facebook</label>
-                                <input name="facebook" value="{{ old('facebook', $setting->facebook) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="facebook" value="{{ old('facebook', $setting->facebook) }}" type="text" class="form-control" placeholder="Facebook linkini daxil edin">
                             </div>
                             @error("facebook")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -120,7 +120,7 @@
                             @enderror
                             <div class="form-group">
                                 <label>Instagram</label>
-                                <input name="instagram" value="{{ old('instagram', $setting->instagram) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="instagram" value="{{ old('instagram', $setting->instagram) }}" type="text" class="form-control" placeholder="İnstagram linkini daxil edin">
                             </div>
                             @error("instagram")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -129,7 +129,7 @@
                             @enderror
                             <div class="form-group">
                                 <label>Linkedin</label>
-                                <input name="linkedin" value="{{ old('linkedin', $setting->linkedin) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="linkedin" value="{{ old('linkedin', $setting->linkedin) }}" type="text" class="form-control" placeholder="Linkedin linkini daxil edin">
                             </div>
                             @error("linkedin")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -138,7 +138,7 @@
                             @enderror
                             <div class="form-group">
                                 <label>Twitter</label>
-                                <input name="twitter" value="{{ old('twitter', $setting->twitter) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="twitter" value="{{ old('twitter', $setting->twitter) }}" type="text" class="form-control" placeholder="Twitter linkini daxil edin">
                             </div>
 
                             @error("twitter")

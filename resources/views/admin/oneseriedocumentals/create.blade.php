@@ -125,7 +125,7 @@
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Filmin Linki:</label>
-                                <input name="link" value="{{ old('link') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
+                                <input name="link" value="{{ old('link') }}" type="text" class="form-control" placeholder="Filmin linkini daxil edin">
                             </div>
                             @error("link")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -135,7 +135,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Filmin Youtube Trailer Linki:</label>
-                                <input name="ytrailer" value="{{ old('ytrailer') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
+                                <input name="ytrailer" value="{{ old('ytrailer') }}" type="text" class="form-control" placeholder="Filmin youtube trailer linkini daxil edin">
                             </div>
                             @error("ytrailer")
                             <div class="alert alert-danger mt-2" role="alert">
