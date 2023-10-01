@@ -10,6 +10,7 @@ use App\Models\Admin;
 use App\Models\create_mainUsers;
 use Exception;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
@@ -74,6 +75,8 @@ class AdminController extends Controller
 
     public function check_renew_email(HttpRequest $request)
     {
+        $url = Config::get('app.url');
+
         $getUser = create_mainUsers::where('email', $request->email)->first();
         if(!$getUser) {
             return redirect()->route('admin.renewpassword')->with('message', 'Belə bir elektron poçt ilə hesab mövcud deyl');
@@ -89,7 +92,7 @@ class AdminController extends Controller
             ]);
 
 
-            $link = "http://127.0.0.1:8000/checkemailsucces?email=" . $getUser->email . "&activation_code=" . $code;
+            $link = $url."/checkemailsucces?email=" . $getUser->email . "&activation_code=" . $code;
 
             Mail::send('front.renew', [
                 'text' => $link,

@@ -17,9 +17,11 @@ use App\Models\Series;
 use App\Models\Settings;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config as FacadesConfig;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use PSpell\Config;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class HomeController extends Controller
@@ -64,6 +66,7 @@ class HomeController extends Controller
 
     public function register_сheck(ReqisterRequest $request, create_mainUsers $mainUser)
     {
+        $url = FacadesConfig::get('app.url');
 
         $findUserCount = create_mainUsers::where('email', $request->email)->count();
         if ($findUserCount > 0) {
@@ -84,7 +87,7 @@ class HomeController extends Controller
         ]);
 
 
-        $link = "http://127.0.0.1:8000/activation?email=" . $request->email . "&activation_code=" . $code;
+        $link = $url . "/activation?email=" . $request->email . "&activation_code=" . $code;
 
 
 
@@ -114,6 +117,8 @@ class HomeController extends Controller
 
     public function login_check(LoginRequest $request)
     {
+        $url = FacadesConfig::get('app.url');
+
         $findUserCount = create_mainUsers::where('email', $request->email)->where('password', $this->hashParola($request->password));
 
         if ($findUserCount->count() < 1) {
@@ -129,7 +134,7 @@ class HomeController extends Controller
             ]);
 
 
-            $link = "http://127.0.0.1:8000/activation?email=" . $user->email . "&activation_code=" . $code;
+            $link = $url . "/activation?email=" . $user->email . "&activation_code=" . $code;
 
 
             if ($user->activationStatus == 0) {
@@ -288,7 +293,7 @@ class HomeController extends Controller
         try {
             $user->update(['password' => $this->hashParola($request->password)]);
             return redirect()->route('front.login')->with('message', 'şifrəniz yeniləndi');
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             dd($e->getMessage());
         }
     }
