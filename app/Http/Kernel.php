@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         'adminlogin' => \App\Http\Middleware\AdminLogin::class,
         'userlogin' => \App\Http\Middleware\UserLogin::class,
+        'nonlogin' => \App\Http\Middleware\NonLogin::class,
     ];
 }

@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright-text">
-                        <p></p>
+                        <p>{{$settingsData['copywrite']}}</p>
                     </div>
                 </div>
                 <!-- <div class="col-lg-6 col-md-6">

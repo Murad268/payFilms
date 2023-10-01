@@ -30,6 +30,8 @@ class FrontFooterComponent extends Component
             'linkedin' => $settings->linkedin,
             'twitter' => $settings->twitter,
             'logo' => $settings->logo,
+            'logo' => $settings->logo,
+            'copywrite' => $settings->copywrite,
         ];
         $banner = Adver::where('status', 1)->where('place', 'footer reklamı')->first();
         return view('front.components.front-footer-component', compact('settingsData', 'banner'));

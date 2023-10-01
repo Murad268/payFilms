@@ -131,16 +131,16 @@
 
 
 
-        
+
         $('#logout-link').click(function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Xəta!',
+                title: 'Xəbərdarlıq',
                 text: 'Çıxış etmək istədiyinizdın əminsiniz?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Evet',
-                cancelButtonText: 'Hayır'
+                confirmButtonText: 'Bəli',
+                cancelButtonText: 'Xeyir'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = $(this).attr('href');
@@ -198,7 +198,7 @@
                     }
                 },
                 error: function() {
-                    alert('Bir hata oluştu, lütfen tekrar deneyin.');
+                    alert('Bir xəta baş verdi, xahiş edirik yenidən cəhd edin.');
                 }
             });
 
@@ -269,7 +269,7 @@
                         }
                     },
                     error: function() {
-                        alert('Bir hata oluştu, lütfen tekrar deneyin.');
+                        alert('Bir xəta baş verdi, xahiş edirik yenidən cəhd edin.');
                     }
                 });
             }
@@ -309,7 +309,7 @@
                     // Hide the overlay when there is an error
                     $('#overlay').hide();
 
-                    alert('Bir hata oluştu, lütfen tekrar deneyin.');
+                    alert('Bir xəta baş verdi, xahiş edirik yenidən cəhd edin.');
                 }
             });
 
