@@ -19,7 +19,9 @@
 <script src="https://unpkg.com/notie"></script>
 <!-- Other plugins -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+@php
+$baseUrl = Config::get('app.url');
+@endphp
 
 <script>
     $(document).ready(function() {
@@ -98,7 +100,7 @@
                 select.addEventListener('change', () => {
                     let season = document.querySelector('.season_movie');
                     if (season) {
-                        getData(`http://127.0.0.1:8000/get_serie/${season.value}`).then(res => {
+                        getData(`{{$baseUrl}}/get_serie/${season.value}`).then(res => {
                             let iframeSerie = document.querySelector('.iframe_documents');
                             console.log(iframeSerie);
 
@@ -117,7 +119,7 @@
                 select.addEventListener('change', () => {
                     let season = document.querySelector('.season_movie');
                     if (season) {
-                        getData(`http://127.0.0.1:8000/get_documentals/${season.value}`).then(res => {
+                        getData(`{{$baseUrl}}/get_documentals/${season.value}`).then(res => {
                             console.log(res);
                             let iframeSerie = document.querySelector('.iframe_serie');
                             if (iframeSerie) {
@@ -327,28 +329,6 @@
 
 
 
-        // // Tüm add_fav sınıfına sahip öğeleri seçin ve her birine bir olay dinleyici ekleyin
-        // document.querySelectorAll('.add_fav').forEach(function(element) {
-        //     element.addEventListener('click', function(e) {
-        //         e.target.classList.remove('add_fav');
-        //         e.target.classList.add('remove_fav');
-        //         let id = e.target.getAttribute('data-id');
-        //         let type = e.target.getAttribute('type');
-        //         getData(`http://127.0.0.1:8000/add_cookie/${type}/${id}`);
-        //     });
-        // });
-
-        // // Tüm remove_fav sınıfına sahip öğeleri seçin ve her birine bir olay dinleyici ekleyin
-        // document.querySelectorAll('.remove_fav').forEach(function(element) {
-        //     element.addEventListener('click', function(e) {
-        //         console.log(element)
-        //         e.target.classList.remove('remove_fav');
-        //         e.target.classList.add('add_fav');
-        //         let id = e.target.getAttribute('data-id');
-        //         let type = e.target.getAttribute('type');
-        //         getData(`http://127.0.0.1:8000/remove_cookie/${type}/${id}`);
-        //     });
-        // });
 
 
         const addFav = async (url) => {
@@ -361,11 +341,13 @@
             let type = e.target.getAttribute('type');
             if (e.target.classList.contains('fa-heart')) {
                 if (e.target.classList.contains('active')) {
-                    console.log(1)
-                    addFav(`http://127.0.0.1:8000/remove_cookie/${type}/${id}`).then(res => console.log(res));
+                    if (e.target.classList.contains('favs')) {
+                        e.target.parentElement.parentElement.remove()
+                    }
+                    addFav(`{{$baseUrl}}/remove_cookie/${type}/${id}`).then(res => console.log(res));
                     e.target.classList.remove('active')
                 } else {
-                    addFav(`http://127.0.0.1:8000/add_cookie/${type}/${id}`).then(res => console.log(res));
+                    addFav(`{{$baseUrl}}/add_cookie/${type}/${id}`).then(res => console.log(res));
                     e.target.classList.add('active')
                 }
             }
