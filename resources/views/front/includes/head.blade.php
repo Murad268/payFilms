@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="{{asset('assets/front/css/default.css')}}">
     <link rel="stylesheet" href="{{asset('assets/front/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/front/css/responsive.css')}}">
-
+    <x-header-icon-component/>
     <!-- Notify plugin -->
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
     <title></title>
-  
+
 </head>
