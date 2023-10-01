@@ -68,12 +68,18 @@
 
     <!-- movie-area -->
 
+    <!-- @if((count($moviesResults) < 1) and (count($seriesResults) < 1) and (count($documentalsResults) < 1) and (count($oneSeriesDocumentalsResults) < 1)) <div style="color: white; background: #4E525A; padding: 10px">Axtarışınıza uyğun nəticə tapılmadı</div>
+        @endif -->
+
+
     @if(count($moviesResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($first)->banner != null)
+            <a class="details_banner" href="{{$first->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$first->banner)}}" alt="">
             </a>
+            @endif
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -161,9 +167,12 @@
     @if(count($seriesResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($second)->banner != null)
+            <a class="details_banner" href="{{$second->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$second->banner)}}" alt="">
             </a>
+            @endif
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -241,9 +250,12 @@
     @if(count($documentalsResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($third)->banner != null)
+            <a class="details_banner" href="{{$third->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$third->banner)}}" alt="">
             </a>
+            @endif
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -321,9 +333,12 @@
     @if(count($oneSeriesDocumentalsResults) > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($fifty)->banner != null)
+            <a class="details_banner" href="{{$fifty->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$fifty->banner)}}" alt="">
             </a>
+            @endif
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">

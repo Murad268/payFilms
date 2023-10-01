@@ -55,6 +55,7 @@
 
             <div class="row align-items-center position-relative">
                 <div class="col-xl-3 col-lg-4">
+                    
                     <div class="movie-details-img">
                         <img src="{{asset('assets/front/images/'.$movie->poster)}}" alt="">
                         <a href="' . $result['video'] . '" class="popup-video"><img src="img/images/play_icon.png" alt=""></a>

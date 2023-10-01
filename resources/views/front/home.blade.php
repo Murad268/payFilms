@@ -1,10 +1,13 @@
 @extends('front.front')
 
 @section('content')
-
+@if(optional($fixed)->banner != null)
 <a class="details_banner details_banner__fixed" href="">
     <img src="{{asset('assets/front/images/'.$fixed->banner)}}" alt="">
 </a>
+@endif
+
+
 <!-- main-area -->
 <main>
     <!-- banner-area -->

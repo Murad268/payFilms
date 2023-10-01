@@ -9,9 +9,12 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <a class="footer_banner" href="">
+                        @if(optional($banner)->banner != null)
+                        <a class="footer_banner" href="{{$banner->link}}" target="_blank">
                             <img src="{{asset('assets/front/images/'.$banner->banner)}}" alt="">
                         </a>
+                        @endif
+
                     </div>
                     <div class="col-lg-2">
                         <div class="footer-menu">

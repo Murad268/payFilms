@@ -52,9 +52,12 @@
     <!-- movie-details-area -->
     <section class="movie-details-area" data-background="{{asset('assets/front/img/bg/movie_details_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($firsl)->banner != null)
+            <a class="details_banner" href="{{$firsl->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$firsl->banner)}}" alt="">
             </a>
+            @endif
+
             <div class="row align-items-center position-relative">
                 <div class="col-xl-3 col-lg-4">
                     <div class="movie-details-img">

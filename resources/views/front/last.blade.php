@@ -69,9 +69,11 @@
     <!-- movie-area -->
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($fixed)->banner != null)
+            <a class="details_banner" href="{{$fixed->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$fixed->banner)}}" alt="">
             </a>
+            @endif
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">

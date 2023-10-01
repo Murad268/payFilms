@@ -47,7 +47,7 @@
                         </div>
                         <div class="ml-4 mb-3 form-check">
                             <input {{old('status', $img->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">filmin statusu</label>
+                            <label class="form-check-label" for="exampleCheck1">reklamın statusu</label>
                         </div>
                         @error('status')
                         <div class="alert alert-danger mt-2" role="alert">

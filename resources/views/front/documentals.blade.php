@@ -71,9 +71,13 @@
     @if($documentals->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($first)->banner != null)
+            <a class="details_banner" href="{{$first->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$first->banner)}}" alt="">
             </a>
+            @endif
+
+
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -151,9 +155,11 @@
     @if($oneseriesdocumentals->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
         <div class="container">
-            <a class="details_banner" href="">
+            @if(optional($second)->banner != null)
+            <a class="details_banner" href="{{$second->link}}" target="_blank">
                 <img src="{{asset('assets/front/images/'.$second->banner)}}" alt="">
             </a>
+            @endif
             <div class="row align-items-end mb-60">
                 <div class="col-lg-6">
                     <div class="section-title text-center text-lg-left">
@@ -231,4 +237,5 @@
     <!-- movie-area-end -->
 
 </main>
+
 @endsection
