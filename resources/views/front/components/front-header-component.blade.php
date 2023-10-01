@@ -13,7 +13,10 @@
         @if(Route::is('front.index') and isset($_COOKIE['email'])) height: 95vh;
         @endif
     }
-
+    .slick-slide img {
+        width: 100% !important;
+        height: 100% !important;
+    }
     .navbar__user__logo a {
         width: 50px;
         height: 50px;
