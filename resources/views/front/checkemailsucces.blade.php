@@ -7,24 +7,26 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 grid-item grid-sizer cat-one cat-two my-5">
                     <section class="login-section">
                         <div class="contentBx">
-                            <form action="{{route('front.login_check')}}" class="formBx">
-                                <h2>Xoş gəldin!</h2>
+                            <form action="{{route('front.resetpassword')}}" method="post" class="formBx">
+                                @csrf
                                 <div>
-                                    <!-- Username input -->
-                                    <div class="inputBx">
-                                        <span>E-poçt ünvanınız</span>
-                                        <input type="email" name="email" id="login-email">
-                                        @error("email")
-                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
                                     <!-- Password input -->
                                     <div class="inputBx">
                                         <span>Şifrəniz</span>
                                         <input type="password" name="password" id="login-password">
                                         @error("password")
+                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <input type="hidden" value="{{$email}}" name="email">
+                                    <input type="hidden" value="{{$code}}" name="code">
+
+                                    <div class="inputBx">
+                                        <span>Şifrənizi yenidən daxil edin</span>
+                                        <input type="password" name="repassword" id="login-password">
+                                        @error("repassword")
                                         <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
                                             {{ $message }}
                                         </div>
@@ -51,13 +53,10 @@
                                     </div>
                                     @endif
                                     <div class="inputBx">
-                                        <input type="submit" value="Daxil ol" id="login-submit">
+                                        <input type="submit" value="Təstiq et" id="login-submit">
                                     </div>
                                     <!-- Option to sign up -->
-                                    <div class="inputBx">
-                                        <p>Hələ də hesabın yoxdu? <a href="{{route('front.register')}}">Qeydiyyat ol</a></p>
-                                        <p>Şifrəni unutmusan? <a href="{{route('admin.renewpassword')}}">Bərpa et</a></p>
-                                    </div>
+
                                 </div>
                             </form>
                         </div>

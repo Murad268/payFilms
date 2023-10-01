@@ -21,7 +21,7 @@
         Hörmətli {{$name}}
     </div>
     <p>
-        siz PeroPlay online kinoteatırından qeydiyyatdan keçməyə hazırlaşırsınız. Xahiş edirik, daxil edilən elektron poçtun sizə aid olduğunu təstiqləmək üçün <a href="{{$text}}">tıklayın</a>
+        siz PeroPlay online kinoteatırında hesabınızı bərpa etməyə çalışırsınız. Xahiş edirik, daxil edilən elektron poçtun sizə aid olduğunu təstiqləmək üçün <a href="{{$text}}">tıklayın</a>
     </p>
 </body>
 

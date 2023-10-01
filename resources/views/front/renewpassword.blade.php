@@ -7,12 +7,12 @@
                 <div class="col-xl-12 col-lg-12 col-sm-12 grid-item grid-sizer cat-one cat-two my-5">
                     <section class="login-section">
                         <div class="contentBx">
-                            <form action="{{route('front.login_check')}}" class="formBx">
-                                <h2>Xoş gəldin!</h2>
+                            <form method="post" action="{{route('admin.check_renew_email')}}" class="formBx">
+                                @csrf
                                 <div>
                                     <!-- Username input -->
                                     <div class="inputBx">
-                                        <span>E-poçt ünvanınız</span>
+                                        <span>E-poçt ünvanınızı daxil edin</span>
                                         <input type="email" name="email" id="login-email">
                                         @error("email")
                                         <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
@@ -21,15 +21,6 @@
                                         @enderror
                                     </div>
                                     <!-- Password input -->
-                                    <div class="inputBx">
-                                        <span>Şifrəniz</span>
-                                        <input type="password" name="password" id="login-password">
-                                        @error("password")
-                                        <div style="border-radius: 15px; background-color: #333; color: #fff; padding: 10px;" class="alert alert-danger mt-2" role="alert">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
                                     <!-- Remember Me input -->
                                     <!-- <div class="remember">
                                         <label><input type="checkbox">Remember me</label>
@@ -51,13 +42,10 @@
                                     </div>
                                     @endif
                                     <div class="inputBx">
-                                        <input type="submit" value="Daxil ol" id="login-submit">
+                                        <input type="submit" value="Daxil et" id="login-submit">
                                     </div>
                                     <!-- Option to sign up -->
-                                    <div class="inputBx">
-                                        <p>Hələ də hesabın yoxdu? <a href="{{route('front.register')}}">Qeydiyyat ol</a></p>
-                                        <p>Şifrəni unutmusan? <a href="{{route('admin.renewpassword')}}">Bərpa et</a></p>
-                                    </div>
+
                                 </div>
                             </form>
                         </div>

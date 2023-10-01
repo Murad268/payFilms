@@ -51,11 +51,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/access_check', [AdminController::class, 'access_check'])->name('admin.access_check');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+Route::get('/admin/renewpassword', [AdminController::class, 'renewpassword'])->name('admin.renewpassword');
+Route::post('/admin/check_renew_email', [AdminController::class, 'check_renew_email'])->name('admin.check_renew_email');
+Route::get('/checkemailsucces', [HomeController::class, 'checkemailsucces'])->name('admin.checkemailsucces');
+Route::get('/resetpasswordpage', [HomeController::class, 'resetpasswordpage'])->name('front.resetpasswordpage');
+Route::post('/resetpassword', [HomeController::class, 'resetpassword'])->name('front.resetpassword');
+
+
+
+
 
 Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, "index"])->name("index");
     Route::resource('/categories', CategoriesController::class);
-    
+
     Route::resource('/settings', SettingsController::class);
     Route::resource('/home-categories', HomeCategoriesController::class);
     Route::resource('/movies', MoviesController::class);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\register\LoginRequest;
 use App\Http\Requests\register\ReqisterRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use App\Models\Adver;
 use App\Models\create_mainUsers;
 use App\Models\Documentals;
@@ -19,6 +20,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class HomeController extends Controller
 {
@@ -133,7 +135,7 @@ class HomeController extends Controller
             if ($user->activationStatus == 0) {
                 Mail::send('front.mail', [
                     'text' => $link,
-                    "name" => $user->name
+                    "name" => $user->full_name
                 ], function ($message) use ($subject) {
                     $message->to("agamedov94@mail.ru")->subject($subject);
                 });
@@ -195,7 +197,7 @@ class HomeController extends Controller
                     return response()->json(['success' => true, 'type' => $favorite, 'id' => $id, 'user_id' => $user->id]);
                 } else {
                     // The favorite doesn't exist, return an error.
-                    return response()->json(['error' => true, 'message' => 'Favorite not found.', 'TYPE'=>$type]);
+                    return response()->json(['error' => true, 'message' => 'Favorite not found.', 'TYPE' => $type]);
                 }
             } else {
                 // The 'email' cookie doesn't exist, return an error or handle as needed.
@@ -253,5 +255,41 @@ class HomeController extends Controller
         $onseSeriesDocumentalsResults = OneSerieDocumentals::whereIn('id', $onseSeriesIds)->get();
 
         return view('front.favorites', compact('seriesResults', 'moviesResults', 'documentalsResults', 'onseSeriesDocumentalsResults'));
+    }
+
+
+
+
+    public function checkemailsucces(Request $request)
+    {
+        $user = create_mainUsers::where('email', '=', $request->email)->where('activationCode', $request->activation_code)->first();
+        $email = $request->email;
+        $code = $request->activation_code;
+
+        if ($user) {
+            return view('front.checkemailsucces', compact('email', 'code'));
+        } else {
+            throw new NotFoundHttpException();
+        }
+    }
+
+
+
+
+
+
+    public function resetpassword(ResetPasswordRequest $request)
+    {
+
+        if ($request->password != $request->repassword) {
+            return redirect()->route('front.resetpasswordpage')->with('message', 'Şifrələr üst-üstə düşmürlər');
+        }
+        $user = create_mainUsers::where('email', '=', $request->email)->where('activationCode', $request->code)->first();
+        try {
+            $user->update(['password' => $this->hashParola($request->password)]);
+            return redirect()->route('front.login')->with('message', 'şifrəniz yeniləndi');
+        } catch(Exception $e) {
+            dd($e->getMessage());
+        }
     }
 }
