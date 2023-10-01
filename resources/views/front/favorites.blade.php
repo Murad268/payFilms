@@ -45,10 +45,17 @@
             background-color: darkred;
             /* Fare üzerine geldiğinde sayfa linklerinin arka plan rengi */
         }
+
+        .fav_empty {
+            height: 55vh !important;
+            background: #20232A;
+            padding-top: 130px !important;
+        }
     </style>
 
 
     <!-- movie-area -->
+
 
     @if($moviesResults->count() > 0)
     <section class="movie-area movie-bg" data-background="{{asset('assets/front/img/bg/movie_bg.jpg')}}">
@@ -334,6 +341,8 @@
     </section>
     @endif
     <!-- movie-area-end -->
+    @if((count($moviesResults) < 1) and (count($seriesResults) < 1) and (count($documentalsResults) < 1) and (count($onseSeriesDocumentalsResults) < 1)) <div class="fav_empty" style="color: white; background: {{ asset('assets/front/img/bg/movie_bg.jpg') }}; padding: 10px;">Sevimlilər siyahınız boşdur</div>
+        @endif
 
 </main>
 @endsection

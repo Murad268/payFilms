@@ -68,8 +68,8 @@
 
     <!-- movie-area -->
 
-    <!-- @if((count($moviesResults) < 1) and (count($seriesResults) < 1) and (count($documentalsResults) < 1) and (count($oneSeriesDocumentalsResults) < 1)) <div style="color: white; background: #4E525A; padding: 10px">Axtarışınıza uyğun nəticə tapılmadı</div>
-        @endif -->
+    @if((count($moviesResults) < 1) and (count($seriesResults) < 1) and (count($documentalsResults) < 1) and (count($oneSeriesDocumentalsResults) < 1)) <div style="color: white; background: #4E525A; padding: 10px">Axtarışınıza uyğun nəticə tapılmadı</div>
+    @endif
 
 
     @if(count($moviesResults) > 0)
