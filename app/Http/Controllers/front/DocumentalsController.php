@@ -51,7 +51,6 @@ class DocumentalsController extends Controller
 
         $views = Views::where('documental_id', $movie->id)->get();
         $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
-
         if ($views->isEmpty()) {
             Views::create(['documental_id' => $movie->id, 'count' => 1]);
         } else {

@@ -23,6 +23,7 @@ class SerieDetailsController extends Controller
             $view->count += 1;
             $view->save();
         }
+
         $seasonFirst = $movie->serie_seasons()->first();
         $serie_seasons = $movie->serie_seasons()->get();
         $first_season = $movie->serie_seasons()->first();
