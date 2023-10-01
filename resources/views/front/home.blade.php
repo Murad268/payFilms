@@ -88,7 +88,7 @@
                         @foreach($cats->movies as $movie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href="{{route('front.movie', $movie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
+                                <a href="{{route('front.movie', $movie->slug)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">
@@ -119,7 +119,7 @@
                         @foreach($cats->series as $serie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href="{{route('front.serie', $serie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
+                                <a href="{{route('front.serie', $serie->slug)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$serie->poster)}}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">
@@ -137,7 +137,7 @@
                         @foreach($cats->documentals as $movie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href="{{route('front.sezonedDocumental', $movie->id)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
+                                <a href="{{route('front.sezonedDocumental', $movie->slug)}}"><img class="home-movie-photo" src="{{asset('assets/front/images/'.$movie->poster)}}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">
@@ -166,7 +166,7 @@
                         @foreach($cats->oneseriedocumentals as $serie)
                         <div class="movie-item mb-50">
                             <div class="movie-poster">
-                                <a href="{{ route('front.documental', $serie->id) }}"><img class="home-movie-photo" src="{{ asset('assets/front/images/'.$serie->poster) }}" alt=""></a>
+                                <a href="{{ route('front.documental', $serie->slug) }}"><img class="home-movie-photo" src="{{ asset('assets/front/images/'.$serie->poster) }}" alt=""></a>
                             </div>
                             <div class="movie-content">
                                 <div class="top">

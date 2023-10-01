@@ -27,12 +27,13 @@ class DocumentalsController extends Controller
 
     public function documental($id)
     {
-        $movie = OneSerieDocumentals::findOrFail($id);
-        $views = Views::where('oneseriesdocumentals_id', $id)->get();
+        $movie = OneSerieDocumentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($id) . '%'])->where('status', 1)->first();
+
+        $views = Views::where('oneseriesdocumentals_id', $movie->id)->get();
         $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
         if ($views->isEmpty()) {
-            Views::create(['oneseriesdocumentals_id' => $id, 'count' => 1]);
+            Views::create(['oneseriesdocumentals_id' => $movie->id, 'count' => 1]);
         } else {
             $view = $views->first();
             $view->count += 1;
@@ -46,12 +47,13 @@ class DocumentalsController extends Controller
 
     public function sezonedDocumental($id)
     {
-        $movie = Documentals::findOrFail($id);
-        $views = Views::where('documental_id', $id)->get();
+        $movie = Documentals::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($id) . '%'])->where('status', 1)->first();
+
+        $views = Views::where('documental_id', $movie->id)->get();
         $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
         if ($views->isEmpty()) {
-            Views::create(['documental_id' => $id, 'count' => 1]);
+            Views::create(['documental_id' => $movie->id, 'count' => 1]);
         } else {
             $view = $views->first();
             $view->count += 1;
@@ -68,9 +70,6 @@ class DocumentalsController extends Controller
 
     public function get_documentals(Request $request)
     {
-
-
-
         $episode = DocumentalsEpisodes::whereHas('serie_seasons.episodes')->where('id', $request->id)->first();
         return response()->json(['success' => false, 'id' => $request->id, 'episode' => $episode]);
     }

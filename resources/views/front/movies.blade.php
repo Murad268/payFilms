@@ -116,7 +116,7 @@
                                     <i class="fas fa-star"></i>
                                 </li> -->
                                 <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.movie', $movie->id)}}" class="btn">Details</a></li>
+                                <li><a href="{{route('front.movie', $movie->slug)}}" class="btn">Details</a></li>
                             </ul>
                             @if($movie->checkFavorite('movies', $movie->id))
                             <i data-id='{{$movie->id}}' type="movies" class="fa fa-heart active" aria-hidden="true"></i>
@@ -209,7 +209,7 @@
                                     <i class="fas fa-star"></i>
                                 </li> -->
                                 <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.serie', $movie->id)}}" class="btn">Details</a></li>
+                                <li><a href="{{route('front.serie', $movie->slug)}}" class="btn">Details</a></li>
                             </ul>
                         </div>
                         <div class="movie-content">
@@ -292,7 +292,7 @@
                                     <i class="fas fa-star"></i>
                                 </li> -->
                                 <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.sezonedDocumental', $movie->id)}}" class="btn">Details</a></li>
+                                <li><a href="{{route('front.sezonedDocumental', $movie->slug)}}" class="btn">Details</a></li>
                             </ul>
                         </div>
                         <div class="movie-content">
@@ -374,7 +374,7 @@
                                     <i class="fas fa-star"></i>
                                 </li> -->
                                 <li><a href="https://www.youtube.com/watch?v=" class="popup-video btn">Trailer</a></li>
-                                <li><a href="{{route('front.documental', $movie->id)}}" class="btn">Details</a></li>
+                                <li><a href="{{route('front.documental', $movie->slug)}}" class="btn">Details</a></li>
                             </ul>
                         </div>
                         <div class="movie-content">

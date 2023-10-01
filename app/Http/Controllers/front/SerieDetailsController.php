@@ -13,19 +13,16 @@ class SerieDetailsController extends Controller
 {
     public function index($id)
     {
-        $views = Views::where('serie_id', $id)->get();
+        $movie = Series::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($id) . '%'])->where('status', 1)->first();
+        $views = Views::where('serie_id', $movie->id)->get();
         $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
-
         if ($views->isEmpty()) {
-            Views::create(['serie_id' => $id, 'count' => 1]);
+            Views::create(['serie_id' => $movie->id, 'count' => 1]);
         } else {
             $view = $views->first();
             $view->count += 1;
             $view->save();
         }
-
-
-        $movie = Series::findOrFail($id);
         $seasonFirst = $movie->serie_seasons()->first();
         $serie_seasons = $movie->serie_seasons()->get();
         $first_season = $movie->serie_seasons()->first();

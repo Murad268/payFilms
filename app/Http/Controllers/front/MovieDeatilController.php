@@ -12,13 +12,14 @@ class MovieDeatilController extends Controller
 {
     public function index($id)
     {
-        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
 
-        $movie = Movies::findOrFail($id);
-        $views = Views::where('movie_id', $id)->get();
+        $firsl = Adver::where('status', 1)->where('place', 'detallar')->first();
+        $movie = Movies::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(slug, "$.' . app()->getLocale() . '"))) LIKE ?', ['%' . strtolower($id) . '%'])->where('status', 1)->first();
+
+        $views = Views::where('movie_id', $movie->id)->get();
 
         if ($views->isEmpty()) {
-            Views::create(['movie_id' => $id, 'count' => 1]);
+            Views::create(['movie_id' => $movie->id, 'count' => 1]);
         } else {
             $view = $views->first();
             $view->count += 1;
