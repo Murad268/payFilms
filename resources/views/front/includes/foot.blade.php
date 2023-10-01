@@ -94,33 +94,14 @@ $baseUrl = Config::get('app.url');
             return await res.json();
         }
 
-        let seriesSelects = document.querySelectorAll('.serie_template__top select');
+        // İlk select üçün eventListener
+        let seriesSelects = document.querySelectorAll('.series_det select');
         if (seriesSelects.length > 0) {
             seriesSelects.forEach(select => {
                 select.addEventListener('change', () => {
-                    let season = document.querySelector('.season_movie');
+                    let season = document.querySelector('.serie_movie');
                     if (season) {
                         getData(`{{$baseUrl}}/get_serie/${season.value}`).then(res => {
-                            let iframeSerie = document.querySelector('.iframe_documents');
-                            console.log(iframeSerie);
-
-                            if (iframeSerie) {
-                                iframeSerie.src = res.episode.link;
-                            }
-                        });
-                    }
-                });
-            });
-        }
-
-        let sezonedSelects = document.querySelectorAll('.serie_template__top select');
-        if (sezonedSelects.length > 0) {
-            sezonedSelects.forEach(select => {
-                select.addEventListener('change', () => {
-                    let season = document.querySelector('.season_movie');
-                    if (season) {
-                        getData(`{{$baseUrl}}/get_documentals/${season.value}`).then(res => {
-                            console.log(res);
                             let iframeSerie = document.querySelector('.iframe_serie');
                             if (iframeSerie) {
                                 iframeSerie.src = res.episode.link;
@@ -130,6 +111,27 @@ $baseUrl = Config::get('app.url');
                 });
             });
         }
+
+        // İkinci select üçün ayrı eventListener
+        let sezonedSelects = document.querySelectorAll('.sezoned select');
+        if (sezonedSelects.length > 0) {
+            sezonedSelects.forEach(select => {
+                select.addEventListener('change', () => {
+                    let season = document.querySelector('.details_movie');
+                    if (season) {
+                        getData(`{{$baseUrl}}/get_documentals/${season.value}`).then(res => {
+                            let iframeSerie = document.querySelector('.iframe_documents');
+                            if (iframeSerie) {
+                                iframeSerie.src = res.episode.link;
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+
+
 
 
 

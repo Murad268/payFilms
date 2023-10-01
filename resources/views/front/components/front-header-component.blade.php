@@ -13,10 +13,12 @@
         @if(Route::is('front.index') and isset($_COOKIE['email'])) height: 95vh;
         @endif
     }
+
     .slick-slide img {
         width: 100% !important;
         height: 100% !important;
     }
+
     .navbar__user__logo a {
         width: 50px;
         height: 50px;
@@ -756,7 +758,7 @@
                     {!! $slider->getName($slider) !!}
                 </div>
                 <div class="header__slide__bottom">
-                    <a class="watch__now" href="">
+                    <a class="watch__now" href="{{$slider->getLink($slider)}}">
                         <div>
                             <span>&#9658;</span><span>İndi İzlə</span>
                         </div>

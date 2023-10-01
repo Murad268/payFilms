@@ -151,10 +151,10 @@
                                         <div class="card-body">
                                             <ul>
                                                 <div class="serie_template">
-                                                    <form class="serie_template__top">
+                                                    <form class="serie_template__top series_det">
                                                         <div>
                                                             <label for="">Sezonlar və bölümlər</label>
-                                                            <select class="season_movie" name="season" id="">
+                                                            <select class="serie_movie" name="season" id="">
                                                                 @foreach($serie_seasons as $season)
                                                                 <optgroup label="{{$season->getTranslation('season_name', app()->getLocale())}}">
                                                                     @foreach($season->episodes as $episode)

@@ -152,7 +152,7 @@
                                                     <form class="serie_template__top sezoned">
                                                         <div>
                                                             <label for="">Sezonlar və bölümlər</label>
-                                                            <select class="season_movie" name="season" id="">
+                                                            <select class="details_movie" name="season" id="">
                                                                 @foreach($serie_seasons as $season)
                                                                 <optgroup label="{{$season->getTranslation('season_name', app()->getLocale())}}">
                                                                     @foreach($season->episodes as $episode)

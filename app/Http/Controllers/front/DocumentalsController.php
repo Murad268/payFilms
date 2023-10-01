@@ -63,13 +63,13 @@ class DocumentalsController extends Controller
         $first_season = $movie->serie_seasons()->first();
 
         $first_episode = $first_season->episodes->first();
-        return view('front.serie_details', compact('movie', 'firsl', 'seasonFirst', 'serie_seasons', 'first_episode'));
+        return view('front.sezoned_details', compact('movie', 'firsl', 'seasonFirst', 'serie_seasons', 'first_episode'));
     }
 
 
     public function get_documentals(Request $request)
     {
-        $episode = DocumentalsEpisodes::whereHas('serie_seasons.episodes')->where('id', $request->id)->first();
+        $episode = DocumentalsEpisodes::where('id', $request->id)->first();
         return response()->json(['success' => false, 'id' => $request->id, 'episode' => $episode]);
     }
 }

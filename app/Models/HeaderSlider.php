@@ -59,4 +59,33 @@ class HeaderSlider extends Model
             return OneSerieDocumentals::findOrFail($obj->oneseriedocumentals_id)->movie_categories->name;
         }
     }
+
+
+    function getLink($obj)
+    {
+        if ($obj->movie_id) {
+            $slug = Movies::where('id', $obj->movie_id)->value('slug');
+            if ($slug) {
+                return route('front.movie', ['id' => $slug]);
+            }
+        }
+        if ($obj->serie_id) {
+            $slug = Series::where('id', $obj->serie_id)->value('slug');
+            if ($slug) {
+                return route('front.serie', ['id' => $slug]);
+            }
+        }
+        if ($obj->documental_id) {
+            $slug = Documentals::where('id', $obj->documental_id)->value('slug');
+            if ($slug) {
+                return route('front.sezonedDocumental', ['id' => $slug]);
+            }
+        }
+        if ($obj->oneseriedocumentals_id) {
+            $slug = OneSerieDocumentals::where('id', $obj->oneseriedocumentals_id)->value('slug');
+            if ($slug) {
+                return route('front.documental', ['id' => $slug]);
+            }
+        }
+    }
 }

@@ -36,6 +36,7 @@ class SerieDetailsController extends Controller
     public function get_serie(Request $request)
     {
         $episode = SeriesEpisodes::where('id', $request->id)->first();
-        return response()->json(['success' => false, 'episode' => $episode]);
+    
+        return response()->json(['success' => true, 'episode' => $episode]);
     }
 }
